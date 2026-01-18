@@ -1,0 +1,6 @@
+{
+  "type": "betterend:painted_mountain",
+  "biomes": "#betterend:has_structure/painted_mountain",
+  "spawn_overrides": {},
+  "step": "raw_generation"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/azure_jadestone_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/azure_jadestone"
+    },
+    "type=top": {
+      "model": "betterend:block/azure_jadestone_slab_top"
+    }
+  }
+}

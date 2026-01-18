@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hydralux_petal_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:hydralux_petal_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:hydralux_petal_block_yellow"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:yellow_dye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_hydralux_petal_block",
+      "has_yellow_dye",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:hydralux_petal_block_yellow"
+    ]
+  },
+  "sends_telemetry_event": false
+}

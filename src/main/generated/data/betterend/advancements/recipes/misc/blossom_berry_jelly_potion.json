@@ -1,0 +1,74 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blossom_berry": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:blossom_berry"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_gelatine": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:gelatine"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_potion": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:potion"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sugar": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:sugar"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:blossom_berry_jelly_potion"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_sugar",
+      "has_potion",
+      "has_gelatine",
+      "has_blossom_berry",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:blossom_berry_jelly_potion"
+    ]
+  },
+  "sends_telemetry_event": false
+}

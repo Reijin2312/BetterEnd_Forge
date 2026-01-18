@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "betterend:block/neon_cactus_block_top",
+    "side": "betterend:block/neon_cactus_block_side",
+    "top": "betterend:block/neon_cactus_block_top"
+  }
+}

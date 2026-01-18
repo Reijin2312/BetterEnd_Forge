@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/sulphuric_rock_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/sulphuric_rock"
+    },
+    "type=top": {
+      "model": "betterend:block/sulphuric_rock_slab_top"
+    }
+  }
+}

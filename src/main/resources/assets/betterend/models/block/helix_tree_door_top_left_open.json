@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "textures": {
+    "bottom": "betterend:block/helix_tree_door_bottom",
+    "top": "betterend:block/helix_tree_door_top"
+  }
+}

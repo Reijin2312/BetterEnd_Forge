@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "textures": {
+    "bottom": "betterend:block/tenanea_door_bottom",
+    "top": "betterend:block/tenanea_door_top"
+  }
+}

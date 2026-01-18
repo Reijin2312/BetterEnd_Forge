@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mossy_glowshroom_fence": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:mossy_glowshroom_fence"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mossy_glowshroom_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:mossy_glowshroom_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:mossy_glowshroom_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_mossy_glowshroom_fence",
+      "has_mossy_glowshroom_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:mossy_glowshroom_wall"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "composter",
+  "key": {
+    "#": {
+      "item": "betterend:lacugrove_slab"
+    }
+  },
+  "pattern": [
+    "# #",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:lacugrove_composter"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "betterend:iron_bulb_lantern"
+    },
+    {
+      "item": "minecraft:blue_dye"
+    }
+  ],
+  "result": {
+    "item": "betterend:iron_bulb_lantern_blue"
+  }
+}

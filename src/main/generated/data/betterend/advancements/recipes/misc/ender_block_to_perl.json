@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ender_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:ender_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:ender_block_to_perl"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ender_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:ender_block_to_perl"
+    ]
+  },
+  "sends_telemetry_event": false
+}

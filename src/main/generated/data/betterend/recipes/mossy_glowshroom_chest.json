@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chest",
+  "key": {
+    "#": {
+      "item": "betterend:mossy_glowshroom_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:mossy_glowshroom_chest"
+  },
+  "show_notification": true
+}

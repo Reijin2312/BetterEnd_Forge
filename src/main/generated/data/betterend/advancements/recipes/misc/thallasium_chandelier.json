@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lumecorn_rod": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:lumecorn_rod"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_thallasium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:thallasium_chandelier"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_thallasium_ingot",
+      "has_lumecorn_rod",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:thallasium_chandelier"
+    ]
+  },
+  "sends_telemetry_event": false
+}

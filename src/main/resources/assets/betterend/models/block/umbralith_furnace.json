@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "betterend:block/umbralith_furnace_top",
+    "front": "betterend:block/umbralith_furnace_front",
+    "side": "betterend:block/umbralith_furnace_side",
+    "top": "betterend:block/umbralith_furnace_top"
+  }
+}

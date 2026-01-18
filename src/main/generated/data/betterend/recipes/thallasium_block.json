@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_blocks",
+  "key": {
+    "#": {
+      "item": "betterend:thallasium_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:thallasium_block"
+  },
+  "show_notification": true
+}

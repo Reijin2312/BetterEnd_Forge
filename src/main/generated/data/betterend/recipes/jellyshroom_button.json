@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "betterend:jellyshroom_planks"
+    }
+  ],
+  "result": {
+    "item": "betterend:jellyshroom_button"
+  }
+}

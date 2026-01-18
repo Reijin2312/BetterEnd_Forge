@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_item.betterend.thallasium_axe_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_axe_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:thallasium_axe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_item.betterend.thallasium_axe_head",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:thallasium_axe"
+    ]
+  },
+  "sends_telemetry_event": false
+}

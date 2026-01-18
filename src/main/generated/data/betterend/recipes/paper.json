@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "betterend:end_lily_leaf_dried"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "item": "minecraft:paper"
+  },
+  "show_notification": true
+}

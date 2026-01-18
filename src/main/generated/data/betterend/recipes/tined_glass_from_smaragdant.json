@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "betterend:smaragdant_crystal_shard"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#G#",
+    " # "
+  ],
+  "result": {
+    "item": "minecraft:tinted_glass"
+  },
+  "show_notification": true
+}

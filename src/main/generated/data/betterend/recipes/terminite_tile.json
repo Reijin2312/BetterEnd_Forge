@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_tiles",
+  "key": {
+    "#": {
+      "item": "betterend:terminite_block"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "item": "betterend:terminite_tile"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "betterend:block/terminite_door_bottom",
+    "top": "betterend:block/terminite_door_top"
+  }
+}

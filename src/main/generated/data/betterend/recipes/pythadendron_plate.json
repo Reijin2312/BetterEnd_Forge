@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "pressure_plate",
+  "key": {
+    "#": {
+      "item": "betterend:pythadendron_planks"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "betterend:pythadendron_plate"
+  },
+  "show_notification": true
+}

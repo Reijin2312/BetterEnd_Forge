@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "betterend:twisted_umbrella_moss_tall"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:purple_dye"
+  }
+}

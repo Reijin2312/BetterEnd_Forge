@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/lacugrove_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/lacugrove_planks"
+    },
+    "type=top": {
+      "model": "betterend:block/lacugrove_slab_top"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:stick"
+  },
+  "base": {
+    "item": "betterend:terminite_hoe_head"
+  },
+  "result": {
+    "item": "betterend:terminite_hoe"
+  },
+  "template": {
+    "item": "betterend:handle_attachment_smithing_template"
+  }
+}

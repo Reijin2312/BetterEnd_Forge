@@ -1,0 +1,65 @@
+{
+  "parent": "betterend:enter_end",
+  "criteria": {
+    "got_diamond_hammer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:diamond_hammer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_terminite_hammer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_hammer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_thallasium_hammer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_hammer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.hammer.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:diamond_hammer",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.hammer.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_diamond_hammer",
+      "got_thallasium_hammer",
+      "got_terminite_hammer"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

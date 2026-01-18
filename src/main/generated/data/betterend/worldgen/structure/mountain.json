@@ -1,0 +1,6 @@
+{
+  "type": "betterend:mountain",
+  "biomes": "#betterend:has_structure/mountain",
+  "spawn_overrides": {},
+  "step": "raw_generation"
+}

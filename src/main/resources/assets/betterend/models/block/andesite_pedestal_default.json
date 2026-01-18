@@ -1,0 +1,9 @@
+{
+  "parent": "betterend:block/pedestal_default",
+  "textures": {
+    "base": "minecraft:block/polished_andesite",
+    "bottom": "minecraft:block/polished_andesite",
+    "pillar": "betterend:block/andesite_pillar",
+    "top": "minecraft:block/polished_andesite"
+  }
+}

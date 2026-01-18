@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "betterend:silk_fiber"
+    }
+  },
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 6,
+    "item": "minecraft:string"
+  },
+  "show_notification": true
+}

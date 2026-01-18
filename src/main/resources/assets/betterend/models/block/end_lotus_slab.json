@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "betterend:block/end_lotus_planks",
+    "side": "betterend:block/end_lotus_planks",
+    "top": "betterend:block/end_lotus_planks"
+  }
+}

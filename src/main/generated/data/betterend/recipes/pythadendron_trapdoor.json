@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "trapdoor",
+  "key": {
+    "#": {
+      "item": "betterend:pythadendron_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "betterend:pythadendron_trapdoor"
+  },
+  "show_notification": true
+}

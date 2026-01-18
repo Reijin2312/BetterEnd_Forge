@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "group": "stairs",
+  "ingredient": {
+    "item": "betterend:end_stone_brick_weathered"
+  },
+  "result": "betterend:end_stone_brick_weathered_stairs"
+}

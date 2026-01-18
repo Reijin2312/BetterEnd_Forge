@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_helmets",
+  "key": {
+    "#": {
+      "item": "betterend:thallasium_forged_plate"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "result": {
+    "item": "betterend:thallasium_helmet"
+  },
+  "show_notification": true
+}

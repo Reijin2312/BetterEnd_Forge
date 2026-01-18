@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "stairs",
+  "key": {
+    "#": {
+      "item": "betterend:mossy_glowshroom_planks"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "betterend:mossy_glowshroom_stairs"
+  },
+  "show_notification": true
+}

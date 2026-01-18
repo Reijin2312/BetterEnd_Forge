@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cave_pumpkin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:cave_pumpkin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:cave_pumpkin_seeds"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cave_pumpkin",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:cave_pumpkin_seeds"
+    ]
+  },
+  "sends_telemetry_event": false
+}

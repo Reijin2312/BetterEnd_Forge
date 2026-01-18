@@ -1,0 +1,53 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_terminite_block_terminite_tile": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_block"
+            ]
+          },
+          {
+            "items": [
+              "betterend:terminite_tile"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_terminite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:terminite_anvil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_terminite_block_terminite_tile",
+      "has_terminite_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:terminite_anvil"
+    ]
+  },
+  "sends_telemetry_event": false
+}

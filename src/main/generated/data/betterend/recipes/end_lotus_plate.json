@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "pressure_plate",
+  "key": {
+    "#": {
+      "item": "betterend:end_lotus_planks"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "betterend:end_lotus_plate"
+  },
+  "show_notification": true
+}

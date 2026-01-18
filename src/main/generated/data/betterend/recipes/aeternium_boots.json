@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "betterend:aeternium_forged_plate"
+  },
+  "base": {
+    "item": "betterend:terminite_boots"
+  },
+  "result": {
+    "item": "betterend:aeternium_boots"
+  },
+  "template": {
+    "item": "betterend:plate_upgrade_smithing_template"
+  }
+}

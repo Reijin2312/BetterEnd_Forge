@@ -1,0 +1,38 @@
+{
+  "parent": "betterend:enter_end",
+  "criteria": {
+    "infusion_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:infusion_pedestal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.infusion.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:infusion_pedestal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.infusion.title"
+    }
+  },
+  "requirements": [
+    [
+      "infusion_pedestal"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

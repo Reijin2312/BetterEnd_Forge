@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block.betterend.thallasium_anvil": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_anvil"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:thallasium_anvil_updrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block.betterend.thallasium_anvil",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:thallasium_anvil_updrade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

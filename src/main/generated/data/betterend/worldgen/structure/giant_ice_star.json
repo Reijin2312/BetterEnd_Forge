@@ -1,0 +1,6 @@
+{
+  "type": "betterend:giant_ice_star",
+  "biomes": "#betterend:has_structure/giant_ice_star",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

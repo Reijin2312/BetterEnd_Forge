@@ -1,0 +1,91 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:empty_pool_element"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/street_decoration/lamp_02",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 4
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/street_decoration/lamp_05",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/street_decoration/lamp_06",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/street_decoration/obsidian_01",
+        "processors": "betterend:crying_10_percent",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/street_decoration/obsidian_02",
+        "processors": "betterend:crying_10_percent",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/street_decoration/obsidian_03",
+        "processors": "betterend:crying_10_percent",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/street_decoration/obsidian_04",
+        "processors": "betterend:crying_10_percent",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/street_decoration/obsidian_05",
+        "processors": "betterend:crying_10_percent",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:feature_pool_element",
+        "feature": "betterend:village_chorus",
+        "projection": "rigid"
+      },
+      "weight": 2
+    }
+  ],
+  "fallback": "betterend:village/terminators"
+}

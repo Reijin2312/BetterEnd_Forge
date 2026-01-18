@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chest",
+  "key": {
+    "#": {
+      "item": "betterend:end_lotus_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:end_lotus_chest"
+  },
+  "show_notification": true
+}

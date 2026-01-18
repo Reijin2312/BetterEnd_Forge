@@ -1,0 +1,6 @@
+{
+  "parent": "betterend:block/chandelier_floor",
+  "textures": {
+    "floor": "betterend:block/terminite_chandelier_floor"
+  }
+}

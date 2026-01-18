@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 13316108,
+    "separation": 2,
+    "spacing": 3
+  },
+  "structures": [
+    {
+      "structure": "betterend:painted_mountain",
+      "weight": 1
+    }
+  ]
+}

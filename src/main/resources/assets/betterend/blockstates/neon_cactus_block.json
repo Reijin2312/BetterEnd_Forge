@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"axis=x": {
+			"model": "betterend:block/neon_cactus_block",
+			"x": 90,
+			"y": 90
+		},
+		"axis=y": {
+			"model": "betterend:block/neon_cactus_block"
+		},
+		"axis=z": {
+			"model": "betterend:block/neon_cactus_block",
+			"x": 90
+		}
+	}
+}

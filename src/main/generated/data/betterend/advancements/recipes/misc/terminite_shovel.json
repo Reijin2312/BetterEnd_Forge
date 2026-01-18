@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_item.betterend.terminite_shovel_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_shovel_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:terminite_shovel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_item.betterend.terminite_shovel_head",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:terminite_shovel"
+    ]
+  },
+  "sends_telemetry_event": false
+}

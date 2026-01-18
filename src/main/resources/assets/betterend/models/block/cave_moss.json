@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/end_stone",
+    "side": "betterend:block/cave_moss_side",
+    "top": "betterend:block/cave_moss_top"
+  }
+}

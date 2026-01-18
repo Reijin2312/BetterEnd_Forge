@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bar_stool",
+  "key": {
+    "#": {
+      "item": "betterend:jellyshroom_slab"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "##",
+    "II",
+    "II"
+  ],
+  "result": {
+    "item": "betterend:jellyshroom_bar_stool"
+  },
+  "show_notification": true
+}

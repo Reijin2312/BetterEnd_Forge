@@ -1,0 +1,61 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_iron_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:iron_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stick": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:stick"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:copy_tool_assembly"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tool_assembly_smithing_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:tool_assembly_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_stick",
+      "has_tool_assembly_smithing_template",
+      "has_iron_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:copy_tool_assembly"
+    ]
+  },
+  "sends_telemetry_event": false
+}

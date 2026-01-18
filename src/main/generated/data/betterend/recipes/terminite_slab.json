@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_slabs",
+  "key": {
+    "#": [
+      {
+        "item": "betterend:terminite_block"
+      },
+      {
+        "item": "betterend:terminite_tile"
+      }
+    ]
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "betterend:terminite_slab"
+  },
+  "show_notification": true
+}

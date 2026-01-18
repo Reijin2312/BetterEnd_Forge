@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "betterend:terminite_ingot"
+  },
+  "base": {
+    "item": "betterend:thallasium_anvil"
+  },
+  "result": {
+    "item": "betterend:terminite_anvil"
+  },
+  "template": {
+    "item": "betterend:terminite_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "betterend:block/pedestal_default",
+  "textures": {
+    "base": "betterend:block/azure_jadestone_polished",
+    "bottom": "betterend:block/azure_jadestone_polished",
+    "pillar": "betterend:block/azure_jadestone_pillar_side",
+    "top": "betterend:block/azure_jadestone_polished"
+  }
+}

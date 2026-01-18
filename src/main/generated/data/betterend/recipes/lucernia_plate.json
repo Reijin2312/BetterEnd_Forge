@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "pressure_plate",
+  "key": {
+    "#": {
+      "item": "betterend:lucernia_planks"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "betterend:lucernia_plate"
+  },
+  "show_notification": true
+}

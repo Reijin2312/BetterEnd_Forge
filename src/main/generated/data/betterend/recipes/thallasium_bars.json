@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_bars",
+  "key": {
+    "#": {
+      "item": "betterend:thallasium_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 16,
+    "item": "betterend:thallasium_bars"
+  },
+  "show_notification": true
+}

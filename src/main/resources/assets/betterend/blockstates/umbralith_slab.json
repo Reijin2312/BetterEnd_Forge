@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/umbralith_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/umbralith"
+    },
+    "type=top": {
+      "model": "betterend:block/umbralith_slab_top"
+    }
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "betterend:end_lily_leaf"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ender_pearl"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:chorus_fruit"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "betterend:gelatine"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "betterend:crystal_shards"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biome": "betterend:sulphur_springs"
+              }
+            }
+          ],
+          "name": "betterend:hydralux_petal"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:glowing_grasslands"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:megalake"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:megalake_grove"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:neon_oasis"
+                  }
+                }
+              ]
+            }
+          ],
+          "name": "betterend:charnia_cyan"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:foggy_mushroomland"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:glowing_grasslands"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:megalake"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:megalake_grove"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:umbrella_jungle"
+                  }
+                }
+              ]
+            }
+          ],
+          "name": "betterend:charnia_light_blue"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:glowing_grasslands"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:neon_oasis"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:sulphur_springs"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:umbrella_jungle"
+                  }
+                }
+              ]
+            }
+          ],
+          "name": "betterend:charnia_green"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:amber_land"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:lantern_woods"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:neon_oasis"
+                  }
+                }
+              ]
+            }
+          ],
+          "name": "betterend:charnia_red"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:amber_land"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:lantern_woods"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:sulphur_springs"
+                  }
+                }
+              ]
+            }
+          ],
+          "name": "betterend:charnia_orange"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:chorus_forest"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "betterend:shadow_forest"
+                  }
+                }
+              ]
+            }
+          ],
+          "name": "betterend:charnia_purple"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 2.0,
+        "min": 1.0
+      }
+    }
+  ],
+  "random_sequence": "betterend:gameplay/fishing/junk"
+}

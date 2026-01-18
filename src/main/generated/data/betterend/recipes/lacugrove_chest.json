@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chest",
+  "key": {
+    "#": {
+      "item": "betterend:lacugrove_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:lacugrove_chest"
+  },
+  "show_notification": true
+}

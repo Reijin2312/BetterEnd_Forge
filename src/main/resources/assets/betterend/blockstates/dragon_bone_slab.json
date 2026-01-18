@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/dragon_bone_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/dragon_bone_block"
+    },
+    "type=top": {
+      "model": "betterend:block/dragon_bone_slab_top"
+    }
+  }
+}

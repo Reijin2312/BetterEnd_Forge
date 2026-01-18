@@ -1,0 +1,69 @@
+{
+  "parent": "betterend:enter_end",
+  "criteria": {
+    "armored": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:elytra_armored"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crystalite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:elytra_crystalite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "vanilla": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:elytra"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.all_elytras.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:elytra_crystalite",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.all_elytras.title"
+    }
+  },
+  "requirements": [
+    [
+      "vanilla"
+    ],
+    [
+      "crystalite"
+    ],
+    [
+      "armored"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

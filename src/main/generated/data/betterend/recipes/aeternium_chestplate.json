@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "betterend:aeternium_forged_plate"
+  },
+  "base": {
+    "item": "betterend:terminite_chestplate"
+  },
+  "result": {
+    "item": "betterend:aeternium_chestplate"
+  },
+  "template": {
+    "item": "betterend:plate_upgrade_smithing_template"
+  }
+}

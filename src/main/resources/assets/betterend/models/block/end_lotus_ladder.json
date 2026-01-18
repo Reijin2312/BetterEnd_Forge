@@ -1,0 +1,6 @@
+{
+  "parent": "bclib:block/ladder",
+  "textures": {
+    "texture": "betterend:block/end_lotus_ladder"
+  }
+}

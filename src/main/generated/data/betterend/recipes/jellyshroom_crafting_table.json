@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "table",
+  "key": {
+    "#": {
+      "item": "betterend:jellyshroom_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "item": "betterend:jellyshroom_crafting_table"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bookshelf",
+  "key": {
+    "#": {
+      "item": "betterend:jellyshroom_planks"
+    },
+    "P": {
+      "item": "minecraft:book"
+    }
+  },
+  "pattern": [
+    "###",
+    "PPP",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:jellyshroom_bookshelf"
+  },
+  "show_notification": true
+}

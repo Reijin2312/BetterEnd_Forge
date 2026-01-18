@@ -1,0 +1,102 @@
+{
+  "parent": "betterend:aeternium_tool_head",
+  "criteria": {
+    "got_aeternium_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:aeternium_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_aeternium_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:aeternium_hoe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_aeternium_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:aeternium_pickaxe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_aeternium_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:aeternium_shovel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_aeternium_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:aeternium_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.aeternium_tool.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:aeternium_pickaxe",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.aeternium_tool.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_aeternium_pickaxe"
+    ],
+    [
+      "got_aeternium_hoe"
+    ],
+    [
+      "got_aeternium_axe"
+    ],
+    [
+      "got_aeternium_shovel"
+    ],
+    [
+      "got_aeternium_sword"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": false
+}

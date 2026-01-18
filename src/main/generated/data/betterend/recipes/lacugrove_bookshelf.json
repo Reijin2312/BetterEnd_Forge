@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bookshelf",
+  "key": {
+    "#": {
+      "item": "betterend:lacugrove_planks"
+    },
+    "P": {
+      "item": "minecraft:book"
+    }
+  },
+  "pattern": [
+    "###",
+    "PPP",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:lacugrove_bookshelf"
+  },
+  "show_notification": true
+}

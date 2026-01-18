@@ -1,0 +1,41 @@
+# gradle
+
+.gradle/
+build/
+out/
+classes/
+
+# eclipse
+
+*.launch
+
+# idea
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# fabric
+
+run/
+run-client/
+run-server/
+output/
+*.getBlock("log")
+Convert.class
+ModelPart.class
+libs/
+/src/main/generated/.cache/
+/CHANGES.md
+/modrinth.json
+.gradle-local/
+.gradle-user-home/

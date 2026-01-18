@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pythadendron_fence": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:pythadendron_fence"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pythadendron_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:pythadendron_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:pythadendron_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_pythadendron_planks",
+      "has_pythadendron_fence",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:pythadendron_wall"
+    ]
+  },
+  "sends_telemetry_event": false
+}

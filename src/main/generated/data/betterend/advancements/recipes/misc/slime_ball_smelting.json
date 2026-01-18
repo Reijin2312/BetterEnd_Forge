@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block.betterend.jellyshroom_cap_purple": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:jellyshroom_cap_purple"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:slime_ball_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block.betterend.jellyshroom_cap_purple",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:slime_ball_smelting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

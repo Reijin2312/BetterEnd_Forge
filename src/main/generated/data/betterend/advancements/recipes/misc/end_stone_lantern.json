@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crystal_shards": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:crystal_shards"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_end_stone_brick_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:end_stone_brick_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:end_stone_lantern"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_end_stone_brick_slab",
+      "has_crystal_shards",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:end_stone_lantern"
+    ]
+  },
+  "sends_telemetry_event": false
+}

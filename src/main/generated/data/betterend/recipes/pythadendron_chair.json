@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chair",
+  "key": {
+    "#": {
+      "item": "betterend:pythadendron_slab"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "I ",
+    "##",
+    "II"
+  ],
+  "result": {
+    "item": "betterend:pythadendron_chair"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,6 @@
+{
+  "type": "betterend:megalake_small",
+  "biomes": "#betterend:has_structure/megalake_small",
+  "spawn_overrides": {},
+  "step": "lakes"
+}

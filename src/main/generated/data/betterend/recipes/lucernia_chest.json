@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chest",
+  "key": {
+    "#": {
+      "item": "betterend:lucernia_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:lucernia_chest"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chair",
+  "key": {
+    "#": {
+      "item": "betterend:lacugrove_slab"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "I ",
+    "##",
+    "II"
+  ],
+  "result": {
+    "item": "betterend:lacugrove_chair"
+  },
+  "show_notification": true
+}

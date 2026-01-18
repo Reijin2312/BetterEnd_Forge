@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bookshelf",
+  "key": {
+    "#": {
+      "item": "betterend:end_lotus_planks"
+    },
+    "P": {
+      "item": "minecraft:book"
+    }
+  },
+  "pattern": [
+    "###",
+    "PPP",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:end_lotus_bookshelf"
+  },
+  "show_notification": true
+}

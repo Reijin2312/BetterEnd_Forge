@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": [
+      {
+        "item": "betterend:blossom_berry"
+      },
+      {
+        "item": "betterend:shadow_berry_raw"
+      }
+    ],
+    "P": {
+      "item": "betterend:cave_pumpkin"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "pattern": [
+    "SBS",
+    "BPB",
+    "SBS"
+  ],
+  "result": {
+    "item": "betterend:cave_pumpkin_pie"
+  },
+  "show_notification": true
+}

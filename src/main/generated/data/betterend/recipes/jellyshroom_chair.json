@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chair",
+  "key": {
+    "#": {
+      "item": "betterend:jellyshroom_slab"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "I ",
+    "##",
+    "II"
+  ],
+  "result": {
+    "item": "betterend:jellyshroom_chair"
+  },
+  "show_notification": true
+}

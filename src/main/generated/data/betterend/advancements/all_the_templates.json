@@ -1,0 +1,146 @@
+{
+  "parent": "betterend:enter_end",
+  "criteria": {
+    "got_aeternium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:aeternium_upgrade_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_handle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:handle_attachment_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_leather": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:leather_handle_attachment_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_netherite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:netherite_upgrade_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:plate_upgrade_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_terminite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_upgrade_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_thallasium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_upgrade_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:tool_assembly_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.all_the_templates.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:tool_assembly_smithing_template"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.all_the_templates.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_handle"
+    ],
+    [
+      "got_tool"
+    ],
+    [
+      "got_leather"
+    ],
+    [
+      "got_plate"
+    ],
+    [
+      "got_terminite"
+    ],
+    [
+      "got_aeternium"
+    ],
+    [
+      "got_thallasium"
+    ],
+    [
+      "got_netherite"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": false
+}

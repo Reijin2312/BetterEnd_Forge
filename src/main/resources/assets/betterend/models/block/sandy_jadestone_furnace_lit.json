@@ -1,0 +1,9 @@
+{
+  "parent": "bclib:block/furnace_glow",
+  "textures": {
+    "front": "betterend:block/sandy_jadestone_furnace_front_on",
+    "glow": "betterend:block/sandy_jadestone_furnace_glow",
+    "side": "betterend:block/sandy_jadestone_furnace_side",
+    "top": "betterend:block/sandy_jadestone_furnace_top"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/center/light_pyramid_01",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "bclib:single_end_pool_element",
+        "location": "betterend:village/center/light_pyramid_02",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "betterend:village/terminators"
+}

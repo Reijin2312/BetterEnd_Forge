@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bookshelf",
+  "key": {
+    "#": {
+      "item": "betterend:pythadendron_planks"
+    },
+    "P": {
+      "item": "minecraft:book"
+    }
+  },
+  "pattern": [
+    "###",
+    "PPP",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:pythadendron_bookshelf"
+  },
+  "show_notification": true
+}

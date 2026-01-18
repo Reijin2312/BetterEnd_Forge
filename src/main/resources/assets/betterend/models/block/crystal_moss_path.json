@@ -1,0 +1,8 @@
+{
+  "parent": "bclib:block/path",
+  "textures": {
+    "bottom": "minecraft:block/end_stone",
+    "side": "betterend:block/crystal_moss_side",
+    "top": "betterend:block/crystal_moss_path_top"
+  }
+}

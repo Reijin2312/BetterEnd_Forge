@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "betterend:block/end_lotus_barrel_bottom",
+    "side": "betterend:block/end_lotus_barrel_side",
+    "top": "betterend:block/end_lotus_barrel_top"
+  }
+}

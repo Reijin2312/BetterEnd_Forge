@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block.betterend.end_stone_brick_cracked": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:end_stone_brick_cracked"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:stonecutter_end_stone_brick_cracked_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block.betterend.end_stone_brick_cracked",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:stonecutter_end_stone_brick_cracked_wall"
+    ]
+  },
+  "sends_telemetry_event": false
+}

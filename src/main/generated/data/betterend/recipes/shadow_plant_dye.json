@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "betterend:shadow_plant"
+    }
+  ],
+  "result": {
+    "item": "minecraft:black_dye"
+  }
+}

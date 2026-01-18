@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 13313930,
+    "separation": 12,
+    "spacing": 40
+  },
+  "structures": [
+    {
+      "structure": "betterend:eternal_portal",
+      "weight": 1
+    }
+  ]
+}

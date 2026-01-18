@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "betterend:purple_polypore"
+    }
+  ],
+  "result": {
+    "item": "minecraft:purple_dye"
+  }
+}

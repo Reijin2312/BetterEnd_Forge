@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "betterend:block/jellyshroom_crafting_table_bottom",
+    "east": "betterend:block/jellyshroom_crafting_table_side",
+    "north": "betterend:block/jellyshroom_crafting_table_front",
+    "particle": "betterend:block/jellyshroom_crafting_table_front",
+    "south": "betterend:block/jellyshroom_crafting_table_side",
+    "up": "betterend:block/jellyshroom_crafting_table_top",
+    "west": "betterend:block/jellyshroom_crafting_table_front"
+  }
+}

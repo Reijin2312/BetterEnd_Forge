@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "betterend:block/budding_smaragdant_crystal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "betterend:block/budding_smaragdant_crystal"
+    },
+    "axis=z": {
+      "model": "betterend:block/budding_smaragdant_crystal",
+      "x": 90
+    }
+  }
+}

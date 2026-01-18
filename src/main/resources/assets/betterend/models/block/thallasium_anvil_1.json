@@ -1,0 +1,10 @@
+{
+  "parent": "bclib:block/anvil",
+  "textures": {
+    "back": "betterend:block/thallasium_anvil_back",
+    "bottom": "betterend:block/thallasium_anvil_bottom",
+    "front": "betterend:block/thallasium_anvil_front",
+    "panel": "betterend:block/thallasium_anvil_panel",
+    "top": "betterend:block/thallasium_anvil_top_1"
+  }
+}

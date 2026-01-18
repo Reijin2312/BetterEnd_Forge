@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/end_stone",
+    "side": "betterend:block/chorus_nylium_side",
+    "top": "betterend:block/chorus_nylium_top"
+  }
+}

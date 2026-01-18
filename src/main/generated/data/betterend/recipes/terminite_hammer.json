@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:stick"
+  },
+  "base": {
+    "item": "betterend:terminite_block"
+  },
+  "result": {
+    "item": "betterend:terminite_hammer"
+  },
+  "template": {
+    "item": "betterend:handle_attachment_smithing_template"
+  }
+}

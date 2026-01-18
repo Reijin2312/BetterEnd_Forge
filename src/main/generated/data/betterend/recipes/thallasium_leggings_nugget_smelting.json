@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "betterend:thallasium_leggings"
+  },
+  "result": "betterend:thallasium_nugget"
+}

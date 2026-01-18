@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:stick"
+  },
+  "base": {
+    "item": "betterend:thallasium_shovel_head"
+  },
+  "result": {
+    "item": "betterend:thallasium_shovel"
+  },
+  "template": {
+    "item": "betterend:handle_attachment_smithing_template"
+  }
+}

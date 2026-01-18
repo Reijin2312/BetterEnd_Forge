@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_stone_lanterns",
+  "key": {
+    "#": {
+      "item": "betterend:crystal_shards"
+    },
+    "S": {
+      "item": "minecraft:diorite_slab"
+    }
+  },
+  "pattern": [
+    "S",
+    "#",
+    "S"
+  ],
+  "result": {
+    "item": "betterend:diorite_lantern"
+  },
+  "show_notification": true
+}

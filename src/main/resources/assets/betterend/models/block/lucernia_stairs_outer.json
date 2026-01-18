@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "betterend:block/lucernia_planks",
+    "side": "betterend:block/lucernia_planks",
+    "top": "betterend:block/lucernia_planks"
+  }
+}

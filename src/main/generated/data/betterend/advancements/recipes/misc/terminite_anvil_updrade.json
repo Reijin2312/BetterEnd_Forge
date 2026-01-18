@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block.betterend.terminite_anvil": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_anvil"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:terminite_anvil_updrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block.betterend.terminite_anvil",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:terminite_anvil_updrade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

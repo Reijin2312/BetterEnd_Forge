@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_chain",
+  "key": {
+    "#": {
+      "item": "betterend:thallasium_ingot"
+    },
+    "N": {
+      "item": "betterend:thallasium_nugget"
+    }
+  },
+  "pattern": [
+    "N",
+    "#",
+    "N"
+  ],
+  "result": {
+    "item": "betterend:thallasium_chain"
+  },
+  "show_notification": true
+}

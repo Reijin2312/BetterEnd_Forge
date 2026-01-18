@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/end_stone_brick_weathered_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/end_stone_brick_weathered"
+    },
+    "type=top": {
+      "model": "betterend:block/end_stone_brick_weathered_slab_top"
+    }
+  }
+}

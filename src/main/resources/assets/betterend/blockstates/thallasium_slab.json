@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/thallasium_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/thallasium_tile"
+    },
+    "type=top": {
+      "model": "betterend:block/thallasium_slab_top"
+    }
+  }
+}

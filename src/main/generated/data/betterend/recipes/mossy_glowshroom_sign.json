@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "sign",
+  "key": {
+    "#": {
+      "item": "betterend:mossy_glowshroom_planks"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    " I "
+  ],
+  "result": {
+    "count": 3,
+    "item": "betterend:mossy_glowshroom_sign"
+  },
+  "show_notification": true
+}

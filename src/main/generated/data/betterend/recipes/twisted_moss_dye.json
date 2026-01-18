@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "betterend:twisted_moss"
+    }
+  ],
+  "result": {
+    "item": "minecraft:pink_dye"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "item": "betterend:crystalline_sulphur"
+    },
+    [
+      {
+        "item": "minecraft:coal"
+      },
+      {
+        "item": "minecraft:charcoal"
+      }
+    ]
+  ],
+  "result": {
+    "item": "minecraft:gunpowder"
+  }
+}

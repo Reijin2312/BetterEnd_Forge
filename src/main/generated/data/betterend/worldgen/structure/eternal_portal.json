@@ -1,0 +1,6 @@
+{
+  "type": "betterend:eternal_portal",
+  "biomes": "#betterend:has_structure/eternal_portal",
+  "spawn_overrides": {},
+  "step": "raw_generation"
+}

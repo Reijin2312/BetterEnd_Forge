@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_iron_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:iron_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_lumecorn_rod": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:lumecorn_rod"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:iron_chandelier"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lumecorn_rod",
+      "has_iron_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:iron_chandelier"
+    ]
+  },
+  "sends_telemetry_event": false
+}

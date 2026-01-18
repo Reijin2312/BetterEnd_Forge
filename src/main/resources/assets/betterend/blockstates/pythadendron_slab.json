@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/pythadendron_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/pythadendron_planks"
+    },
+    "type=top": {
+      "model": "betterend:block/pythadendron_slab_top"
+    }
+  }
+}

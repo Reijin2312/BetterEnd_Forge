@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "is_floor=false": {
+      "model": "betterend:block/azure_jadestone_lantern"
+    },
+    "is_floor=true": {
+      "model": "betterend:block/azure_jadestone_lantern_floor"
+    }
+  }
+}

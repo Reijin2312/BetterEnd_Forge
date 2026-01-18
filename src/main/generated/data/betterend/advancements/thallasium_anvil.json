@@ -1,0 +1,38 @@
+{
+  "parent": "betterend:hammer",
+  "criteria": {
+    "got_thallasium_anvil": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_anvil"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.thallasium_anvil.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:thallasium_anvil"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.thallasium_anvil.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_thallasium_anvil"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

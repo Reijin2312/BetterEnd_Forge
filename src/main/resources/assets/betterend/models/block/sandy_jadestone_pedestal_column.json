@@ -1,0 +1,8 @@
+{
+  "parent": "betterend:block/pedestal_column",
+  "textures": {
+    "base": "betterend:block/sandy_jadestone_polished",
+    "bottom": "betterend:block/sandy_jadestone_polished",
+    "pillar": "betterend:block/sandy_jadestone_pillar_side"
+  }
+}

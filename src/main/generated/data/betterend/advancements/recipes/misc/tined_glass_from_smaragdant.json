@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:glass"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_smaragdant_crystal_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:smaragdant_crystal_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:tined_glass_from_smaragdant"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_smaragdant_crystal_shard",
+      "has_glass",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:tined_glass_from_smaragdant"
+    ]
+  },
+  "sends_telemetry_event": false
+}

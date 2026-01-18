@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "trapdoor",
+  "key": {
+    "#": {
+      "item": "betterend:lacugrove_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "betterend:lacugrove_trapdoor"
+  },
+  "show_notification": true
+}

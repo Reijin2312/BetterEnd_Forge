@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_anvil",
+  "key": {
+    "#": [
+      {
+        "item": "betterend:thallasium_block"
+      },
+      {
+        "item": "betterend:thallasium_tile"
+      }
+    ],
+    "I": {
+      "item": "betterend:thallasium_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "item": "betterend:thallasium_anvil"
+  },
+  "show_notification": true
+}

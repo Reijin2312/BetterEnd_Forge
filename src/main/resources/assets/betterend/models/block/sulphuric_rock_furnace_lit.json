@@ -1,0 +1,9 @@
+{
+  "parent": "bclib:block/furnace_glow",
+  "textures": {
+    "front": "betterend:block/sulphuric_rock_furnace_front_on",
+    "glow": "betterend:block/sulphuric_rock_furnace_glow",
+    "side": "betterend:block/sulphuric_rock_furnace_side",
+    "top": "betterend:block/sulphuric_rock_furnace_top"
+  }
+}

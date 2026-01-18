@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "betterend:blue_vine_seed"
+    }
+  ],
+  "result": {
+    "item": "minecraft:blue_dye"
+  }
+}

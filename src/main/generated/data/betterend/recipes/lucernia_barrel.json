@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "barrel",
+  "key": {
+    "#": {
+      "item": "betterend:lucernia_planks"
+    },
+    "S": {
+      "item": "betterend:lucernia_slab"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "# #",
+    "#S#"
+  ],
+  "result": {
+    "item": "betterend:lucernia_barrel"
+  },
+  "show_notification": true
+}

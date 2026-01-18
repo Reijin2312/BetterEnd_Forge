@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_anvil",
+  "key": {
+    "#": [
+      {
+        "item": "betterend:terminite_block"
+      },
+      {
+        "item": "betterend:terminite_tile"
+      }
+    ],
+    "I": {
+      "item": "betterend:terminite_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "item": "betterend:terminite_anvil"
+  },
+  "show_notification": true
+}

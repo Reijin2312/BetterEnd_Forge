@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_item.betterend.diamond_hammer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:diamond_hammer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:netherite_hammer"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_item.betterend.diamond_hammer",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:netherite_hammer"
+    ]
+  },
+  "sends_telemetry_event": false
+}

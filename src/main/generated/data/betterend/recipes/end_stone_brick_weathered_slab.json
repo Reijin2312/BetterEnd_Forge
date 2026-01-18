@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "slab",
+  "key": {
+    "#": {
+      "item": "betterend:end_stone_brick_weathered"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "betterend:end_stone_brick_weathered_slab"
+  },
+  "show_notification": true
+}

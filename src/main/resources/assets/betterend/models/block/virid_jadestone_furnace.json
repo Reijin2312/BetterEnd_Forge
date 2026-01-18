@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "betterend:block/virid_jadestone_furnace_top",
+    "front": "betterend:block/virid_jadestone_furnace_front",
+    "side": "betterend:block/virid_jadestone_furnace_side",
+    "top": "betterend:block/virid_jadestone_furnace_top"
+  }
+}

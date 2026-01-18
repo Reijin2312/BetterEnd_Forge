@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "OO",
+    "OO"
+  ],
+  "result": {
+    "item": "betterend:ender_block"
+  },
+  "show_notification": true
+}

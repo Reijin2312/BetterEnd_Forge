@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "pressure_plate",
+  "key": {
+    "#": {
+      "item": "betterend:mossy_glowshroom_planks"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "betterend:mossy_glowshroom_plate"
+  },
+  "show_notification": true
+}

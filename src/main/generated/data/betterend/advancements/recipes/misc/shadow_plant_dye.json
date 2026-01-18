@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_shadow_plant": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:shadow_plant"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:shadow_plant_dye"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_shadow_plant",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:shadow_plant_dye"
+    ]
+  },
+  "sends_telemetry_event": false
+}

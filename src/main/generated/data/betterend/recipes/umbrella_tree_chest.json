@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chest",
+  "key": {
+    "#": {
+      "item": "betterend:umbrella_tree_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:umbrella_tree_chest"
+  },
+  "show_notification": true
+}

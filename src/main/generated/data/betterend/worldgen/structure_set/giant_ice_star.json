@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 13324112,
+    "separation": 8,
+    "spacing": 16
+  },
+  "structures": [
+    {
+      "structure": "betterend:giant_ice_star",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_item.betterend.thallasium_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:thallasium_helmet_nugget_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_item.betterend.thallasium_helmet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:thallasium_helmet_nugget_blasting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

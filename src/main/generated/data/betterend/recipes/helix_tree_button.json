@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "betterend:helix_tree_planks"
+    }
+  ],
+  "result": {
+    "item": "betterend:helix_tree_button"
+  }
+}

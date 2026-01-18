@@ -1,0 +1,490 @@
+buildscript {
+    def enablePublishing = project.hasProperty("publishMods") || System.getenv("PUBLISH_MODS") == "true"
+    if (enablePublishing) {
+        repositories {
+            maven { url "https://plugins.gradle.org/m2/" }
+        }
+        dependencies {
+            classpath "com.modrinth.minotaur:Minotaur:2.+"
+            classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
+        }
+    }
+    project.ext.enablePublishing = enablePublishing
+}
+
+plugins {
+    id 'java-library'
+    id 'idea'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version "${forgegradle_version}"
+    id 'org.spongepowered.mixin' version "0.7.+"
+    id 'maven-publish'
+}
+
+def enablePublishing = project.ext.enablePublishing
+
+if (enablePublishing) {
+    apply plugin: "com.modrinth.minotaur"
+    apply plugin: "com.matthewprenger.cursegradle"
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+archivesBaseName = project.archives_base_name
+version = project.mod_version
+group = project.maven_group
+
+def local_bclib = findProject(':BCLib') != null
+def local_wunderlib = findProject(':WunderLib') != null
+
+repositories {
+    maven { url "https://maven.minecraftforge.net" }
+    maven { url "https://maven.dblsaiko.net/" }
+    maven { url "https://maven.shedaniel.me/" }
+    maven { url 'https://maven.blamejared.com' }
+    maven { url 'https://jitpack.io' }
+    maven { url "https://maven.bai.lol" }
+    maven { url 'https://maven.terraformersmc.com/releases' }
+    maven { url 'https://maven.terraformersmc.com' }
+    maven { url 'https://maven.ambertation.de/releases' }
+    maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
+    flatDir { dirs 'libs' }
+}
+
+minecraft {
+    mappings channel: "official", version: project.minecraft_version
+    accessTransformer = file("src/main/resources/META-INF/accesstransformer.cfg")
+    runs {
+        client {
+            workingDirectory project.file("run")
+            property "forge.logging.markers", "REGISTRIES"
+            property "forge.logging.console.level", "debug"
+        }
+        server {
+            workingDirectory project.file("run")
+            property "forge.logging.markers", "REGISTRIES"
+            property "forge.logging.console.level", "debug"
+        }
+        data {
+            workingDirectory project.file("run")
+            args "--mod", project.mod_id,
+                    "--all",
+                    "--output", file("src/main/generated").toString(),
+                    "--existing", file("src/main/resources").toString()
+        }
+    }
+}
+
+mixin {
+    add sourceSets.main, "${project.mod_id}.refmap.json"
+}
+
+sourceSets {
+    main {
+        java {
+            exclude "org/betterx/betterend/integration/rei/**"
+            exclude "org/betterx/betterend/integration/trinkets/**"
+        }
+        resources {
+            srcDirs += [
+                    'src/main/generated'
+            ]
+        }
+    }
+}
+
+def datagenTaskDeps = [tasks.matching { it.name == "runData" }]
+if (local_bclib) {
+    datagenTaskDeps << project(":BCLib").tasks.matching { it.name == "runData" }
+}
+if (local_wunderlib) {
+    datagenTaskDeps << project(":WunderLib").tasks.matching { it.name == "runData" }
+}
+
+tasks.register("generateBetterXResources") {
+    group = "forge"
+    description = "Runs datagen for BetterEnd and local BetterX libraries."
+    dependsOn(datagenTaskDeps)
+}
+
+def generatedResourcesDir = file("src/main/generated")
+tasks.register("syncGeneratedResources", Copy) {
+    group = "forge"
+    description = "Syncs generated datagen resources into build outputs for dev runs."
+    from(generatedResourcesDir)
+    into(layout.buildDirectory.dir("resources/main"))
+    mustRunAfter(tasks.named("processResources"))
+}
+
+def connectorCompatSourceDir = file("src/main/generated/data/${project.mod_id}/worlds_together/worldgen/betterx")
+def connectorCompatTargetDir = file("src/main/generated/data/${project.mod_id}/worldgen/betterx")
+tasks.register("syncConnectorWorldgenCompat", Copy) {
+    group = "forge"
+    description = "Copies BetterX worldgen data to connector-compatible paths."
+    from(connectorCompatSourceDir)
+    into(connectorCompatTargetDir)
+    includeEmptyDirs = false
+    onlyIf { connectorCompatSourceDir.exists() }
+}
+
+tasks.named("syncGeneratedResources") {
+    mustRunAfter(tasks.named("syncConnectorWorldgenCompat"))
+}
+
+tasks.matching { it.name == "runData" }.configureEach {
+    finalizedBy(tasks.named("syncConnectorWorldgenCompat"))
+    finalizedBy(tasks.named("syncGeneratedResources"))
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+
+    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
+
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${project.patchouli_version}")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${project.patchouli_version}")
+
+    compileOnly "dev.emi:emi-forge:${emi_version}:api"
+    runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
+
+    println "Using local BCLib: ${local_bclib}"
+    if (local_bclib) {
+        implementation project(path: ":BCLib", configuration: 'dev')
+    } else {
+        implementation "org.betterx.bclib:bclib:${project.bclib_version}"
+    }
+
+    println "Using local WunderLib: ${local_wunderlib}"
+    if (local_wunderlib) {
+        implementation project(path: ":WunderLib", configuration: 'dev')
+    } else {
+        implementation "de.ambertation.wunderlib:wunderlib:${project.wunderlib_version}"
+        distLibs "de.ambertation.wunderlib:wunderlib:${project.wunderlib_version}"
+    }
+}
+
+processResources {
+    println "Version: ${project.mod_version}"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    inputs.property "version", project.mod_version
+    inputs.property "mod_id", project.mod_id
+    inputs.property "mod_name", project.mod_name
+    inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "forge_version", project.forge_version
+    inputs.property "bclib_version", project.bclib_version
+    inputs.property "patchouli_version", project.patchouli_version
+
+    filesMatching("META-INF/mods.toml") {
+        expand(
+                "mod_id": project.mod_id,
+                "mod_name": project.mod_name,
+                "version": project.mod_version,
+                "minecraft_version": project.minecraft_version,
+                "forge_version": project.forge_version,
+                "bclib_version": project.bclib_version,
+                "patchouli_version": project.patchouli_version
+        )
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    it.options.release = 17
+}
+
+javadoc {
+    options.tags = ["reason"]
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier = "sources"
+    from sourceSets.main.allSource
+}
+
+java {
+    withSourcesJar()
+}
+
+jar {
+    dependsOn(tasks.named("generateBetterXResources"))
+    dependsOn(tasks.named("syncGeneratedResources"))
+    manifest {
+        attributes(
+                "MixinConfigs": String.join(",",
+                        "betterend.mixins.common.json",
+                        "betterend.mixins.client.json"
+                )
+        )
+    }
+    from(generatedResourcesDir)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from "LICENSE"
+    from "LICENSE.ASSETS"
+}
+
+configurations {
+    dev {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    distLibs
+}
+
+artifacts {
+    dev jar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact(jar)
+            artifact(sourcesJar)
+        }
+    }
+}
+
+//from https://lowcarbrob.medium.com/android-pro-tip-generating-your-apps-changelog-from-git-inside-build-gradle-19a07533eec4
+String generateChangelog() {
+    println "Assembeling Changelog ..."
+    def lastTag = "git describe --tags --abbrev=0".execute().text.trim()
+    def gitLogCmd = "git log $lastTag..HEAD --oneline --no-merges --pretty=format:\"%s\"".execute().text.trim()
+
+    def features = ""
+    def fixes = ""
+    def changes = ""
+    gitLogCmd.eachLine { gitLine ->
+        def line = gitLine.substring(1, gitLine.length() - 1)
+        if (line.trim().startsWith("[")) {
+            def sline = line.split("]", 2)
+            if (sline.length == 2) {
+                def type = sline[0].trim().toLowerCase().substring(1)
+                def comment = sline[1].trim()
+
+                //filter issue links
+                if (comment.contains("(")) {
+                    def cline = comment.split("\\(", 2)
+                    if (cline.length == 2 && cline[1].contains("#")) {
+                        comment = cline[0].trim()
+                    }
+                }
+
+                if (type == "fix" || type == "fixes" || type == "fixed") {
+                    fixes += "- $comment \n"
+                } else if (type == "feature" || type == "features") {
+                    features += "- $comment \n"
+                } else if (type == "change" || type == "changes" || type == "changed") {
+                    changes += "- $comment \n"
+                } else {
+                    println "Unknown Type: $type ($line)"
+                }
+            }
+        }
+
+    }
+    def changelog = ""
+    if (!features.isEmpty()) {
+        changelog += "#### Features\n"
+        changelog += features.trim()
+        changelog += "\n\n"
+    }
+    if (!changes.isEmpty()) {
+        changelog += "#### Changes\n"
+        changelog += changes.trim()
+        changelog += "\n\n"
+    }
+    if (!fixes.isEmpty()) {
+        changelog += "#### Fixes\n"
+        changelog += fixes.trim()
+        changelog += "\n\n"
+    }
+
+    println "Changelog since $lastTag:\n$changelog"
+    return changelog
+}
+
+task changelog() {
+    doLast {
+        new File(projectDir, "CHANGES.md").text = generateChangelog()
+    }
+}
+
+if (enablePublishing) {
+    modrinth {
+        def changes = new File(projectDir, "CHANGES.md")
+        if (changes.exists()) {
+            changes = changes.getText('UTF-8')
+        } else {
+            changes = ""
+        }
+        def modrinth_token = new File(projectDir, "../MODRINTH_TOKEN")
+        if (modrinth_token.exists()) {
+            modrinth_token = modrinth_token.text
+        } else {
+            modrinth_token = ""
+        }
+        def slurper = new groovy.json.JsonSlurper()
+        token = modrinth_token
+        projectId = project.modrinth_id
+        versionNumber = project.mod_version
+        versionType = project.release_channel
+        uploadFile = jar
+        gameVersions = slurper.parseText(project.modrinth_versions)
+        loaders = ["forge"]
+        changelog = changes
+        dependencies {
+            required.project "bclib"
+            optional.project "emi"
+            optional.project "patchouli"
+        }
+        debugMode = false
+    }
+
+    curseforge {
+        def slurper = new groovy.json.JsonSlurper()
+        apiKey = new File(projectDir, "../CURSEFORGE_TOKEN")
+        if (apiKey.exists()) {
+            apiKey = apiKey.text
+        } else {
+            apiKey = ""
+        }
+
+        def changes = new File(projectDir, "CHANGES.md")
+        if (changes.exists()) {
+            changes = changes.getText('UTF-8')
+        } else {
+            changes = ""
+        }
+
+        project {
+            id = '413596'
+            changelogType = 'markdown'
+            changelog = changes
+            releaseType = project.release_channel
+            def versions = slurper.parseText(project.modrinth_versions);
+            def latestVersion = ''
+            for (v in versions) {
+                addGameVersion v
+                latestVersion = "[$v]"
+            }
+            addGameVersion 'Forge'
+            addGameVersion 'Java 17'
+            relations {
+                requiredDependency 'bclib'
+                optionalDependency 'emi'
+                optionalDependency 'patchouli'
+            }
+            mainArtifact(jar) {
+                displayName = "$project.modrinth_id-$project.version $latestVersion"
+            }
+            afterEvaluate {
+                mainArtifact(jar.outputs)
+            }
+        }
+
+        options {
+            debug = false
+            forgeGradleIntegration = false
+        }
+    }
+}
+
+task nextVersion() {
+    doLast {
+        def inputFile = new File('modrinth.json')
+        def gameVersions = java.net.URLEncoder.encode(project.modrinth_versions, "UTF-8")
+        new URL("https://api.modrinth.com/v2/project/${project.modrinth_id}/version?&game_versions=${gameVersions}").withInputStream { i -> inputFile.withOutputStream { it << i } }
+
+        def json = new groovy.json.JsonSlurper().parseText(inputFile.text)
+        def version = json[0].version_number
+
+        //increment patch version
+        def indexedVersionList = version.split(/\./).toList().withIndex()
+        indexedVersionList = indexedVersionList.collect { num, idx -> num.toInteger() }
+        indexedVersionList[2] = indexedVersionList[2].value + 1
+        def updatedVersion = indexedVersionList.join(".")
+
+        println "\n\n"
+        println "------------- CURRENT VERSION -------------"
+        println "Last Published Version: " + version
+        println "         Game Versions: " + json[0].game_versions
+        println "                Status: " + json[0].status
+        println "              Featured: " + json[0].featured
+        println "            Downloaded: " + json[0].downloads
+        println "\n"
+        println "-------------- NEXT VERSION ---------------"
+        println "Next Version: " + updatedVersion
+        println "\n\n"
+
+        def propertiesFile = new File("gradle.properties")
+        def newContents = propertiesFile.text.replaceFirst("mod_version=\\d+.\\d+.\\d+", "mod_version=${updatedVersion}")
+        propertiesFile.text = newContents
+    }
+}
+
+def distDir = new File(rootProject.projectDir.parentFile, "betterx-dist 1.20.1")
+def modrinthModsDir = new File("C:/Users/Redmi/AppData/Roaming/ModrinthApp/profiles/1.20.1 (1)/mods")
+def betterEndReobfJar = layout.buildDirectory.file("reobfJar/output.jar")
+def bclibReobfJar = project(":BCLib").layout.buildDirectory.file("reobfJar/output.jar")
+def wunderlibReobfJar = project(":WunderLib").layout.buildDirectory.file("reobfJar/output.jar")
+tasks.register("copyDistJars", Copy) {
+    dependsOn(tasks.named("reobfJar"))
+    from(betterEndReobfJar) {
+        rename { tasks.named("jar").get().archiveFileName.get() }
+    }
+    if (local_bclib) {
+        dependsOn(project(":BCLib").tasks.named("reobfJar"))
+        from(bclibReobfJar) {
+            rename { project(":BCLib").tasks.named("jar").get().archiveFileName.get() }
+        }
+    } else {
+        dependsOn(configurations.distLibs)
+        from(configurations.distLibs)
+    }
+    if (local_wunderlib) {
+        dependsOn(project(":WunderLib").tasks.named("reobfJar"))
+        from(wunderlibReobfJar) {
+            rename { project(":WunderLib").tasks.named("jar").get().archiveFileName.get() }
+        }
+    } else {
+        dependsOn(configurations.distLibs)
+    }
+    into(distDir)
+}
+
+tasks.register("copyModrinthJars", Copy) {
+    dependsOn(tasks.named("reobfJar"))
+    from(betterEndReobfJar) {
+        rename { tasks.named("jar").get().archiveFileName.get() }
+    }
+    if (local_bclib) {
+        dependsOn(project(":BCLib").tasks.named("reobfJar"))
+        from(bclibReobfJar) {
+            rename { project(":BCLib").tasks.named("jar").get().archiveFileName.get() }
+        }
+    } else {
+        dependsOn(configurations.distLibs)
+        from(configurations.distLibs)
+    }
+    if (local_wunderlib) {
+        dependsOn(project(":WunderLib").tasks.named("reobfJar"))
+        from(wunderlibReobfJar) {
+            rename { project(":WunderLib").tasks.named("jar").get().archiveFileName.get() }
+        }
+    } else {
+        dependsOn(configurations.distLibs)
+    }
+    into(modrinthModsDir)
+}
+
+tasks.named("build") {
+    dependsOn(tasks.named("generateBetterXResources"))
+    finalizedBy("copyDistJars", "copyModrinthJars")
+}

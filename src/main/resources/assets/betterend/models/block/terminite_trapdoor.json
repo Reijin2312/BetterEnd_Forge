@@ -1,0 +1,7 @@
+{
+  "parent": "bclib:block/sided_trapdoor",
+  "textures": {
+    "side": "betterend:block/terminite_door_side",
+    "texture": "betterend:block/terminite_trapdoor"
+  }
+}

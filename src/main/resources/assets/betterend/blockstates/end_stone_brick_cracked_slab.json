@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/end_stone_brick_cracked_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/end_stone_brick_cracked"
+    },
+    "type=top": {
+      "model": "betterend:block/end_stone_brick_cracked_slab_top"
+    }
+  }
+}

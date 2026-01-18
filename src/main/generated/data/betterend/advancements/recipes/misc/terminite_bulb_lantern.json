@@ -1,0 +1,61 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glowing_bulb": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:glowing_bulb"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_terminite_chain": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_chain"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_terminite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:terminite_bulb_lantern"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_glowing_bulb",
+      "has_terminite_chain",
+      "has_terminite_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:terminite_bulb_lantern"
+    ]
+  },
+  "sends_telemetry_event": false
+}

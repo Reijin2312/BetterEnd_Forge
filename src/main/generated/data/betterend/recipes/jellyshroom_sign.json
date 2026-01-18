@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "sign",
+  "key": {
+    "#": {
+      "item": "betterend:jellyshroom_planks"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    " I "
+  ],
+  "result": {
+    "count": 3,
+    "item": "betterend:jellyshroom_sign"
+  },
+  "show_notification": true
+}

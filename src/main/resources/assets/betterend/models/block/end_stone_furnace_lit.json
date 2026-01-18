@@ -1,0 +1,9 @@
+{
+  "parent": "bclib:block/furnace_glow",
+  "textures": {
+    "front": "betterend:block/end_stone_furnace_front_on",
+    "glow": "betterend:block/end_stone_furnace_glow",
+    "side": "betterend:block/end_stone_furnace_side",
+    "top": "betterend:block/end_stone_furnace_top"
+  }
+}

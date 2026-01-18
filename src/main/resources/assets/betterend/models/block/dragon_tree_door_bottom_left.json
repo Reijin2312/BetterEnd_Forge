@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "betterend:block/dragon_tree_door_bottom",
+    "top": "betterend:block/dragon_tree_door_top"
+  }
+}

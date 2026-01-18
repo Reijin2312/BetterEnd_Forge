@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block.betterend.endstone_dust": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:endstone_dust"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:end_glass_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block.betterend.endstone_dust",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:end_glass_smelting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

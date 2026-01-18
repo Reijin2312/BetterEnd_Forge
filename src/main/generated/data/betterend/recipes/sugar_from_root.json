@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "betterend:amber_root_raw"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "item": "minecraft:sugar"
+  },
+  "show_notification": true
+}

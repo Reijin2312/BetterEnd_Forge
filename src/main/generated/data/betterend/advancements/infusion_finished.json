@@ -1,0 +1,30 @@
+{
+  "parent": "betterend:infusion",
+  "criteria": {
+    "finished": {
+      "conditions": {},
+      "trigger": "betterend:infusion_finished"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.infusion_finished.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:ender_eye"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.infusion_finished.title"
+    }
+  },
+  "requirements": [
+    [
+      "finished"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

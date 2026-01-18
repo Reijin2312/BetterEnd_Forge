@@ -1,0 +1,95 @@
+{
+  "parent": "betterend:thallasium_anvil",
+  "criteria": {
+    "got_thallasium_axe_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_axe_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_thallasium_hoe_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_hoe_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_thallasium_pickaxe_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_pickaxe_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_thallasium_shovel_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_shovel_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_thallasium_sword_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_sword_blade"
+            ]
+          },
+          {
+            "items": [
+              "betterend:thallasium_sword_handle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.thallasium_tool_head.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:thallasium_pickaxe_head"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.thallasium_tool_head.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_thallasium_pickaxe_head",
+      "got_thallasium_hoe_head",
+      "got_thallasium_axe_head",
+      "got_thallasium_shovel_head",
+      "got_thallasium_sword_head"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

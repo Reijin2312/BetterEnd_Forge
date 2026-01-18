@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "betterend:block/lacugrove_planks",
+    "side": "betterend:block/lacugrove_planks",
+    "top": "betterend:block/lacugrove_planks"
+  }
+}

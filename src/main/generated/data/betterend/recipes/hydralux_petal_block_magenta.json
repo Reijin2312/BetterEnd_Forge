@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "betterend:hydralux_petal_block"
+    },
+    "D": {
+      "item": "minecraft:magenta_dye"
+    }
+  },
+  "pattern": [
+    "###",
+    "#D#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "betterend:hydralux_petal_block_magenta"
+  },
+  "show_notification": true
+}

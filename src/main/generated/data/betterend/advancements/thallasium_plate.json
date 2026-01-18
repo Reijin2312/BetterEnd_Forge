@@ -1,0 +1,38 @@
+{
+  "parent": "betterend:thallasium_anvil",
+  "criteria": {
+    "got_thallasium_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:thallasium_forged_plate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.thallasium_plate.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:thallasium_forged_plate"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.thallasium_plate.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_thallasium_plate"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

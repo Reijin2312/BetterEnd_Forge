@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wall",
+  "key": {
+    "*": {
+      "item": "betterend:lacugrove_planks"
+    },
+    "|": {
+      "item": "betterend:lacugrove_fence"
+    }
+  },
+  "pattern": [
+    "* *",
+    "|||"
+  ],
+  "result": {
+    "count": 6,
+    "item": "betterend:lacugrove_wall"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "composter",
+  "key": {
+    "#": {
+      "item": "betterend:tenanea_slab"
+    }
+  },
+  "pattern": [
+    "# #",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:tenanea_composter"
+  },
+  "show_notification": true
+}

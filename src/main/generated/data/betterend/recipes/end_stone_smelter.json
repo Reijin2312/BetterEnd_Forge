@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:end_stone_bricks"
+    },
+    "T": {
+      "item": "betterend:thallasium_ingot"
+    },
+    "V": {
+      "tag": "c:furnaces"
+    }
+  },
+  "pattern": [
+    "T#T",
+    "V V",
+    "T#T"
+  ],
+  "result": {
+    "item": "betterend:end_stone_smelter"
+  },
+  "show_notification": true
+}

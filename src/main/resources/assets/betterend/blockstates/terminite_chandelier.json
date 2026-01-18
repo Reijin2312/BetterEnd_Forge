@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "betterend:block/terminite_chandelier_ceil"
+    },
+    "facing=east": {
+      "model": "betterend:block/terminite_chandelier_wall",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "betterend:block/terminite_chandelier_wall",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "betterend:block/terminite_chandelier_wall"
+    },
+    "facing=up": {
+      "model": "betterend:block/terminite_chandelier_floor"
+    },
+    "facing=west": {
+      "model": "betterend:block/terminite_chandelier_wall",
+      "y": 90
+    }
+  }
+}

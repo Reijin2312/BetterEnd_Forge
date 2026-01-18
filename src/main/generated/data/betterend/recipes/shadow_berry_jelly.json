@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "end_berries",
+  "ingredients": [
+    {
+      "item": "betterend:shadow_berry_cooked"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "c:water_bottles"
+    },
+    {
+      "item": "betterend:gelatine"
+    }
+  ],
+  "result": {
+    "item": "betterend:shadow_berry_jelly"
+  }
+}

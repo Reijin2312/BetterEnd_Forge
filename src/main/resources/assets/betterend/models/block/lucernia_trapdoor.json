@@ -1,0 +1,7 @@
+{
+  "parent": "bclib:block/sided_trapdoor",
+  "textures": {
+    "side": "betterend:block/lucernia_door_side",
+    "texture": "betterend:block/lucernia_trapdoor"
+  }
+}

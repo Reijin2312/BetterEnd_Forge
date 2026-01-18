@@ -1,0 +1,22 @@
+{
+    "variants": {
+      "facing=east,top=false": {
+        "model": "betterend:block/umbrella_tree_chair",
+        "y": 90
+      },
+      "facing=west,top=false": {
+        "model": "betterend:block/umbrella_tree_chair",
+        "y": 270
+      },
+      "facing=south,top=false": {
+        "model": "betterend:block/umbrella_tree_chair",
+        "y": 180
+      },
+      "facing=north,top=false": {
+        "model": "betterend:block/umbrella_tree_chair"
+      },
+      "top=true": {
+        "model": "betterend:block/umbrella_tree_chair_top"
+      }
+    }
+  }

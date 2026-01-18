@@ -1,0 +1,10 @@
+{
+  "parent": "bclib:block/anvil",
+  "textures": {
+    "back": "betterend:block/terminite_anvil_back",
+    "bottom": "betterend:block/terminite_anvil_bottom",
+    "front": "betterend:block/terminite_anvil_front",
+    "panel": "betterend:block/terminite_anvil_panel",
+    "top": "betterend:block/terminite_anvil_top_1"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_pots",
+  "key": {
+    "#": {
+      "item": "minecraft:end_stone_bricks"
+    }
+  },
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "result": {
+    "count": 3,
+    "item": "betterend:endstone_flower_pot"
+  },
+  "show_notification": true
+}

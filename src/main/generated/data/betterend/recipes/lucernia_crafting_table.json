@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "table",
+  "key": {
+    "#": {
+      "item": "betterend:lucernia_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "item": "betterend:lucernia_crafting_table"
+  },
+  "show_notification": true
+}

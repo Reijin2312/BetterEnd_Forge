@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "table",
+  "key": {
+    "#": {
+      "item": "betterend:tenanea_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "item": "betterend:tenanea_crafting_table"
+  },
+  "show_notification": true
+}

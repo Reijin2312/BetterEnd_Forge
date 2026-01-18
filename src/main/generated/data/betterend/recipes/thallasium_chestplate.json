@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_chestplates",
+  "key": {
+    "#": {
+      "item": "betterend:thallasium_forged_plate"
+    }
+  },
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:thallasium_chestplate"
+  },
+  "show_notification": true
+}

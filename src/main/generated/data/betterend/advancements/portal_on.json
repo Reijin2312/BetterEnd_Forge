@@ -1,0 +1,30 @@
+{
+  "parent": "betterend:portal",
+  "criteria": {
+    "turn_on": {
+      "conditions": {},
+      "trigger": "betterend:portal_on"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.portal_on.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:eternal_crystal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.portal_on.title"
+    }
+  },
+  "requirements": [
+    [
+      "turn_on"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

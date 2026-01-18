@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "barrel",
+  "key": {
+    "#": {
+      "item": "betterend:pythadendron_planks"
+    },
+    "S": {
+      "item": "betterend:pythadendron_slab"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "# #",
+    "#S#"
+  ],
+  "result": {
+    "item": "betterend:pythadendron_barrel"
+  },
+  "show_notification": true
+}

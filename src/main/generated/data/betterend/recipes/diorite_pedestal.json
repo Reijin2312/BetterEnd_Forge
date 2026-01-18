@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:polished_diorite"
+    },
+    "S": {
+      "item": "minecraft:polished_diorite_slab"
+    }
+  },
+  "pattern": [
+    "S",
+    "#",
+    "S"
+  ],
+  "result": {
+    "count": 2,
+    "item": "betterend:diorite_pedestal"
+  },
+  "show_notification": true
+}

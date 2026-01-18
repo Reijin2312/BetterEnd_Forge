@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "is_floor=false": {
+      "model": "betterend:block/sandy_jadestone_lantern"
+    },
+    "is_floor=true": {
+      "model": "betterend:block/sandy_jadestone_lantern_floor"
+    }
+  }
+}

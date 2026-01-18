@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_plates",
+  "key": {
+    "#": {
+      "item": "betterend:terminite_ingot"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "betterend:terminite_plate"
+  },
+  "show_notification": true
+}

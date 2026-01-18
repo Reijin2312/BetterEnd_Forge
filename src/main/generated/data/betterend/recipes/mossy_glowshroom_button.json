@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "betterend:mossy_glowshroom_planks"
+    }
+  ],
+  "result": {
+    "item": "betterend:mossy_glowshroom_button"
+  }
+}

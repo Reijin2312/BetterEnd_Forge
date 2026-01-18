@@ -1,0 +1,95 @@
+{
+  "parent": "betterend:terminite_anvil",
+  "criteria": {
+    "got_terminite_axe_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_axe_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_terminite_hoe_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_hoe_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_terminite_pickaxe_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_pickaxe_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_terminite_shovel_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_shovel_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_terminite_sword_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:terminite_sword_blade"
+            ]
+          },
+          {
+            "items": [
+              "betterend:terminite_sword_handle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.terminite_tool_head.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:terminite_pickaxe_head"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.terminite_tool_head.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_terminite_pickaxe_head",
+      "got_terminite_hoe_head",
+      "got_terminite_axe_head",
+      "got_terminite_shovel_head",
+      "got_terminite_sword_head"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

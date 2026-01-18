@@ -1,0 +1,38 @@
+{
+  "parent": "betterend:aeternium_anvil",
+  "criteria": {
+    "got_aeternium_hammer_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:aeternium_hammer_head"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.betterend.aeternium_hammer_head.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "betterend:aeternium_hammer_head"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.betterend.aeternium_hammer_head.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_aeternium_hammer_head"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

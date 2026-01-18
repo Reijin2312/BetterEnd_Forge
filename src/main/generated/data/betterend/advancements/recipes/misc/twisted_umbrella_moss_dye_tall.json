@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:twisted_umbrella_moss_dye_tall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_twisted_umbrella_moss_tall": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:twisted_umbrella_moss_tall"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_twisted_umbrella_moss_tall",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:twisted_umbrella_moss_dye_tall"
+    ]
+  },
+  "sends_telemetry_event": false
+}

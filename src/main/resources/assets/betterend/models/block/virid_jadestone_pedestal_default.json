@@ -1,0 +1,9 @@
+{
+  "parent": "betterend:block/pedestal_default",
+  "textures": {
+    "base": "betterend:block/virid_jadestone_polished",
+    "bottom": "betterend:block/virid_jadestone_polished",
+    "pillar": "betterend:block/virid_jadestone_pillar_side",
+    "top": "betterend:block/virid_jadestone_polished"
+  }
+}

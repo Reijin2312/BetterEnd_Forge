@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "betterend:block/virid_jadestone_slab"
+    },
+    "type=double": {
+      "model": "betterend:block/virid_jadestone"
+    },
+    "type=top": {
+      "model": "betterend:block/virid_jadestone_slab_top"
+    }
+  }
+}

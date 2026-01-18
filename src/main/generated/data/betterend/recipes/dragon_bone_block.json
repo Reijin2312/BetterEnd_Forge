@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:bone_block"
+    },
+    "D": {
+      "item": "minecraft:dragon_breath"
+    }
+  },
+  "pattern": [
+    "###",
+    "#D#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "betterend:dragon_bone_block"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "betterend:block/mossy_glowshroom_planks"
+  }
+}

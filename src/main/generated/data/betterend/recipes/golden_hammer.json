@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "I I",
+    "I#I",
+    " # "
+  ],
+  "result": {
+    "item": "betterend:golden_hammer"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "betterend:block/pedestal_column_top",
+  "textures": {
+    "base": "minecraft:block/polished_diorite",
+    "pillar": "betterend:block/diorite_pillar"
+  }
+}

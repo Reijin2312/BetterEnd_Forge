@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "trapdoor",
+  "key": {
+    "#": {
+      "item": "betterend:mossy_glowshroom_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "betterend:mossy_glowshroom_trapdoor"
+  },
+  "show_notification": true
+}

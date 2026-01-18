@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "betterend:block/end_lotus_door_bottom",
+    "top": "betterend:block/end_lotus_door_top"
+  }
+}

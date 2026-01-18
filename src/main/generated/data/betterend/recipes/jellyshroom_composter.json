@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "composter",
+  "key": {
+    "#": {
+      "item": "betterend:jellyshroom_slab"
+    }
+  },
+  "pattern": [
+    "# #",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:jellyshroom_composter"
+  },
+  "show_notification": true
+}

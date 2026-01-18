@@ -1,0 +1,6 @@
+{
+  "type": "betterend:giant_mossy_glowshroom",
+  "biomes": "#betterend:has_structure/giant_mossy_glowshroom",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

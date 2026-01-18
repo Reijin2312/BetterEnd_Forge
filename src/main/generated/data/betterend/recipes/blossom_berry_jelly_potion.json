@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "end_berries",
+  "ingredients": [
+    {
+      "item": "betterend:blossom_berry"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "betterend:gelatine"
+    }
+  ],
+  "result": {
+    "item": "betterend:blossom_berry_jelly"
+  }
+}

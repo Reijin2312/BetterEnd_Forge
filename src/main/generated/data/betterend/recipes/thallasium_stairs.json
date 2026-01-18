@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_metal_stairs",
+  "key": {
+    "#": [
+      {
+        "item": "betterend:thallasium_block"
+      },
+      {
+        "item": "betterend:thallasium_tile"
+      }
+    ]
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "betterend:thallasium_stairs"
+  },
+  "show_notification": true
+}

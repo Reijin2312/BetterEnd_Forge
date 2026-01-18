@@ -1,0 +1,9 @@
+{
+  "parent": "betterend:block/pedestal_default",
+  "textures": {
+    "base": "betterend:block/sulphuric_rock_polished",
+    "bottom": "betterend:block/sulphuric_rock_polished",
+    "pillar": "betterend:block/sulphuric_rock_pillar_side",
+    "top": "betterend:block/sulphuric_rock_polished"
+  }
+}

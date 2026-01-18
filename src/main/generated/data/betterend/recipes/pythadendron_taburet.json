@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "taburet",
+  "key": {
+    "#": {
+      "item": "betterend:pythadendron_slab"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "##",
+    "II"
+  ],
+  "result": {
+    "item": "betterend:pythadendron_taburet"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "slab",
+  "ingredient": {
+    "item": "betterend:end_stone_brick_cracked"
+  },
+  "result": "betterend:end_stone_brick_cracked_slab"
+}

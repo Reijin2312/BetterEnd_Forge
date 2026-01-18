@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 13316047,
+    "separation": 8,
+    "spacing": 16
+  },
+  "structures": [
+    {
+      "structure": "betterend:giant_mossy_glowshroom",
+      "weight": 1
+    }
+  ]
+}

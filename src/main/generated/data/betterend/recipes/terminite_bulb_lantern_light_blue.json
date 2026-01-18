@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "betterend:terminite_bulb_lantern"
+    },
+    {
+      "item": "minecraft:light_blue_dye"
+    }
+  ],
+  "result": {
+    "item": "betterend:terminite_bulb_lantern_light_blue"
+  }
+}

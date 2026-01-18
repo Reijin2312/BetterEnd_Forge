@@ -1,0 +1,17 @@
+accessWidener   v1  named
+
+# Classes
+accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$SurfaceRule
+
+# Used from TravelerState
+# Fields
+accessible field net/minecraft/server/level/ServerPlayer isChangingDimension Z
+accessible field net/minecraft/server/level/ServerPlayer lastSentExp I
+accessible field net/minecraft/server/level/ServerPlayer lastSentHealth F
+accessible field net/minecraft/server/level/ServerPlayer lastSentFood I
+accessible field net/minecraft/world/entity/Entity isInsidePortal Z
+
+# Methods
+accessible method net/minecraft/server/level/ServerPlayer triggerDimensionChangeTriggers (Lnet/minecraft/server/level/ServerLevel;)V
+accessible method net/minecraft/world/entity/Entity unsetRemoved ()V
+accessible method net/minecraft/world/entity/Entity removeAfterChangingDimensions ()V

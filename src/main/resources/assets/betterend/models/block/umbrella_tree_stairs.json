@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "betterend:block/umbrella_tree_planks",
+    "side": "betterend:block/umbrella_tree_planks",
+    "top": "betterend:block/umbrella_tree_planks"
+  }
+}
