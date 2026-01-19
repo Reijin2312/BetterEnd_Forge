@@ -1,0 +1,38 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "minecraft:cobweb"
+    },
+    "north": {
+      "item": "betterend:enchanted_petal"
+    },
+    "north_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "north_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south": {
+      "item": "betterend:eternal_crystal"
+    },
+    "south_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "west": {
+      "item": "minecraft:cobweb"
+    }
+  },
+  "group": "enchantment",
+  "input": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": "{StoredEnchantments:[{id:\"minecraft:silk_touch\",lvl:1s}]}"
+  },
+  "time": 375
+}

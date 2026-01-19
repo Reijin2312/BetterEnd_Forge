@@ -1,0 +1,29 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "north": {
+      "item": "betterend:amber_gem"
+    },
+    "north_east": {
+      "item": "betterend:crystal_shards"
+    },
+    "north_west": {
+      "item": "betterend:crystal_shards"
+    },
+    "south_east": {
+      "item": "betterend:crystal_shards"
+    },
+    "south_west": {
+      "item": "betterend:crystal_shards"
+    }
+  },
+  "input": {
+    "item": "betterend:terminite_chestplate",
+    "nbt": "{Damage:0}"
+  },
+  "result": {
+    "item": "betterend:crystalite_chestplate",
+    "nbt": "{Damage:0}"
+  },
+  "time": 300
+}

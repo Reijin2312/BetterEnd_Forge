@@ -1,0 +1,38 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "betterend:amber_gem"
+    },
+    "north": {
+      "item": "betterend:enchanted_petal"
+    },
+    "north_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "north_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south": {
+      "item": "betterend:amber_gem"
+    },
+    "south_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "west": {
+      "item": "betterend:amber_gem"
+    }
+  },
+  "group": "enchantment",
+  "input": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": "{StoredEnchantments:[{id:\"minecraft:efficiency\",lvl:1s}]}"
+  },
+  "time": 300
+}

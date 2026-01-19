@@ -1,0 +1,38 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "minecraft:popped_chorus_fruit"
+    },
+    "north": {
+      "item": "betterend:enchanted_petal"
+    },
+    "north_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "north_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south": {
+      "item": "minecraft:spectral_arrow"
+    },
+    "south_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "west": {
+      "item": "minecraft:popped_chorus_fruit"
+    }
+  },
+  "group": "enchantment",
+  "input": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": "{StoredEnchantments:[{id:\"minecraft:punch\",lvl:1s}]}"
+  },
+  "time": 300
+}

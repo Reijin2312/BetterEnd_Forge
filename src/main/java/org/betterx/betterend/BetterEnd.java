@@ -44,6 +44,9 @@ public class BetterEnd {
     private static boolean bonemealInitialized = false;
 
     public BetterEnd() {
+        // Ensure custom recipe serializers are registered before registry events fire
+        InfusionRecipe.register();
+
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         modBus.addListener(EventPriority.HIGHEST, this::ensureBlocksLoaded);
         modBus.addListener(EndEntities::onRegister);

@@ -1,0 +1,41 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "minecraft:golden_sword",
+      "nbt": "{Damage:0}"
+    },
+    "north": {
+      "item": "betterend:enchanted_petal"
+    },
+    "north_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "north_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south": {
+      "item": "minecraft:iron_sword",
+      "nbt": "{Damage:0}"
+    },
+    "south_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "west": {
+      "item": "minecraft:golden_sword",
+      "nbt": "{Damage:0}"
+    }
+  },
+  "group": "enchantment",
+  "input": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": "{StoredEnchantments:[{id:\"minecraft:sweeping\",lvl:1s}]}"
+  },
+  "time": 300
+}

@@ -1,0 +1,38 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "minecraft:nautilus_shell"
+    },
+    "north": {
+      "item": "betterend:enchanted_petal"
+    },
+    "north_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "north_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south": {
+      "item": "minecraft:nautilus_shell"
+    },
+    "south_east": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "south_west": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "west": {
+      "item": "minecraft:nautilus_shell"
+    }
+  },
+  "group": "enchantment",
+  "input": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": "{StoredEnchantments:[{id:\"minecraft:respiration\",lvl:1s}]}"
+  },
+  "time": 300
+}

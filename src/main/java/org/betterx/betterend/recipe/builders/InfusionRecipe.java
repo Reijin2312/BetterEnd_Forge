@@ -10,6 +10,7 @@ import org.betterx.betterend.rituals.InfusionRitual;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -34,6 +35,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 public class InfusionRecipe implements Recipe<InfusionRitual>, UnknownReceipBookCategory {
     public final static String GROUP = "infusion";
@@ -233,6 +235,42 @@ public class InfusionRecipe implements Recipe<InfusionRitual>, UnknownReceipBook
                 }
             }
             root.add("catalysts", catalystObject);
+        }
+
+        @Override
+        protected void buildRecipe(Consumer<FinishedRecipe> cc) {
+            if (getSerializer() == null) {
+                BCLib.LOGGER.warning("Skipping recipe {}: serializer is null", id);
+                return;
+            }
+            setupAdvancementForResult();
+            ResourceLocation advancementId = createAdvancementId();
+            cc.accept(new FinishedRecipe() {
+                @Override
+                public ResourceLocation getId() {
+                    return Builder.this.getId();
+                }
+
+                @Override
+                public RecipeSerializer<?> getType() {
+                    return getSerializer();
+                }
+
+                @Override
+                public JsonObject serializeAdvancement() {
+                    return advancement.serializeToJson();
+                }
+
+                @Override
+                public ResourceLocation getAdvancementId() {
+                    return advancementId;
+                }
+
+                @Override
+                public void serializeRecipeData(JsonObject root) {
+                    Builder.this.serializeRecipeData(root);
+                }
+            });
         }
 
         @Override

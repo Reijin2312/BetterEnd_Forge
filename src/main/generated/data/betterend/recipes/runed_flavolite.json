@@ -1,0 +1,24 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "betterend:crystal_shards"
+    },
+    "north": {
+      "item": "betterend:crystal_shards"
+    },
+    "south": {
+      "item": "betterend:crystal_shards"
+    },
+    "west": {
+      "item": "betterend:crystal_shards"
+    }
+  },
+  "input": {
+    "item": "betterend:flavolite_polished"
+  },
+  "result": {
+    "item": "betterend:flavolite_runed"
+  },
+  "time": 100
+}

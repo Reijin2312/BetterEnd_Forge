@@ -1,0 +1,38 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "betterend:enchanted_membrane"
+    },
+    "north": {
+      "item": "betterend:amber_gem"
+    },
+    "north_east": {
+      "item": "betterend:crystal_shards"
+    },
+    "north_west": {
+      "item": "betterend:crystal_shards"
+    },
+    "south": {
+      "item": "betterend:enchanted_membrane"
+    },
+    "south_east": {
+      "item": "betterend:crystal_shards"
+    },
+    "south_west": {
+      "item": "betterend:crystal_shards"
+    },
+    "west": {
+      "item": "betterend:enchanted_membrane"
+    }
+  },
+  "input": {
+    "item": "minecraft:elytra",
+    "nbt": "{Damage:0}"
+  },
+  "result": {
+    "item": "betterend:elytra_crystalite",
+    "nbt": "{Damage:0}"
+  },
+  "time": 500
+}

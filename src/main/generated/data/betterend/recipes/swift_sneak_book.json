@@ -1,0 +1,38 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "minecraft:sculk_sensor"
+    },
+    "north": {
+      "item": "betterend:eternal_crystal"
+    },
+    "north_east": {
+      "item": "minecraft:sculk_vein"
+    },
+    "north_west": {
+      "item": "minecraft:sculk_vein"
+    },
+    "south": {
+      "item": "minecraft:sculk_catalyst"
+    },
+    "south_east": {
+      "item": "betterend:enchanted_petal"
+    },
+    "south_west": {
+      "item": "betterend:enchanted_petal"
+    },
+    "west": {
+      "item": "minecraft:sculk_sensor"
+    }
+  },
+  "group": "enchantment",
+  "input": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": "{StoredEnchantments:[{id:\"minecraft:swift_sneak\",lvl:1s}]}"
+  },
+  "time": 500
+}

@@ -1,0 +1,23 @@
+{
+  "type": "betterend:infusion",
+  "catalysts": {
+    "east": {
+      "item": "betterend:crystal_shards"
+    },
+    "north": {
+      "item": "betterend:amber_gem"
+    },
+    "west": {
+      "item": "betterend:crystal_shards"
+    }
+  },
+  "input": {
+    "item": "betterend:terminite_boots",
+    "nbt": "{Damage:0}"
+  },
+  "result": {
+    "item": "betterend:crystalite_boots",
+    "nbt": "{Damage:0}"
+  },
+  "time": 150
+}
