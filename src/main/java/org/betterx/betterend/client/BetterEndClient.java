@@ -27,6 +27,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.Map;
@@ -74,6 +75,10 @@ public class BetterEndClient {
     @SubscribeEvent
     public static void registerDimensionEffects(RegisterDimensionSpecialEffectsEvent event) {
         if (!ClientOptions.isCustomSky()) {
+            return;
+        }
+        if (ModList.get().isLoaded("oculus") || ModList.get().isLoaded("iris")) {
+            BetterEnd.LOGGER.warning("Oculus/Iris detected; Better End custom sky is disabled to avoid missing sky rendering.");
             return;
         }
         event.register(new ResourceLocation("minecraft", "the_end"), new BetterEndSkyEffect());

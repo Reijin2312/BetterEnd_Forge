@@ -68,6 +68,9 @@ public class EndTags {
                 ITEM_HAMMERS.add(item);
             }
         });
+        if (!ITEM_HAMMERS.isEmpty()) {
+            TagManager.ITEMS.add(CommonItemTags.HAMMERS, ITEM_HAMMERS.toArray(new Item[0]));
+        }
 
         TagManager.BLOCKS.add(
                 CommonBlockTags.END_STONES,
