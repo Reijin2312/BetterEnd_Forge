@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "azure_jadestone_stonecutting",
+  "ingredient": {
+    "item": "betterend:azure_jadestone_bricks"
+  },
+  "result": "betterend:azure_jadestone_bricks_slab"
+}

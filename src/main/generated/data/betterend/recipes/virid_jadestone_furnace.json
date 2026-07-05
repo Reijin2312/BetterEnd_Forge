@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_stone_ITEM_FURNACES",
+  "key": {
+    "#": {
+      "item": "betterend:virid_jadestone"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:virid_jadestone_furnace"
+  },
+  "show_notification": true
+}

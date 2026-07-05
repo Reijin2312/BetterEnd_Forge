@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "umbralith_stonecutting",
+  "ingredient": {
+    "item": "betterend:umbralith"
+  },
+  "result": "betterend:umbralith_bricks_slab"
+}

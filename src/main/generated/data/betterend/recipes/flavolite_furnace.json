@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_stone_ITEM_FURNACES",
+  "key": {
+    "#": {
+      "item": "betterend:flavolite"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:flavolite_furnace"
+  },
+  "show_notification": true
+}

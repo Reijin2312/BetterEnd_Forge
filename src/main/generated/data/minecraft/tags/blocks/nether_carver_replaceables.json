@@ -1,6 +1,7 @@
 {
   "values": [
     "#c:nether_stones",
+    "#c:nether_terrain",
     "#c:netherrack"
   ]
 }

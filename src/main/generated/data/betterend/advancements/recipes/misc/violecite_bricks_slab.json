@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:violecite_bricks_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_violecite_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:violecite_bricks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_violecite_bricks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:violecite_bricks_slab"
+    ]
+  },
+  "sends_telemetry_event": false
+}

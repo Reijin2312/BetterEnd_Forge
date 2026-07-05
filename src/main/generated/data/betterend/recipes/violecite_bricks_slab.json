@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_stone_slabs",
+  "key": {
+    "#": {
+      "item": "betterend:violecite_bricks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "betterend:violecite_bricks_slab"
+  },
+  "show_notification": true
+}

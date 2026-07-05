@@ -18,12 +18,12 @@
         "items": [
           {
             "items": [
-              "minecraft:air"
+              "betterend:sulphuric_rock_slab"
             ]
           },
           {
             "items": [
-              "minecraft:air"
+              "betterend:sulphuric_rock_bricks_slab"
             ]
           }
         ]

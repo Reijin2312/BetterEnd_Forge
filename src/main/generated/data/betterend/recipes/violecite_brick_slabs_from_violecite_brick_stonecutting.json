@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "violecite_stonecutting",
+  "ingredient": {
+    "item": "betterend:violecite_bricks"
+  },
+  "result": "betterend:violecite_bricks_slab"
+}

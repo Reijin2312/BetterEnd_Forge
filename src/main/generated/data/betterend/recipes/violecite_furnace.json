@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_stone_ITEM_FURNACES",
+  "key": {
+    "#": {
+      "item": "betterend:violecite"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:violecite_furnace"
+  },
+  "show_notification": true
+}

@@ -24,12 +24,12 @@
         "items": [
           {
             "items": [
-              "minecraft:air"
+              "betterend:virid_jadestone_slab"
             ]
           },
           {
             "items": [
-              "minecraft:air"
+              "betterend:virid_jadestone_bricks_slab"
             ]
           }
         ]

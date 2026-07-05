@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "end_stone_ITEM_FURNACES",
+  "key": {
+    "#": {
+      "item": "betterend:sandy_jadestone"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:sandy_jadestone_furnace"
+  },
+  "show_notification": true
+}
