@@ -31,6 +31,7 @@
     "ServerPlayerMixin",
     "SlimeMixin",
     "SpikeFeatureMixin",
+    "StructureMixin",
     "WorldGenRegionMixin",
     "portal.EntityAccessor",
     "portal.EntityMixin",

@@ -2,6 +2,7 @@ package org.betterx.betterend.mixin.client;
 
 import org.betterx.betterend.client.ClientOptions;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
 import net.minecraft.world.level.Level;
 import net.minecraft.client.Minecraft;
@@ -44,7 +45,16 @@ public class MusicTrackerMixin {
 
     @Unique
     private boolean be_shouldChangeMusic(Music toMusic) {
-        return currentMusic == null || !toMusic.getEvent().value().getLocation().equals(currentMusic.getLocation());
+        ResourceLocation currentMusicLocation = be_getCurrentMusicLocation();
+        return currentMusicLocation == null || !toMusic.getEvent().value().getLocation().equals(currentMusicLocation);
+    }
+
+    @Unique
+    private ResourceLocation be_getCurrentMusicLocation() {
+        if (currentMusic instanceof AbstractSoundInstanceAccessor accessor) {
+            return accessor.getLocation();
+        }
+        return null;
     }
 
     @Inject(method = "startPlaying", at = @At("TAIL"))

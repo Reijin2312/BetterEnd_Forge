@@ -33,6 +33,10 @@ spotless {
     }
 }
 
+tasks.matching { it.name == "spotlessJavaCheck" || it.name == "spotlessCheck" }.configureEach {
+    dependsOn(tasks.named("spotlessApply"))
+}
+
 def enablePublishing = project.ext.enablePublishing
 
 if (enablePublishing) {

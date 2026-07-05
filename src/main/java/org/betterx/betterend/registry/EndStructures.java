@@ -3,6 +3,7 @@ package org.betterx.betterend.registry;
 import org.betterx.bclib.api.v2.levelgen.structures.BCLStructure;
 import org.betterx.bclib.api.v2.levelgen.structures.BCLStructureBuilder;
 import org.betterx.betterend.BetterEnd;
+import org.betterx.betterend.config.Configs;
 import org.betterx.betterend.world.structures.features.*;
 import org.betterx.betterend.world.structures.piece.*;
 import org.betterx.betterend.world.structures.village.VillagePools;
@@ -89,6 +90,22 @@ public class EndStructures {
             .build();
 
     public static void register() {
+        registerStructureToggles();
+    }
+
+    private static void registerStructureToggles() {
+        registerStructureToggle(GIANT_MOSSY_GLOWSHROOM);
+        registerStructureToggle(MEGALAKE);
+        registerStructureToggle(MEGALAKE_SMALL);
+        registerStructureToggle(MOUNTAIN);
+        registerStructureToggle(PAINTED_MOUNTAIN);
+        registerStructureToggle(ETERNAL_PORTAL);
+        registerStructureToggle(GIANT_ICE_STAR);
+        registerStructureToggle(END_VILLAGE);
+    }
+
+    private static void registerStructureToggle(BCLStructure<?> structure) {
+        Configs.STRUCTURE_CONFIG.getBooleanRoot(structure.structureKey.location().getPath(), true);
     }
 
     private static StructurePieceType register(String id, StructurePieceType pieceType) {

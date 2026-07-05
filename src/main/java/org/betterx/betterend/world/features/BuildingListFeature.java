@@ -27,7 +27,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import org.jetbrains.annotations.Nullable;
 
 public class BuildingListFeature extends NBTFeature<BuildingListFeatureConfig> {
-    private StructureInfo selected;
+    private static final ThreadLocal<StructureInfo> SELECTED = new ThreadLocal<>();
 
     public BuildingListFeature() {
         super(BuildingListFeatureConfig.CODEC);
@@ -46,7 +46,8 @@ public class BuildingListFeature extends NBTFeature<BuildingListFeatureConfig> {
             BlockPos pos,
             RandomSource random
     ) {
-        selected = cfg.getRandom(random);
+        StructureInfo selected = cfg.getRandom(random);
+        SELECTED.set(selected);
         //BCLib.LOGGER.info("Selected: " + selected.structurePath + " /tp " + pos.getX() + " " + pos.getY() + " " + pos.getZ());
         return selected.getStructure();
     }
@@ -72,11 +73,20 @@ public class BuildingListFeature extends NBTFeature<BuildingListFeatureConfig> {
 
     @Override
     protected int getYOffset(StructureTemplate structure, WorldGenLevel world, BlockPos pos, RandomSource random) {
+        StructureInfo selected = SELECTED.get();
+        if (selected == null) {
+            return 0;
+        }
         return selected.offsetY;
     }
 
     @Override
     protected TerrainMerge getTerrainMerge(WorldGenLevel world, BlockPos pos, RandomSource random) {
+        StructureInfo selected = SELECTED.get();
+        SELECTED.remove();
+        if (selected == null) {
+            return TerrainMerge.NONE;
+        }
         return selected.terrainMerge;
     }
 

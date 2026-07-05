@@ -12,7 +12,6 @@ import org.betterx.betterend.config.Configs;
 import org.betterx.betterend.effects.EndPotions;
 import org.betterx.betterend.effects.EndStatusEffects;
 import org.betterx.betterend.integration.Integrations;
-import org.betterx.betterend.item.GuideBookItem;
 import org.betterx.betterend.network.RitualUpdate;
 import org.betterx.betterend.recipe.builders.InfusionRecipe;
 import org.betterx.betterend.registry.*;
@@ -140,9 +139,6 @@ public class BetterEnd {
         try {
             Class.forName("org.betterx.betterend.registry.EndItems");
         } catch (ClassNotFoundException ignored) {
-        }
-        if (Integrations.hasGuideBook()) {
-            GuideBookItem.register();
         }
         try {
             Class.forName("org.betterx.betterend.registry.EndTemplates");

@@ -8,6 +8,7 @@ import org.betterx.bclib.api.v2.levelgen.biomes.BiomeAPI;
 import org.betterx.bclib.api.v2.levelgen.surface.SurfaceRuleBuilder;
 import org.betterx.bclib.interfaces.SurfaceMaterialProvider;
 import org.betterx.betterend.BetterEnd;
+import org.betterx.betterend.config.Configs;
 import org.betterx.betterend.registry.EndBlocks;
 import org.betterx.betterend.registry.EndFeatures;
 import org.betterx.betterend.registry.EndSounds;
@@ -88,6 +89,11 @@ public class EndBiome extends BCLBiome implements SurfaceMaterialProvider {
 
     public boolean hasCaves() {
         return hasCaves;
+    }
+
+    @Override
+    public boolean isPickable() {
+        return Configs.BIOME_CONFIG.getBoolean(getID(), "enabled", true);
     }
 
     public static class DefaultSurfaceMaterialProvider implements SurfaceMaterialProvider {

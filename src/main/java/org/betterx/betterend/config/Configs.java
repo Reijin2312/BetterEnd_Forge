@@ -6,12 +6,15 @@ import org.betterx.bclib.config.IdConfig;
 import org.betterx.bclib.config.PathConfig;
 import org.betterx.betterend.BetterEnd;
 
+import net.minecraft.resources.ResourceLocation;
+
 public class Configs {
     public static final PathConfig ENTITY_CONFIG = new PathConfig(BetterEnd.MOD_ID, "entities");
     public static final PathConfig BLOCK_CONFIG = new PathConfig(BetterEnd.MOD_ID, "blocks");
     public static final PathConfig ITEM_CONFIG = new PathConfig(BetterEnd.MOD_ID, "items");
     public static final IdConfig BIOME_CONFIG = new EntryConfig(BetterEnd.MOD_ID, "biomes");
     public static final PathConfig GENERATOR_CONFIG = new PathConfig(BetterEnd.MOD_ID, "generator", false);
+    public static final PathConfig STRUCTURE_CONFIG = new PathConfig(BetterEnd.MOD_ID, "structures");
     public static final PathConfig RECIPE_CONFIG = new PathConfig(BetterEnd.MOD_ID, "recipes");
     public static final PathConfig ENCHANTMENT_CONFIG = new PathConfig(BetterEnd.MOD_ID, "enchantments");
 
@@ -23,11 +26,16 @@ public class Configs {
         BIOME_CONFIG.saveChanges();
         ITEM_CONFIG.saveChanges();
         GENERATOR_CONFIG.saveChanges();
+        STRUCTURE_CONFIG.saveChanges();
         RECIPE_CONFIG.saveChanges();
         ENCHANTMENT_CONFIG.saveChanges();
 
         if (BCLib.isClient()) {
             CLENT_CONFIG.saveChanges();
         }
+    }
+
+    public static boolean isStructureEnabled(ResourceLocation id) {
+        return !BetterEnd.MOD_ID.equals(id.getNamespace()) || STRUCTURE_CONFIG.getBooleanRoot(id.getPath(), true);
     }
 }

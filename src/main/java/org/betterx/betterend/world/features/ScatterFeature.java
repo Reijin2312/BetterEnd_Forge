@@ -30,6 +30,9 @@ public abstract class ScatterFeature<FC extends ScatterFeatureConfig> extends Fe
 
     public abstract void generate(FC cfg, WorldGenLevel world, RandomSource random, BlockPos blockPos);
 
+    protected void clearPlacementCache() {
+    }
+
     protected BlockPos getCenterGround(FC cfg, WorldGenLevel world, BlockPos pos) {
         if (world.isEmptyBlock(pos) && world.getBlockState(pos.below()).is(CommonBlockTags.END_STONES)) {
             return pos;
@@ -82,15 +85,21 @@ public abstract class ScatterFeature<FC extends ScatterFeatureConfig> extends Fe
             float z = pr * (float) Math.sin(theta);
 
             POS.set(center.getX() + x, center.getY() + getYOffset(), center.getZ() + z);
-            if (getGroundPlant(cfg, world, POS) && canGenerate(
-                    cfg,
-                    world,
-                    random,
-                    center,
-                    POS,
-                    r
-            ) && (getChance() < 2 || random.nextInt(getChance()) == 0)) {
-                generate(cfg, world, random, POS);
+            if (getGroundPlant(cfg, world, POS)) {
+                boolean canGenerate = canGenerate(
+                        cfg,
+                        world,
+                        random,
+                        center,
+                        POS,
+                        r
+                );
+                boolean shouldGenerate = canGenerate && (getChance() < 2 || random.nextInt(getChance()) == 0);
+                if (shouldGenerate) {
+                    generate(cfg, world, random, POS);
+                } else {
+                    clearPlacementCache();
+                }
             }
         }
 

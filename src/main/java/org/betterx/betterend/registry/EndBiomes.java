@@ -28,15 +28,28 @@ public class EndBiomes {
     public static final ResourceKey<Biome> AMBER_LAND = cKey("amber_land");
     public static final ResourceKey<Biome> BLOSSOMING_SPIRES = cKey("blossoming_spires");
     public static final ResourceKey<Biome> CHORUS_FOREST = cKey("chorus_forest");
+    public static final ResourceKey<Biome> CRYSTAL_MOUNTAINS = cKey("crystal_mountains");
+    public static final ResourceKey<Biome> DRAGON_GRAVEYARDS = cKey("dragon_graveyards");
+    public static final ResourceKey<Biome> DRY_SHRUBLAND = cKey("dry_shrubland");
+    public static final ResourceKey<Biome> DUST_WASTELANDS = cKey("dust_wastelands");
     public static final ResourceKey<Biome> FOGGY_MUSHROOMLAND = cKey("foggy_mushroomland");
     public static final ResourceKey<Biome> GLOWING_GRASSLANDS = cKey("glowing_grasslands");
+    public static final ResourceKey<Biome> ICE_STARFIELD = cKey("ice_starfield");
     public static final ResourceKey<Biome> LANTERN_WOODS = cKey("lantern_woods");
     public static final ResourceKey<Biome> MEGALAKE = cKey("megalake");
     public static final ResourceKey<Biome> MEGALAKE_GROVE = cKey("megalake_grove");
     public static final ResourceKey<Biome> NEON_OASIS = cKey("neon_oasis");
+    public static final ResourceKey<Biome> PAINTED_MOUNTAINS = cKey("painted_mountains");
     public static final ResourceKey<Biome> SHADOW_FOREST = cKey("shadow_forest");
     public static final ResourceKey<Biome> SULPHUR_SPRINGS = cKey("sulphur_springs");
+    public static final ResourceKey<Biome> UMBRA_VALLEY = cKey("umbra_valley");
     public static final ResourceKey<Biome> UMBRELLA_JUNGLE = cKey("umbrella_jungle");
+    public static final ResourceKey<Biome> EMPTY_AURORA_CAVE = cKey("empty_aurora_cave");
+    public static final ResourceKey<Biome> EMPTY_END_CAVE = cKey("empty_end_cave");
+    public static final ResourceKey<Biome> EMPTY_SMARAGDANT_CAVE = cKey("empty_smaragdant_cave");
+    public static final ResourceKey<Biome> JADE_CAVE = cKey("jade_cave");
+    public static final ResourceKey<Biome> LUSH_AURORA_CAVE = cKey("lush_aurora_cave");
+    public static final ResourceKey<Biome> LUSH_SMARAGDANT_CAVE = cKey("lush_smaragdant_cave");
 
 
     private static ResourceKey<Biome> cKey(String path) {
@@ -61,7 +74,40 @@ public class EndBiomes {
                 BetterEnd.makeID("lush_smaragdant_cave_biome"),
                 LushSmaragdantCaveBiome.KEY_CODEC
         );
+        registerBiomeToggles();
         LifeCycleAPI.onLevelLoad(EndBiomes::onWorldLoad);
+    }
+
+    private static void registerBiomeToggles() {
+        registerBiomeToggle(AMBER_LAND);
+        registerBiomeToggle(BLOSSOMING_SPIRES);
+        registerBiomeToggle(CHORUS_FOREST);
+        registerBiomeToggle(CRYSTAL_MOUNTAINS);
+        registerBiomeToggle(DRAGON_GRAVEYARDS);
+        registerBiomeToggle(DRY_SHRUBLAND);
+        registerBiomeToggle(DUST_WASTELANDS);
+        registerBiomeToggle(FOGGY_MUSHROOMLAND);
+        registerBiomeToggle(GLOWING_GRASSLANDS);
+        registerBiomeToggle(ICE_STARFIELD);
+        registerBiomeToggle(LANTERN_WOODS);
+        registerBiomeToggle(MEGALAKE);
+        registerBiomeToggle(MEGALAKE_GROVE);
+        registerBiomeToggle(NEON_OASIS);
+        registerBiomeToggle(PAINTED_MOUNTAINS);
+        registerBiomeToggle(SHADOW_FOREST);
+        registerBiomeToggle(SULPHUR_SPRINGS);
+        registerBiomeToggle(UMBRA_VALLEY);
+        registerBiomeToggle(UMBRELLA_JUNGLE);
+        registerBiomeToggle(EMPTY_AURORA_CAVE);
+        registerBiomeToggle(EMPTY_END_CAVE);
+        registerBiomeToggle(EMPTY_SMARAGDANT_CAVE);
+        registerBiomeToggle(JADE_CAVE);
+        registerBiomeToggle(LUSH_AURORA_CAVE);
+        registerBiomeToggle(LUSH_SMARAGDANT_CAVE);
+    }
+
+    private static void registerBiomeToggle(ResourceKey<Biome> biomeKey) {
+        Configs.BIOME_CONFIG.getBoolean(biomeKey.location(), "enabled", true);
     }
 
     private static void onWorldLoad(ServerLevel level, long seed, Registry<Biome> registry) {
@@ -74,6 +120,7 @@ public class EndBiomes {
                     .filter(id -> BiomeAPI.wasRegisteredAs(id, END_CAVE))
                     .map(BiomeAPI::getBiome)
                     .filter(bcl -> !BCLBiomeRegistry.isEmptyBiome(bcl))
+                    .filter(BCLBiome::isPickable)
                     .forEach(CAVE_BIOMES::addBiome);
 
             CAVE_BIOMES.rebuild();
