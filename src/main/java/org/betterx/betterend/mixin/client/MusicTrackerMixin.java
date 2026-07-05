@@ -94,7 +94,7 @@ public class MusicTrackerMixin {
                     accessor.setVolume(0.0f);
                     minecraft.getSoundManager().updateSourceVolume(
                             currentMusic.getSource(),
-                            currentMusic.getVolume()
+                            0.0f
                     );
                 }
             }
@@ -128,7 +128,7 @@ public class MusicTrackerMixin {
                     accessor.setVolume(0.0f);
                     minecraft.getSoundManager().updateSourceVolume(
                             currentMusic.getSource(),
-                            currentMusic.getVolume()
+                            0.0f
                     );
                 }
             }
@@ -142,7 +142,7 @@ public class MusicTrackerMixin {
             be_volume = Mth.clamp(be_volume, 0.0f, 1.0f);
             if (currentMusic instanceof AbstractSoundInstanceAccessor accessor) {
                 accessor.setVolume(be_volume);
-                minecraft.getSoundManager().updateSourceVolume(currentMusic.getSource(), currentMusic.getVolume());
+                minecraft.getSoundManager().updateSourceVolume(currentMusic.getSource(), be_volume);
             }
         }
 
