@@ -4,6 +4,7 @@ import org.betterx.bclib.api.v2.dataexchange.DataExchangeAPI;
 import org.betterx.bclib.api.v2.generator.BiomeDecider;
 import org.betterx.bclib.api.v2.levelgen.biomes.BiomeAPI;
 import org.betterx.bclib.api.v3.levelgen.features.BCLFeature;
+import org.betterx.bclib.api.v3.levelgen.features.FeatureConfigAPI;
 import org.betterx.bclib.registry.RegistryBootstrap;
 import org.betterx.betterend.advancements.BECriteria;
 import org.betterx.betterend.api.BetterEndPlugin;
@@ -74,6 +75,7 @@ public class BetterEnd {
     }
 
     public void onInitialize() {
+        FeatureConfigAPI.register(MOD_ID, Configs::isFeatureEnabled);
         WorldConfig.registerModCache(MOD_ID);
         EndNumericProviders.register();
         EndPortals.loadPortals();

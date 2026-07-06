@@ -1491,5 +1491,6 @@ public class EndFeatures {
     }
 
     public static void register() {
+        Configs.registerFeatureConfigEntries(EndFeatures.class);
     }
 }

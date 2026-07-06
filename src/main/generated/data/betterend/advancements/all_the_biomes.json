@@ -420,16 +420,19 @@
   },
   "requirements": [
     [
-      "betterend:umbra_valley"
+      "betterend:empty_end_cave"
     ],
     [
-      "betterend:sulphur_springs"
+      "betterend:shadow_forest"
     ],
     [
-      "betterend:foggy_mushroomland"
+      "betterend:ice_starfield"
     ],
     [
-      "betterend:dust_wastelands"
+      "betterend:empty_aurora_cave"
+    ],
+    [
+      "betterend:neon_oasis"
     ],
     [
       "betterend:crystal_mountains"
@@ -438,61 +441,58 @@
       "betterend:painted_mountains"
     ],
     [
+      "betterend:dust_wastelands"
+    ],
+    [
+      "betterend:lush_smaragdant_cave"
+    ],
+    [
       "betterend:lush_aurora_cave"
-    ],
-    [
-      "betterend:empty_end_cave"
-    ],
-    [
-      "betterend:umbrella_jungle"
-    ],
-    [
-      "betterend:empty_smaragdant_cave"
-    ],
-    [
-      "betterend:dragon_graveyards"
-    ],
-    [
-      "betterend:dry_shrubland"
-    ],
-    [
-      "betterend:jade_cave"
-    ],
-    [
-      "betterend:blossoming_spires"
-    ],
-    [
-      "betterend:ice_starfield"
-    ],
-    [
-      "betterend:shadow_forest"
     ],
     [
       "betterend:lantern_woods"
     ],
     [
-      "betterend:neon_oasis"
+      "betterend:sulphur_springs"
+    ],
+    [
+      "betterend:empty_smaragdant_cave"
     ],
     [
       "betterend:amber_land"
     ],
     [
-      "betterend:empty_aurora_cave"
+      "betterend:blossoming_spires"
     ],
     [
-      "betterend:chorus_forest"
+      "betterend:jade_cave"
+    ],
+    [
+      "betterend:umbrella_jungle"
+    ],
+    [
+      "betterend:dragon_graveyards"
     ],
     [
       "betterend:megalake_grove"
     ],
     [
-      "betterend:glowing_grasslands"
+      "betterend:dry_shrubland"
     ],
     [
       "betterend:megalake"
     ],
     [
-      "betterend:lush_smaragdant_cave"
+      "betterend:chorus_forest"
+    ],
+    [
+      "betterend:foggy_mushroomland"
+    ],
+    [
+      "betterend:umbra_valley"
+    ],
+    [
+      "betterend:glowing_grasslands"
     ]
   ],
   "rewards": {
