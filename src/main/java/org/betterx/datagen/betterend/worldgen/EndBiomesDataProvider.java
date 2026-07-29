@@ -11,6 +11,8 @@ import org.betterx.betterend.registry.EndBiomes;
 import org.betterx.betterend.registry.EndStructures;
 import org.betterx.betterend.world.biome.EndBiome;
 import org.betterx.betterend.world.biome.air.BiomeIceStarfield;
+import org.betterx.betterend.world.biome.air.FlowerIsletsBiome;
+import org.betterx.betterend.world.biome.air.WaterfallPondsBiome;
 import org.betterx.betterend.world.biome.cave.*;
 import org.betterx.betterend.world.biome.land.*;
 import org.betterx.datagen.betterend.EndRegistrySupplier;
@@ -51,6 +53,8 @@ public class EndBiomesDataProvider extends TagDataProvider<Biome> {
     private static final EndBiome UMBRA_VALLEY = registerBiome(new UmbraValleyBiome(), BiomeType.END_LAND);
     // Better End Void
     private static final EndBiome ICE_STARFIELD = registerBiome(new BiomeIceStarfield(), BiomeType.END_VOID);
+    private static final EndBiome FLOWER_ISLETS = registerBiome(new FlowerIsletsBiome(), BiomeType.END_VOID);
+    private static final EndBiome WATERFALL_PONDS = registerBiome(new WaterfallPondsBiome(), BiomeType.END_VOID);
     // Better End Caves
     private static final EndCaveBiome EMPTY_END_CAVE = registerCaveBiome(new EmptyEndCaveBiome());
     private static final EndCaveBiome EMPTY_SMARAGDANT_CAVE = registerCaveBiome(new EmptySmaragdantCaveBiome());

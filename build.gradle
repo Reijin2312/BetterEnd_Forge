@@ -242,8 +242,6 @@ java {
 }
 
 jar {
-    dependsOn(tasks.named("generateBetterXResources"))
-    dependsOn(tasks.named("syncGeneratedResources"))
     manifest {
         attributes(
                 "MixinConfigs": String.join(",",
@@ -514,6 +512,5 @@ tasks.register("copyModrinthJars", Copy) {
 }
 
 tasks.named("build") {
-    dependsOn(tasks.named("generateBetterXResources"))
     finalizedBy("copyDistJars", "copyModrinthJars")
 }

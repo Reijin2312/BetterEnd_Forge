@@ -38,6 +38,7 @@ public class EndStructures {
             PaintedMountainPiece::new
     );
     public static final StructurePieceType NBT_PIECE = register("nbt_piece", NBTPiece::new);
+    public static final StructurePieceType END_BRIDGE_PIECE = register("end_bridge_piece", EndBridgePiece::new);
 
     public static final BCLStructure<GiantMossyGlowshroomStructure> GIANT_MOSSY_GLOWSHROOM = BCLStructureBuilder
             .start(BetterEnd.makeID("giant_mossy_glowshroom"), GiantMossyGlowshroomStructure::new)
@@ -77,6 +78,11 @@ public class EndStructures {
             .step(Decoration.SURFACE_STRUCTURES)
             .randomPlacement(16, 8)
             .build();
+    public static final BCLStructure<EndBridgeStructure> END_BRIDGE = BCLStructureBuilder
+            .start(BetterEnd.makeID("end_bridge"), EndBridgeStructure::new)
+            .step(Decoration.SURFACE_STRUCTURES)
+            .randomPlacement(6, 2)
+            .build();
 
     public static final BCLStructure<JigsawStructure> END_VILLAGE = BCLStructureBuilder
             .jigsaw(BetterEnd.makeID("end_village"))
@@ -101,6 +107,7 @@ public class EndStructures {
         registerStructureToggle(PAINTED_MOUNTAIN);
         registerStructureToggle(ETERNAL_PORTAL);
         registerStructureToggle(GIANT_ICE_STAR);
+        registerStructureToggle(END_BRIDGE);
         registerStructureToggle(END_VILLAGE);
     }
 

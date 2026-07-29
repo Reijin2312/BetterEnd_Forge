@@ -1,0 +1,8 @@
+{
+  "feature": "betterend:small_end_island",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

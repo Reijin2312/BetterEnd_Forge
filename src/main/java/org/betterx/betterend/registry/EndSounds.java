@@ -18,6 +18,7 @@ public class EndSounds {
     public static Holder<SoundEvent> MUSIC_DARK;
     public static Holder<SoundEvent> MUSIC_OPENSPACE;
     public static Holder<SoundEvent> MUSIC_CAVES;
+    public static Holder<SoundEvent> MUSIC_ENDER_HOLLOW;
 
     // Ambient
     public static Holder<SoundEvent> AMBIENT_FOGGY_MUSHROOMLAND;
@@ -44,12 +45,15 @@ public class EndSounds {
     public static Holder<SoundEvent> RECORD_GRASPING_AT_STARS;
     public static Holder<SoundEvent> RECORD_ENDSEEKER;
     public static Holder<SoundEvent> RECORD_EO_DRACONA;
+    public static Holder<SoundEvent> RECORD_ENDER_HOLLOW;
+    public static Holder<SoundEvent> RECORD_MOONLIT_UNDERCURRENTS;
 
     private static final ResourceKey<SoundEvent> KEY_MUSIC_FOREST = key("betterend.music.forest");
     private static final ResourceKey<SoundEvent> KEY_MUSIC_WATER = key("betterend.music.water");
     private static final ResourceKey<SoundEvent> KEY_MUSIC_DARK = key("betterend.music.dark");
     private static final ResourceKey<SoundEvent> KEY_MUSIC_OPENSPACE = key("betterend.music.openspace");
     private static final ResourceKey<SoundEvent> KEY_MUSIC_CAVES = key("betterend.music.caves");
+    private static final ResourceKey<SoundEvent> KEY_MUSIC_ENDER_HOLLOW = key("betterend.music.ender_hollow");
 
     private static final ResourceKey<SoundEvent> KEY_AMBIENT_FOGGY_MUSHROOMLAND = key("betterend.ambient.foggy_mushroomland");
     private static final ResourceKey<SoundEvent> KEY_AMBIENT_CHORUS_FOREST = key("betterend.ambient.chorus_forest");
@@ -73,6 +77,10 @@ public class EndSounds {
     private static final ResourceKey<SoundEvent> KEY_RECORD_GRASPING_AT_STARS = key("betterend.record.grasping_at_stars");
     private static final ResourceKey<SoundEvent> KEY_RECORD_ENDSEEKER = key("betterend.record.endseeker");
     private static final ResourceKey<SoundEvent> KEY_RECORD_EO_DRACONA = key("betterend.record.eo_dracona");
+    private static final ResourceKey<SoundEvent> KEY_RECORD_ENDER_HOLLOW = key("betterend.record.ender_hollow");
+    private static final ResourceKey<SoundEvent> KEY_RECORD_MOONLIT_UNDERCURRENTS = key(
+            "betterend.record.moonlit_undercurrents"
+    );
 
     public static final SoundEvent RECORD_STRANGE_AND_ALIEN_EVENT = SoundEvent.createVariableRangeEvent(
             KEY_RECORD_STRANGE_AND_ALIEN.location()
@@ -85,6 +93,12 @@ public class EndSounds {
     );
     public static final SoundEvent RECORD_EO_DRACONA_EVENT = SoundEvent.createVariableRangeEvent(
             KEY_RECORD_EO_DRACONA.location()
+    );
+    public static final SoundEvent RECORD_ENDER_HOLLOW_EVENT = SoundEvent.createVariableRangeEvent(
+            KEY_RECORD_ENDER_HOLLOW.location()
+    );
+    public static final SoundEvent RECORD_MOONLIT_UNDERCURRENTS_EVENT = SoundEvent.createVariableRangeEvent(
+            KEY_RECORD_MOONLIT_UNDERCURRENTS.location()
     );
 
     public static void register() {
@@ -101,6 +115,7 @@ public class EndSounds {
             register(helper, KEY_MUSIC_DARK);
             register(helper, KEY_MUSIC_OPENSPACE);
             register(helper, KEY_MUSIC_CAVES);
+            register(helper, KEY_MUSIC_ENDER_HOLLOW);
 
             register(helper, KEY_AMBIENT_FOGGY_MUSHROOMLAND);
             register(helper, KEY_AMBIENT_CHORUS_FOREST);
@@ -124,6 +139,8 @@ public class EndSounds {
             register(helper, KEY_RECORD_GRASPING_AT_STARS, RECORD_GRASPING_AT_STARS_EVENT);
             register(helper, KEY_RECORD_ENDSEEKER, RECORD_ENDSEEKER_EVENT);
             register(helper, KEY_RECORD_EO_DRACONA, RECORD_EO_DRACONA_EVENT);
+            register(helper, KEY_RECORD_ENDER_HOLLOW, RECORD_ENDER_HOLLOW_EVENT);
+            register(helper, KEY_RECORD_MOONLIT_UNDERCURRENTS, RECORD_MOONLIT_UNDERCURRENTS_EVENT);
         });
     }
 
@@ -156,6 +173,8 @@ public class EndSounds {
             MUSIC_OPENSPACE = holder;
         } else if (key == KEY_MUSIC_CAVES) {
             MUSIC_CAVES = holder;
+        } else if (key == KEY_MUSIC_ENDER_HOLLOW) {
+            MUSIC_ENDER_HOLLOW = holder;
         } else if (key == KEY_AMBIENT_FOGGY_MUSHROOMLAND) {
             AMBIENT_FOGGY_MUSHROOMLAND = holder;
         } else if (key == KEY_AMBIENT_CHORUS_FOREST) {
@@ -196,6 +215,10 @@ public class EndSounds {
             RECORD_ENDSEEKER = holder;
         } else if (key == KEY_RECORD_EO_DRACONA) {
             RECORD_EO_DRACONA = holder;
+        } else if (key == KEY_RECORD_ENDER_HOLLOW) {
+            RECORD_ENDER_HOLLOW = holder;
+        } else if (key == KEY_RECORD_MOONLIT_UNDERCURRENTS) {
+            RECORD_MOONLIT_UNDERCURRENTS = holder;
         }
     }
 }

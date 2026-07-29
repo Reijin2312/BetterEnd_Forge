@@ -33,6 +33,7 @@ public class EndBiomes {
     public static final ResourceKey<Biome> DRY_SHRUBLAND = cKey("dry_shrubland");
     public static final ResourceKey<Biome> DUST_WASTELANDS = cKey("dust_wastelands");
     public static final ResourceKey<Biome> FOGGY_MUSHROOMLAND = cKey("foggy_mushroomland");
+    public static final ResourceKey<Biome> FLOWER_ISLETS = cKey("flower_islets");
     public static final ResourceKey<Biome> GLOWING_GRASSLANDS = cKey("glowing_grasslands");
     public static final ResourceKey<Biome> ICE_STARFIELD = cKey("ice_starfield");
     public static final ResourceKey<Biome> LANTERN_WOODS = cKey("lantern_woods");
@@ -44,6 +45,7 @@ public class EndBiomes {
     public static final ResourceKey<Biome> SULPHUR_SPRINGS = cKey("sulphur_springs");
     public static final ResourceKey<Biome> UMBRA_VALLEY = cKey("umbra_valley");
     public static final ResourceKey<Biome> UMBRELLA_JUNGLE = cKey("umbrella_jungle");
+    public static final ResourceKey<Biome> WATERFALL_PONDS = cKey("waterfall_ponds");
     public static final ResourceKey<Biome> EMPTY_AURORA_CAVE = cKey("empty_aurora_cave");
     public static final ResourceKey<Biome> EMPTY_END_CAVE = cKey("empty_end_cave");
     public static final ResourceKey<Biome> EMPTY_SMARAGDANT_CAVE = cKey("empty_smaragdant_cave");
@@ -87,6 +89,7 @@ public class EndBiomes {
         registerBiomeToggle(DRY_SHRUBLAND);
         registerBiomeToggle(DUST_WASTELANDS);
         registerBiomeToggle(FOGGY_MUSHROOMLAND);
+        registerBiomeToggle(FLOWER_ISLETS);
         registerBiomeToggle(GLOWING_GRASSLANDS);
         registerBiomeToggle(ICE_STARFIELD);
         registerBiomeToggle(LANTERN_WOODS);
@@ -98,6 +101,7 @@ public class EndBiomes {
         registerBiomeToggle(SULPHUR_SPRINGS);
         registerBiomeToggle(UMBRA_VALLEY);
         registerBiomeToggle(UMBRELLA_JUNGLE);
+        registerBiomeToggle(WATERFALL_PONDS);
         registerBiomeToggle(EMPTY_AURORA_CAVE);
         registerBiomeToggle(EMPTY_END_CAVE);
         registerBiomeToggle(EMPTY_SMARAGDANT_CAVE);

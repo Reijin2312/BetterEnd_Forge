@@ -10,6 +10,7 @@
     "betterend:empty_aurora_cave",
     "betterend:empty_end_cave",
     "betterend:empty_smaragdant_cave",
+    "betterend:flower_islets",
     "betterend:foggy_mushroomland",
     "betterend:glowing_grasslands",
     "betterend:ice_starfield",
@@ -24,6 +25,7 @@
     "betterend:shadow_forest",
     "betterend:sulphur_springs",
     "betterend:umbra_valley",
-    "betterend:umbrella_jungle"
+    "betterend:umbrella_jungle",
+    "betterend:waterfall_ponds"
   ]
 }

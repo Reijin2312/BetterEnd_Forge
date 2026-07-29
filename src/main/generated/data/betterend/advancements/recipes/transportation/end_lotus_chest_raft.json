@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_end_lotus_raft": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "betterend:end_lotus_raft"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tag_c_chest": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:chest"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "betterend:end_lotus_chest_raft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_tag_c_chest",
+      "has_end_lotus_raft",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "betterend:end_lotus_chest_raft"
+    ]
+  },
+  "sends_telemetry_event": false
+}

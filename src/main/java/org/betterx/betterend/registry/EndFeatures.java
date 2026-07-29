@@ -197,6 +197,11 @@ public class EndFeatures {
             inlineBuild("dragon_tree", new DragonTreeFeature()),
             2
     );
+    public static final BCLFeature<DragonHelixTreeFeature, NoneFeatureConfiguration> DRAGON_HELIX_TREE = registerVegetation(
+            "dragon_helix_tree",
+            inlineBuild("dragon_helix_tree", new DragonHelixTreeFeature()),
+            1
+    );
     public static final BCLFeature<TenaneaFeature, NoneFeatureConfiguration> TENANEA = registerVegetation(
             "tenanea",
             inlineBuild("tenanea", new TenaneaFeature()),
@@ -226,6 +231,11 @@ public class EndFeatures {
             "lucernia",
             inlineBuild("lucernia", new LucerniaFeature()),
             3
+    );
+    public static final BCLFeature<AmaranitaPatchFeature, NoneFeatureConfiguration> AMARANITA_PATCH = registerVegetation(
+            "amaranita_patch",
+            inlineBuild("amaranita_patch", new AmaranitaPatchFeature()),
+            1
     );
 
     // Bushes //
@@ -817,6 +827,16 @@ public class EndFeatures {
             .place()
             .decoration(Decoration.RAW_GENERATION)
             .build();
+    public static final BCLFeature<SmallEndIslandFeature, NoneFeatureConfiguration> SMALL_END_ISLAND = BCLFeatureBuilder
+            .start(
+                    BetterEnd.makeID("small_end_island"),
+                    inlineBuild("small_end_island", new SmallEndIslandFeature())
+            )
+              .build()
+              .place()
+              .decoration(Decoration.RAW_GENERATION)
+              .onlyInBiome()
+              .build();
     public static final BCLFeature<SinglePlantFeature, SinglePlantFeatureConfig> FLAMAEA = registerVegetation(
             "flamaea",
             new SinglePlantFeatureConfig(EndBlocks.FLAMAEA, 12, false, 5),
@@ -845,6 +865,17 @@ public class EndFeatures {
             inlineBuild("desert_lake", new DesertLakeFeature()),
             8
     );
+    public static final BCLFeature<PondWithWaterfallFeature, NoneFeatureConfiguration> POND_WITH_WATERFALL = BCLFeatureBuilder
+            .start(
+                    BetterEnd.makeID("pond_with_waterfall"),
+                    inlineBuild("pond_with_waterfall", new PondWithWaterfallFeature())
+            )
+            .build()
+            .place()
+            .decoration(Decoration.LAKES)
+            .count(1)
+            .onlyInBiome()
+            .build();
     public static final BCLFeature<RoundCaveFeature, NoneFeatureConfiguration> ROUND_CAVE = registerRawGen(
             "round_cave",
             inlineBuild("round_cave", new RoundCaveFeature()),
