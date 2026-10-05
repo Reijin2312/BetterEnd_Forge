@@ -10,6 +10,7 @@ import org.betterx.betterend.registry.EndParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
@@ -28,7 +29,9 @@ import java.util.List;
 
 public class AncientEmeraldIceBlock extends BaseBlock implements BehaviourIce {
     public AncientEmeraldIceBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.BLUE_ICE).randomTicks());
+        super(BlockBehaviour.Properties.copy(Blocks.BLUE_ICE)
+                .randomTicks()
+                .isValidSpawn((state, world, pos, entityType) -> entityType.is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)));
     }
 
     @Override
