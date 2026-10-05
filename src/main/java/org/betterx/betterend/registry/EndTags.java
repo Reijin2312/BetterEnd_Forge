@@ -81,6 +81,7 @@ public class EndTags {
         TagManager.BLOCKS.add(CommonBlockTags.END_STONES, EndBlocks.BRIMSTONE);
         TagManager.BLOCKS.add(BlockTags.ANVIL, EndBlocks.AETERNIUM_ANVIL);
         TagManager.BLOCKS.add(BlockTags.BEACON_BASE_BLOCKS, EndBlocks.AETERNIUM_BLOCK);
+        TagManager.BLOCKS.add(BlockTags.MINEABLE_WITH_AXE, EndBlocks.AMARANITA_STEM, EndBlocks.AMARANITA_HYPHAE);
         TagManager.ITEMS.add(ItemTags.BEACON_PAYMENT_ITEMS, EndItems.AETERNIUM_INGOT);
         TagManager.BLOCKS.add(
                 BlockTags.DRAGON_IMMUNE,
