@@ -32,10 +32,9 @@ public class PedestalBlockEntity extends BlockEntity implements Container {
     }
 
     protected void fromTag(CompoundTag tag) {
-        if (tag.contains("active_item")) {
-            CompoundTag itemTag = tag.getCompound("active_item");
-            activeItem = ItemStack.of(itemTag);
-        }
+        activeItem = tag.contains("active_item")
+                ? ItemStack.of(tag.getCompound("active_item"))
+                : ItemStack.EMPTY;
     }
 
     @Override
