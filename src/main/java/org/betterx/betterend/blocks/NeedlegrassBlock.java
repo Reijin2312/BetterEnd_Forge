@@ -1,5 +1,7 @@
 package org.betterx.betterend.blocks;
 
+import org.betterx.bclib.behaviours.interfaces.BehaviourCompostable;
+
 import org.betterx.bclib.behaviours.BehaviourBuilders;
 import org.betterx.bclib.items.tool.BaseShearsItem;
 import org.betterx.bclib.util.MHelper;
@@ -25,7 +27,7 @@ import com.google.common.collect.Lists;
 
 import java.util.List;
 
-public class NeedlegrassBlock extends EndPlantBlock implements SurvivesOnShadowGrass {
+public class NeedlegrassBlock extends EndPlantBlock implements SurvivesOnShadowGrass, BehaviourCompostable {
     public NeedlegrassBlock() {
         super(BehaviourBuilders
                 .createGrass(MapColor.COLOR_BLACK)

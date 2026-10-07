@@ -1,7 +1,9 @@
 {
   "values": [
     "betterend:aeridium",
+    "betterend:amaranita_cap",
     "betterend:amaranita_fur",
+    "betterend:amaranita_hymenophore",
     "betterend:amber_grass",
     "betterend:amber_root_seed",
     "betterend:blooming_cooksonia",
@@ -47,6 +49,7 @@
     "betterend:helix_tree_sapling",
     "betterend:hydralux_sapling",
     "betterend:inflexia",
+    "betterend:jellyshroom_cap_purple",
     "betterend:jungle_fern",
     "betterend:jungle_grass",
     "betterend:jungle_vine",
@@ -60,8 +63,10 @@
     "betterend:lumecorn_seed",
     "betterend:lutebus",
     "betterend:magnula",
+    "betterend:mossy_glowshroom_cap",
     "betterend:mossy_glowshroom_fur",
     "betterend:mossy_glowshroom_sapling",
+    "betterend:needlegrass",
     "betterend:orango",
     "betterend:pond_anemone",
     "betterend:pythadendron_leaves",
