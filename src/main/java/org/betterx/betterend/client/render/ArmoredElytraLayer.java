@@ -9,26 +9,22 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.layers.ElytraLayer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
 
-public class ArmoredElytraLayer<T extends LivingEntity, M extends EntityModel<T>> extends ElytraLayer<T, M> {
-    private static final ResourceLocation VANILLA_WINGS = new ResourceLocation("minecraft", "textures/entity/elytra.png");
+public class ArmoredElytraLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
     private final ArmoredElytraModel<T> elytraModel;
 
     public ArmoredElytraLayer(RenderLayerParent<T, M> renderLayerParent, EntityModelSet entityModelSet) {
-        super(renderLayerParent, entityModelSet);
+        super(renderLayerParent);
         ArmoredElytraModel<T> model;
         try {
             model = new ArmoredElytraModel<>(entityModelSet.bakeLayer(EndEntitiesRenders.ARMORED_ELYTRA));
@@ -39,23 +35,20 @@ public class ArmoredElytraLayer<T extends LivingEntity, M extends EntityModel<T>
     }
 
     private ItemStack getElytraStack(T livingEntity) {
-        ItemStack itemStack = null;
         if (BCLElytraUtils.slotProvider != null) {
-            itemStack = BCLElytraUtils.slotProvider.getElytra(livingEntity, livingEntity::getItemBySlot);
+            ItemStack itemStack = BCLElytraUtils.slotProvider.getElytra(livingEntity, livingEntity::getItemBySlot);
+            if (itemStack != null && itemStack.getItem() instanceof BCLElytraItem) {
+                return itemStack;
+            }
         }
-        if (itemStack == null
-                || itemStack.isEmpty()
-                || !(itemStack.getItem() instanceof ElytraItem || itemStack.getItem() instanceof BCLElytraItem)) {
-            itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
-        }
-        return itemStack;
+        return livingEntity.getItemBySlot(EquipmentSlot.CHEST);
     }
 
     private ResourceLocation getDefaultWingsTexture(ItemStack itemStack) {
         if (itemStack.getItem() instanceof BCLElytraItem) {
             return ((BCLElytraItem) itemStack.getItem()).getModelTexture();
         }
-        return VANILLA_WINGS;
+        throw new IllegalArgumentException("Expected a BetterEnd elytra");
     }
 
     public void render(
@@ -78,24 +71,11 @@ public class ArmoredElytraLayer<T extends LivingEntity, M extends EntityModel<T>
             return;
         }
 
-        boolean isVanillaElytra = itemStack.getItem() instanceof ElytraItem
-                && !(itemStack.getItem() instanceof BCLElytraItem);
-        boolean isCustomElytra = itemStack.getItem() instanceof BCLElytraItem;
-        if (!isVanillaElytra && !isCustomElytra) {
+        if (!(itemStack.getItem() instanceof BCLElytraItem)) {
             return;
         }
 
         ResourceLocation wingsTexture = getDefaultWingsTexture(itemStack);
-        if (isVanillaElytra && livingEntity instanceof AbstractClientPlayer) {
-            AbstractClientPlayer abstractClientPlayer = (AbstractClientPlayer) livingEntity;
-            if (abstractClientPlayer.isElytraLoaded() && abstractClientPlayer.getElytraTextureLocation() != null) {
-                wingsTexture = abstractClientPlayer.getElytraTextureLocation();
-            } else if (abstractClientPlayer.isCapeLoaded()
-                    && abstractClientPlayer.getCloakTextureLocation() != null
-                    && abstractClientPlayer.isModelPartShown(PlayerModelPart.CAPE)) {
-                wingsTexture = abstractClientPlayer.getCloakTextureLocation();
-            }
-        }
 
         poseStack.pushPose();
         poseStack.translate(0.0D, 0.0D, 0.125D);
