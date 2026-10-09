@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "chiseled_bookshelf",
+  "key": {
+    "#": {
+      "item": "betterend:lucernia_planks"
+    },
+    "S": {
+      "item": "betterend:lucernia_slab"
+    }
+  },
+  "pattern": [
+    "###",
+    "SSS",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:lucernia_chiseled_bookshelf"
+  },
+  "show_notification": true
+}

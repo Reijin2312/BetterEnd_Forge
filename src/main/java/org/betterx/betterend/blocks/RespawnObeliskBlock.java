@@ -142,7 +142,7 @@ public class RespawnObeliskBlock extends BaseBlock.Stone implements CustomColorP
     }
 
     @Override
-    protected void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean movedByPiston) {
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!newState.is(this) && world instanceof ServerLevel serverLevel) {
             clearRespawnPoints(serverLevel, getBottomPos(pos, state.getValue(SHAPE)));
         }

@@ -38,6 +38,7 @@ public class EndWoodenComplexMaterial extends WoodenComplexMaterial {
         return super.createMaterialSlots()
                     .add(raft ? WoodSlots.RAFT : WoodSlots.BOAT)
                     .add(raft ? WoodSlots.CHEST_RAFT : WoodSlots.CHEST_BOAT)
+                    .add(WoodSlots.CHISELED_BOOKSHELF)
                     .add(WoodSlots.HANGING_SIGN)
                     .add(WoodSlots.TABURET)
                     .add(WoodSlots.BAR_STOOL)

@@ -3,6 +3,7 @@ package org.betterx.betterend.recipe;
 import org.betterx.betterend.recipe.builders.InfusionRecipe;
 import org.betterx.betterend.registry.EndBlocks;
 import org.betterx.betterend.registry.EndItems;
+import org.betterx.betterend.registry.EndEnchantments;
 
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -583,6 +584,33 @@ public class InfusionRecipes {
                       .addCatalyst(InfusionRecipe.Catalysts.NORTH_WEST, Items.LAPIS_LAZULI)
                       .setGroup("enchantment")
                       .setTime(375)
+                      .build();
+
+        InfusionRecipe.create("resonance_1_book", EndEnchantments.RESONANCE, 1)
+                      .setPrimaryInputAndUnlock(Items.BOOK)
+                      .addCatalyst(InfusionRecipe.Catalysts.NORTH, EndItems.ENCHANTED_PETAL)
+                      .addCatalyst(InfusionRecipe.Catalysts.EAST, Items.ECHO_SHARD)
+                      .addCatalyst(InfusionRecipe.Catalysts.SOUTH, Items.ECHO_SHARD)
+                      .addCatalyst(InfusionRecipe.Catalysts.WEST, Items.ECHO_SHARD)
+                      .addCatalyst(InfusionRecipe.Catalysts.NORTH_EAST, Items.LAPIS_LAZULI)
+                      .addCatalyst(InfusionRecipe.Catalysts.SOUTH_EAST, Items.LAPIS_LAZULI)
+                      .addCatalyst(InfusionRecipe.Catalysts.SOUTH_WEST, Items.LAPIS_LAZULI)
+                      .addCatalyst(InfusionRecipe.Catalysts.NORTH_WEST, Items.LAPIS_LAZULI)
+                      .setGroup("enchantment")
+                      .setTime(300)
+                      .build();
+        InfusionRecipe.create("resonance_2_book", EndEnchantments.RESONANCE, 2)
+                      .setPrimaryInputAndUnlock(Items.BOOK)
+                      .addCatalyst(InfusionRecipe.Catalysts.NORTH, EndItems.ENCHANTED_PETAL)
+                      .addCatalyst(InfusionRecipe.Catalysts.EAST, Items.ECHO_SHARD)
+                      .addCatalyst(InfusionRecipe.Catalysts.SOUTH, EndItems.ETERNAL_CRYSTAL)
+                      .addCatalyst(InfusionRecipe.Catalysts.WEST, Items.ECHO_SHARD)
+                      .addCatalyst(InfusionRecipe.Catalysts.NORTH_EAST, Items.LAPIS_LAZULI)
+                      .addCatalyst(InfusionRecipe.Catalysts.SOUTH_EAST, Items.LAPIS_LAZULI)
+                      .addCatalyst(InfusionRecipe.Catalysts.SOUTH_WEST, Items.LAPIS_LAZULI)
+                      .addCatalyst(InfusionRecipe.Catalysts.NORTH_WEST, Items.LAPIS_LAZULI)
+                      .setGroup("enchantment")
+                      .setTime(450)
                       .build();
     }
 

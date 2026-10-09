@@ -39,6 +39,7 @@ import com.google.common.collect.Sets;
 
 import java.awt.*;
 import java.util.Objects;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 import org.jetbrains.annotations.Nullable;
@@ -52,6 +53,10 @@ public class EternalRitual {
             new Point(4, 5),
             new Point(6, 0)
     );
+
+    public static Set<Point> pedestalOffsets() {
+        return Collections.unmodifiableSet(PEDESTAL_POSITIONS);
+    }
 
     private final static Block PEDESTAL = EndBlocks.ETERNAL_PEDESTAL;
     public final static BooleanProperty ACTIVE = BlockProperties.ACTIVE;

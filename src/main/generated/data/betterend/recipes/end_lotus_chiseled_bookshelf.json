@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "chiseled_bookshelf",
+  "key": {
+    "#": {
+      "item": "betterend:end_lotus_planks"
+    },
+    "S": {
+      "item": "betterend:end_lotus_slab"
+    }
+  },
+  "pattern": [
+    "###",
+    "SSS",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:end_lotus_chiseled_bookshelf"
+  },
+  "show_notification": true
+}

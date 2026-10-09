@@ -30,6 +30,7 @@
     "PlayerMixin",
     "ServerLevelMixin",
     "ServerPlayerMixin",
+    "ServerPlayerGameModeMixin",
     "SlimeMixin",
     "SpikeFeatureMixin",
     "StructureMixin",

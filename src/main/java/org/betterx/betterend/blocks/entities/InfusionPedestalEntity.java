@@ -2,6 +2,7 @@ package org.betterx.betterend.blocks.entities;
 
 import org.betterx.betterend.registry.EndBlockEntities;
 import org.betterx.betterend.rituals.InfusionRitual;
+import org.betterx.betterend.client.effects.InfusionHint;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -67,6 +68,7 @@ public class InfusionPedestalEntity extends PedestalBlockEntity {
             T uncastedEntity
     ) {
         if (uncastedEntity instanceof InfusionPedestalEntity) {
+            if (level.isClientSide) InfusionHint.tick(level, blockPos);
             InfusionPedestalEntity blockEntity = (InfusionPedestalEntity) uncastedEntity;
             if (blockEntity.hasRitual()) {
                 blockEntity.linkedRitual.tick();

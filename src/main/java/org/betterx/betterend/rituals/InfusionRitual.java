@@ -3,6 +3,7 @@ package org.betterx.betterend.rituals;
 import org.betterx.betterend.advancements.BECriteria;
 import org.betterx.betterend.blocks.entities.InfusionPedestalEntity;
 import org.betterx.betterend.blocks.entities.PedestalBlockEntity;
+import org.betterx.betterend.blocks.basis.PedestalBlock;
 import org.betterx.betterend.particle.InfusionParticleType;
 import org.betterx.betterend.recipe.builders.InfusionRecipe;
 
@@ -15,6 +16,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.chunk.LevelChunk.EntityCreationType;
 import net.minecraft.world.phys.Vec3;
@@ -260,5 +262,25 @@ public class InfusionRitual implements Container {
 
     public static Point[] getMap() {
         return PEDESTALS_MAP;
+    }
+
+    public static BlockPos socketPos(BlockPos pedestalPos, int index) {
+        Point point = PEDESTALS_MAP[index];
+        return pedestalPos.offset(point.x, 0, -point.y);
+    }
+
+    public static boolean[] socketsPresent(BlockGetter world, BlockPos pedestalPos) {
+        boolean[] present = new boolean[PEDESTALS_MAP.length];
+        for (int i = 0; i < present.length; i++) {
+            present[i] = world.getBlockState(socketPos(pedestalPos, i)).getBlock() instanceof PedestalBlock;
+        }
+        return present;
+    }
+
+    public static boolean allSocketsPresent(BlockGetter world, BlockPos pedestalPos) {
+        for (boolean present : socketsPresent(world, pedestalPos)) {
+            if (!present) return false;
+        }
+        return true;
     }
 }

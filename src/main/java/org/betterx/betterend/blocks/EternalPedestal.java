@@ -7,6 +7,7 @@ import org.betterx.betterend.blocks.basis.PedestalBlock;
 import org.betterx.betterend.blocks.entities.EternalPedestalEntity;
 import org.betterx.betterend.client.render.EternalCrystalRenderer;
 import org.betterx.betterend.client.render.PedestalItemRenderer;
+import org.betterx.betterend.client.effects.EternalHint;
 import org.betterx.betterend.registry.EndBlocks;
 import org.betterx.betterend.registry.EndPortals;
 import org.betterx.betterend.rituals.EternalRitual;
@@ -17,9 +18,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
@@ -33,6 +37,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.BlockHitResult;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -91,6 +96,28 @@ public class EternalPedestal extends PedestalBlock implements BehaviourStone {
                     }
                 }
             }
+        }
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,
+                                 InteractionHand hand, BlockHitResult hit) {
+        if (level.isClientSide && isPlaceable(state)
+                && player.getItemInHand(hand).isEmpty()
+                && level.getBlockEntity(pos) instanceof EternalPedestalEntity pedestal
+                && pedestal.isEmpty()) {
+            EternalHint.trigger(level, pos, player.getDirection());
+            return InteractionResult.SUCCESS;
+        }
+        return super.use(state, level, pos, player, hand, hit);
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        if (level.isClientSide && isPlaceable(state)) {
+            Direction facing = placer == null ? Direction.NORTH : placer.getDirection();
+            EternalHint.trigger(level, pos, facing);
         }
     }
 
@@ -260,6 +287,7 @@ public class EternalPedestal extends PedestalBlock implements BehaviourStone {
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         super.animateTick(blockState, level, blockPos, randomSource);
+        EternalHint.tick(level, blockPos, randomSource);
         dispatchParticles(level, blockPos, randomSource);
     }
 }

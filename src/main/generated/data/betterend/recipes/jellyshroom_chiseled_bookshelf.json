@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "chiseled_bookshelf",
+  "key": {
+    "#": {
+      "item": "betterend:jellyshroom_planks"
+    },
+    "S": {
+      "item": "betterend:jellyshroom_slab"
+    }
+  },
+  "pattern": [
+    "###",
+    "SSS",
+    "###"
+  ],
+  "result": {
+    "item": "betterend:jellyshroom_chiseled_bookshelf"
+  },
+  "show_notification": true
+}
