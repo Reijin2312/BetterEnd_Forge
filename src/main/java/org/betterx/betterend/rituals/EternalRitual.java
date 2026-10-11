@@ -5,7 +5,9 @@ import org.betterx.bclib.blocks.BlockProperties;
 import org.betterx.betterend.BetterEnd;
 import org.betterx.betterend.advancements.BECriteria;
 import org.betterx.betterend.blocks.EndPortalBlock;
+import org.betterx.betterend.blocks.EternalPedestal;
 import org.betterx.betterend.blocks.RunedFlavolite;
+import org.betterx.betterend.blocks.basis.PedestalBlock;
 import org.betterx.betterend.blocks.entities.EternalPedestalEntity;
 import org.betterx.betterend.network.RitualUpdate;
 import org.betterx.betterend.portal.PortalBuilder;
@@ -28,6 +30,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.NetherPortalBlock;
@@ -153,6 +156,18 @@ public class EternalRitual {
             Level world,
             EternalRitual fallback
     ) {
+        updateActiveStateOnPedestals(center, axis, active, willActivate, world, fallback, null);
+    }
+
+    public static void updateActiveStateOnPedestals(
+            BlockPos center,
+            Direction.Axis axis,
+            boolean active,
+            boolean willActivate,
+            Level world,
+            EternalRitual fallback,
+            Item clientKeyItem
+    ) {
         Direction moveX, moveY;
         if (Direction.Axis.X == axis) {
             moveX = Direction.EAST;
@@ -167,6 +182,18 @@ public class EternalRitual {
             BlockPos.MutableBlockPos checkPos = center.mutable();
             checkPos.move(moveX, pos.x).move(moveY, pos.y);
             if (world.getBlockEntity(checkPos) instanceof EternalPedestalEntity pedestal) {
+                if (world.isClientSide() && (active || willActivate) && clientKeyItem != null) {
+                    pedestal.setClientItem(new ItemStack(clientKeyItem));
+                    BlockState state = world.getBlockState(checkPos);
+                    if (state.is(PEDESTAL)) {
+                        world.setBlockAndUpdate(
+                                checkPos,
+                                state.setValue(PedestalBlock.HAS_ITEM, true)
+                                     .setValue(PedestalBlock.HAS_LIGHT, true)
+                                     .setValue(EternalPedestal.ACTIVATED, true)
+                        );
+                    }
+                }
                 if (pedestal.hasRitual()) {
                     if (fallback == null) fallback = pedestal.getRitual();
                     pedestal.getRitual().active = active;
@@ -183,6 +210,21 @@ public class EternalRitual {
                 }
             }
         }
+    }
+
+    @Nullable
+    public Item getKeyItem() {
+        if (world == null || center == null || axis == null) return null;
+        Direction moveX = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
+        Direction moveY = axis == Direction.Axis.X ? Direction.NORTH : Direction.EAST;
+        for (Point pos : PEDESTAL_POSITIONS) {
+            BlockPos checkPos = center.relative(moveX, pos.x).relative(moveY, pos.y);
+            if (world.getBlockEntity(checkPos) instanceof EternalPedestalEntity pedestal
+                    && !pedestal.isEmpty()) {
+                return pedestal.getItem(0).getItem();
+            }
+        }
+        return null;
     }
 
     private boolean checkFrame(Level world, BlockPos framePos) {

@@ -103,13 +103,10 @@ public class EternalPedestal extends PedestalBlock implements BehaviourStone {
                                  InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide && isPlaceable(state)
                 && level.getBlockEntity(pos) instanceof EternalPedestalEntity pedestal
-                && pedestal.isEmpty()) {
-            ItemStack heldItem = player.getItemInHand(hand);
-            if (heldItem.isEmpty()) {
-                EternalHint.trigger(level, pos);
-                return InteractionResult.SUCCESS;
-            }
-            pedestal.previewItem(heldItem);
+                && pedestal.isEmpty()
+                && player.getItemInHand(hand).isEmpty()) {
+            EternalHint.trigger(level, pos);
+            return InteractionResult.SUCCESS;
         }
         return super.use(state, level, pos, player, hand, hit);
     }

@@ -10,7 +10,10 @@ import org.betterx.betterend.rituals.EternalRitual;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -41,17 +44,26 @@ public class RitualUpdate extends DataHandler.FromServer {
         if (ritual.willActivate()) {
             this.flags |= WILL_ACTIVATE_FLAG;
         }
+        Item keyItem = ritual.getKeyItem();
+        if (keyItem != null) {
+            this.keyItemId = BuiltInRegistries.ITEM.getKey(keyItem);
+        }
     }
 
     byte flags;
     BlockPos center;
     Direction.Axis axis;
+    ResourceLocation keyItemId;
 
     @Override
     protected void serializeDataOnServer(FriendlyByteBuf buf) {
         buf.writeBlockPos(center);
         BaseDataHandler.writeString(buf, axis.getName());
         buf.writeByte(flags);
+        buf.writeBoolean(keyItemId != null);
+        if (keyItemId != null) {
+            buf.writeResourceLocation(keyItemId);
+        }
     }
 
     @Override
@@ -60,6 +72,7 @@ public class RitualUpdate extends DataHandler.FromServer {
         center = buf.readBlockPos();
         axis = Direction.Axis.byName(BaseDataHandler.readString(buf));
         flags = buf.readByte();
+        keyItemId = buf.readBoolean() ? buf.readResourceLocation() : null;
     }
 
     @Override
@@ -71,7 +84,8 @@ public class RitualUpdate extends DataHandler.FromServer {
                 (flags & ACTIVE_FLAG) != 0,
                 (flags & WILL_ACTIVATE_FLAG) != 0,
                 client.level,
-                null
+                null,
+                keyItemId == null ? null : BuiltInRegistries.ITEM.get(keyItemId)
         );
     }
 }
