@@ -23,7 +23,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
@@ -106,19 +105,10 @@ public class EternalPedestal extends PedestalBlock implements BehaviourStone {
                 && player.getItemInHand(hand).isEmpty()
                 && level.getBlockEntity(pos) instanceof EternalPedestalEntity pedestal
                 && pedestal.isEmpty()) {
-            EternalHint.trigger(level, pos, player.getDirection());
+            EternalHint.trigger(level, pos);
             return InteractionResult.SUCCESS;
         }
         return super.use(state, level, pos, player, hand, hit);
-    }
-
-    @Override
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        super.setPlacedBy(level, pos, state, placer, stack);
-        if (level.isClientSide && isPlaceable(state)) {
-            Direction facing = placer == null ? Direction.NORTH : placer.getDirection();
-            EternalHint.trigger(level, pos, facing);
-        }
     }
 
     @Override
@@ -287,7 +277,7 @@ public class EternalPedestal extends PedestalBlock implements BehaviourStone {
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         super.animateTick(blockState, level, blockPos, randomSource);
-        EternalHint.tick(level, blockPos, randomSource);
+        EternalHint.tickParticles(level, blockPos, randomSource);
         dispatchParticles(level, blockPos, randomSource);
     }
 }

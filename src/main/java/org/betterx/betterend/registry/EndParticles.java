@@ -25,6 +25,8 @@ public class EndParticles {
     public static SimpleParticleType JUNGLE_SPORE;
     public static SimpleParticleType FIREFLY;
     public static SimpleParticleType SMARAGDANT;
+    public static SimpleParticleType INFUSION_MIST;
+    public static SimpleParticleType INFUSION_MIST_NORTH;
 
     private static boolean registered = false;
 
@@ -58,6 +60,8 @@ public class EndParticles {
         JUNGLE_SPORE = register("jungle_spore");
         FIREFLY = register("firefly");
         SMARAGDANT = register("smaragdant_particle");
+        INFUSION_MIST = register("infusion_mist");
+        INFUSION_MIST_NORTH = register("infusion_mist_north");
     }
 
     public static void registerProviders(RegisterParticleProvidersEvent event) {
@@ -73,6 +77,11 @@ public class EndParticles {
         event.registerSpriteSet(JUNGLE_SPORE, ParticleJungleSpore.FactoryJungleSpore::new);
         event.registerSpriteSet(FIREFLY, FireflyParticle.FireflyParticleFactory::new);
         event.registerSpriteSet(SMARAGDANT, SmaragdantParticle.SmaragdantParticleFactory::new);
+        event.registerSpriteSet(INFUSION_MIST, InfusionMistParticle.FactoryInfusionMist::new);
+        event.registerSpriteSet(
+                INFUSION_MIST_NORTH,
+                sprites -> new InfusionMistParticle.FactoryInfusionMist(sprites, InfusionMistParticle.NORTH_RGB)
+        );
     }
 
     private static SimpleParticleType register(String name) {

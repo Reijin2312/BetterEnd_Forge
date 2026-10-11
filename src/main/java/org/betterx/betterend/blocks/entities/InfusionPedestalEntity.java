@@ -68,7 +68,10 @@ public class InfusionPedestalEntity extends PedestalBlockEntity {
             T uncastedEntity
     ) {
         if (uncastedEntity instanceof InfusionPedestalEntity) {
-            if (level.isClientSide) InfusionHint.tick(level, blockPos);
+            if (level.isClientSide) {
+                InfusionHint.spawnMist(level, blockPos);
+                InfusionHint.tickFlash(level, blockPos);
+            }
             InfusionPedestalEntity blockEntity = (InfusionPedestalEntity) uncastedEntity;
             if (blockEntity.hasRitual()) {
                 blockEntity.linkedRitual.tick();

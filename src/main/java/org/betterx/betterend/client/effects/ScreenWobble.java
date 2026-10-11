@@ -1,0 +1,31 @@
+package org.betterx.betterend.client.effects;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.Mth;
+
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+
+import org.jetbrains.annotations.Nullable;
+
+@OnlyIn(Dist.CLIENT)
+final class ScreenWobble {
+    private static final float DECAY = 14.0F;
+    private static final float MAX_ROLL = 4.5F;
+    private static final float MAX_PITCH = 2.5F;
+
+    private ScreenWobble() {}
+
+    static float @Nullable [] at(float elapsed) {
+        if (elapsed < 0.0F) return null;
+
+        float amplitude = Mth.clamp((float) Math.exp(-elapsed / DECAY), 0.0F, 1.0F)
+                * Minecraft.getInstance().options.screenEffectScale().get().floatValue();
+        if (amplitude <= 0.001F) return null;
+
+        return new float[]{
+                Mth.sin(elapsed * 0.55F) * amplitude * MAX_ROLL,
+                Mth.sin(elapsed * 0.37F + 1.1F) * amplitude * MAX_PITCH
+        };
+    }
+}

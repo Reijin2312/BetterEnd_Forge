@@ -9,6 +9,7 @@
     "ArmorStandRendererMixin",
     "BiomeColorsMixin",
     "CapeLayerMixin",
+    "GameRendererMixin",
     "HumanoidMobRendererMixin",
     "MinecraftClientMixin",
     "ModelLoaderMixin",
