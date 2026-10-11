@@ -81,6 +81,12 @@ public class PedestalBlockEntity extends BlockEntity implements Container {
         setChanged();
     }
 
+    public void previewItem(ItemStack stack) {
+        if (level == null || !level.isClientSide() || !activeItem.isEmpty() || stack.isEmpty()) return;
+        activeItem = stack.copy();
+        activeItem.setCount(1);
+    }
+
     @Override
     public void setChanged() {
         if (level != null && !level.isClientSide()) {

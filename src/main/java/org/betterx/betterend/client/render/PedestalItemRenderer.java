@@ -58,7 +58,7 @@ public class PedestalItemRenderer<T extends PedestalBlockEntity> implements Bloc
             PoseStack matrices,
             MultiBufferSource vertexConsumers,
             int light,
-        int overlay
+            int overlay
     ) {
         Level world = blockEntity.getLevel();
         if (world == null) return;
@@ -66,10 +66,19 @@ public class PedestalItemRenderer<T extends PedestalBlockEntity> implements Bloc
         renderInfusionHint(world, blockEntity.getBlockPos(), tickDelta, matrices, vertexConsumers);
         renderEternalHint(world, blockEntity, tickDelta, matrices, vertexConsumers, light);
 
-        if (blockEntity.isEmpty()) return;
-
         BlockState state = world.getBlockState(blockEntity.getBlockPos());
-        if (!(state.getBlock() instanceof PedestalBlock)) return;
+        if (!(state.getBlock() instanceof PedestalBlock pedestal)) return;
+
+        if (blockEntity.isEmpty()) {
+            if (hasEternalBeam(state)) {
+                matrices.pushPose();
+                matrices.translate(0.5D, pedestal.getHeight(state), 0.5D);
+                matrices.scale(1.25F, 1.25F, 1.25F);
+                renderEternalBeam(blockEntity, tickDelta, matrices, vertexConsumers);
+                matrices.popPose();
+            }
+            return;
+        }
 
         ItemStack activeItem = blockEntity.getItem(0);
 
@@ -77,7 +86,6 @@ public class PedestalItemRenderer<T extends PedestalBlockEntity> implements Bloc
         Minecraft minecraft = Minecraft.getInstance();
         BakedModel model = minecraft.getItemRenderer().getModel(activeItem, world, null, 0);
         Vector3f translate = model.getTransforms().ground.translation;
-        PedestalBlock pedestal = (PedestalBlock) state.getBlock();
         matrices.translate(translate.x() + 0.5, translate.y() + pedestal.getHeight(state), translate.z() + 0.5);
         if (activeItem.getItem() instanceof BlockItem) {
             matrices.scale(1.5F, 1.5F, 1.5F);
@@ -85,22 +93,8 @@ public class PedestalItemRenderer<T extends PedestalBlockEntity> implements Bloc
             matrices.scale(1.25F, 1.25F, 1.25F);
         }
         int age = getGemAge();
-        if (state.is(EndBlocks.ETERNAL_PEDESTAL) && state.getValue(EternalPedestal.ACTIVATED)) {
-            float[] colors = EternalCrystalRenderer.colors(age);
-            int y = blockEntity.getBlockPos().getY();
-
-            BeamRenderer.renderLightBeam(
-                    matrices,
-                    vertexConsumers,
-                    age,
-                    tickDelta,
-                    -y,
-                    1024 - y,
-                    colors,
-                    0.25F,
-                    0.13F,
-                    0.16F
-            );
+        if (hasEternalBeam(state)) {
+            renderEternalBeam(blockEntity, tickDelta, matrices, vertexConsumers);
             float altitude = Mth.sin((age + tickDelta) / 10.0F) * 0.1F + 0.1F;
             matrices.translate(0.0D, altitude, 0.0D);
         }
@@ -124,6 +118,33 @@ public class PedestalItemRenderer<T extends PedestalBlockEntity> implements Bloc
                      );
         }
         matrices.popPose();
+    }
+
+    private static boolean hasEternalBeam(BlockState state) {
+        return state.is(EndBlocks.ETERNAL_PEDESTAL) && state.getValue(EternalPedestal.ACTIVATED);
+    }
+
+    private static void renderEternalBeam(
+            PedestalBlockEntity blockEntity,
+            float tickDelta,
+            PoseStack matrices,
+            MultiBufferSource vertexConsumers
+    ) {
+        int age = getGemAge();
+        float[] colors = EternalCrystalRenderer.colors(age);
+        int y = blockEntity.getBlockPos().getY();
+        BeamRenderer.renderLightBeam(
+                matrices,
+                vertexConsumers,
+                age,
+                tickDelta,
+                -y,
+                1024 - y,
+                colors,
+                0.25F,
+                0.13F,
+                0.16F
+        );
     }
 
     private static void renderInfusionHint(
