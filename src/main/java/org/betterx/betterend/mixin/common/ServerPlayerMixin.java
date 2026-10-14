@@ -1,7 +1,5 @@
 package org.betterx.betterend.mixin.common;
 
-import org.betterx.betterend.portal.TravelerState;
-import org.betterx.betterend.portal.TravelingEntity;
 import org.betterx.betterend.world.generator.GeneratorOptions;
 
 import com.mojang.authlib.GameProfile;
@@ -25,19 +23,11 @@ public abstract class ServerPlayerMixin extends Player {
     public ServerPlayerMixin(Level level, BlockPos blockPos, float f, GameProfile gameProfile) {
         super(level, blockPos, f, gameProfile);
     }
-
+    
     @Inject(method = "createEndPlatform", at = @At("HEAD"), cancellable = true)
     private void be_createEndSpawnPlatform(ServerLevel world, BlockPos centerPos, CallbackInfo info) {
         if (!GeneratorOptions.generateObsidianPlatform()) {
             info.cancel();
-        }
-    }
-
-    @Inject(method = "tick", at = @At("TAIL"))
-    private void be_portalTick(CallbackInfo info) {
-        TravelerState state = ((TravelingEntity) this).be_getTravelerState();
-        if (state != null) {
-            state.portalTick();
         }
     }
 

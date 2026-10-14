@@ -1,5 +1,6 @@
 {
+  "replace": false,
   "values": [
-    "minecraft:iron_ingot"
+    "betterend:thallasium_ingot"
   ]
 }

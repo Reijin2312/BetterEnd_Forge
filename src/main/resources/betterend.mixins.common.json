@@ -4,7 +4,6 @@
   "package": "org.betterx.betterend.mixin.common",
   "plugin": "org.betterx.betterend.mixin.MixinPlugin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "betterend.refmap.json",
   "mixins": [
     "CarvedPumpkinBlockMixin",
     "BlockBehaviourMixin",
@@ -35,9 +34,7 @@
     "SpikeFeatureMixin",
     "StructureMixin",
     "WorldGenRegionMixin",
-    "portal.EntityAccessor",
-    "portal.EntityMixin",
-    "portal.ServerPlayerAccessor"
+    "portal.EntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

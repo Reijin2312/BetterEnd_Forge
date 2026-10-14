@@ -49,10 +49,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.loader.api.FabricLoader;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -79,14 +79,9 @@ public class FlowerPotBlock extends BaseBlockNotFull implements RenderLayerProvi
     private static final VoxelShape SHAPE_FULL;
     private static Block[] plants;
     private static Block[] soils;
-    private void ensureInitialized() {
-        if (plants == null || soils == null) {
-            postInit();
-        }
-    }
 
     public FlowerPotBlock(Block source) {
-        super(BlockBehaviour.Properties.copy(source).lightLevel(state -> state.getValue(POT_LIGHT) * 5));
+        super(FabricBlockSettings.copyOf(source).luminance(state -> state.getValue(POT_LIGHT) * 5));
         this.registerDefaultState(
                 this.defaultBlockState()
                     .setValue(PLANT_ID, 0)
@@ -103,7 +98,6 @@ public class FlowerPotBlock extends BaseBlockNotFull implements RenderLayerProvi
 
     @Override
     public List<ItemStack> getDrops(BlockState state, Builder builder) {
-        ensureInitialized();
         List<ItemStack> drop = Lists.newArrayList(new ItemStack(this));
         int id = state.getValue(SOIL_ID) - 1;
         if (id >= 0 && id < soils.length && soils[id] != null) {
@@ -119,14 +113,13 @@ public class FlowerPotBlock extends BaseBlockNotFull implements RenderLayerProvi
     @Override
     @SuppressWarnings("deprecation")
     public BlockState updateShape(
-        BlockState state,
-        Direction facing,
-        BlockState neighborState,
-        LevelAccessor world,
-        BlockPos pos,
-        BlockPos neighborPos
+            BlockState state,
+            Direction facing,
+            BlockState neighborState,
+            LevelAccessor world,
+            BlockPos pos,
+            BlockPos neighborPos
     ) {
-        ensureInitialized();
         int plantID = state.getValue(PLANT_ID);
         if (plantID < 1 || plantID > plants.length || plants[plantID - 1] == null) {
             return state.getValue(POT_LIGHT) > 0 ? state.setValue(POT_LIGHT, 0) : state;
@@ -151,7 +144,7 @@ public class FlowerPotBlock extends BaseBlockNotFull implements RenderLayerProvi
         Map<String, Integer> reservedSoilIDs = Maps.newHashMap();
 
         JsonObject obj = JsonFactory.getJsonObject(new File(
-                FMLPaths.CONFIGDIR.get().toFile(),
+                FabricLoader.getInstance().getConfigDir().toFile(),
                 BetterEnd.MOD_ID + "/blocks.json"
         ));
         if (obj.get("flower_pots") != null) {
@@ -442,7 +435,6 @@ public class FlowerPotBlock extends BaseBlockNotFull implements RenderLayerProvi
             InteractionHand hand,
             BlockHitResult hit
     ) {
-        ensureInitialized();
         if (level.isClientSide) {
             return InteractionResult.CONSUME;
         }
@@ -519,20 +511,19 @@ public class FlowerPotBlock extends BaseBlockNotFull implements RenderLayerProvi
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public BlockModel getItemModel(ResourceLocation blockId) {
         Optional<String> pattern = PatternsHelper.createJson(Patterns.BLOCK_FLOWER_POT, blockId);
         return ModelsHelper.fromPattern(pattern);
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public UnbakedModel getModelVariant(
             ResourceLocation stateId,
             BlockState blockState,
             Map<ResourceLocation, UnbakedModel> modelCache
     ) {
-        ensureInitialized();
         MultiPartBuilder model = MultiPartBuilder.create(stateDefinition);
         model.part(new ModelResourceLocation(stateId.getNamespace(), stateId.getPath(), "inventory")).add();
         Transformation offset = new Transformation(new Vector3f(0, 7.5F / 16F, 0), null, null, null);

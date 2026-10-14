@@ -32,8 +32,7 @@ public class EndRegistrySupplier extends RegistrySupplier {
         return List.of(
                 new RegistryInfo<>(
                         SurfaceRuleRegistry.SURFACE_RULES_REGISTRY,
-                        AssignedSurfaceRule.CODEC,
-                        SurfaceRuleRegistry::bootstrap
+                        AssignedSurfaceRule.CODEC
                 ),
                 new RegistryInfo<>(
                         Registries.STRUCTURE,

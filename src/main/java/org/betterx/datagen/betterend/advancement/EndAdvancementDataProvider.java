@@ -21,12 +21,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+
 import java.util.List;
 
 public class EndAdvancementDataProvider extends AdvancementDataProvider {
     public EndAdvancementDataProvider(
+            FabricDataOutput output
     ) {
-        super(List.of(BetterEnd.MOD_ID));
+        super(List.of(BetterEnd.MOD_ID), output);
     }
 
     @Override

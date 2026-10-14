@@ -39,8 +39,8 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import com.google.common.collect.Lists;
 
@@ -206,7 +206,7 @@ public class EternalPedestal extends PedestalBlock implements BehaviourStone {
         };
     }
 
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     private void dispatchChargingParticles(Level level, BlockPos blockPos, RandomSource random) {
         if (!(level.getBlockEntity(blockPos) instanceof EternalPedestalEntity source) || !source.hasRitual()) return;
         EternalRitual ritual = source.getRitual();
@@ -312,7 +312,7 @@ public class EternalPedestal extends PedestalBlock implements BehaviourStone {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         super.animateTick(blockState, level, blockPos, randomSource);
         EternalHint.tickParticles(level, blockPos, randomSource);

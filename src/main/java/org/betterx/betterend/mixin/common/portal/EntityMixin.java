@@ -22,8 +22,8 @@ public class EntityMixin implements TravelingEntity {
         return be_travelerState;
     }
 
-    @Inject(method = "tick", at = @At("TAIL"))
-    void be_tick(CallbackInfo ci) {
+    @Inject(method = "handleNetherPortal", at = @At("HEAD"))
+    void be_handleNetherPortal(CallbackInfo ci) {
         if (be_travelerState != null) be_travelerState.portalTick();
     }
 

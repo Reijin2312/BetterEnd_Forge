@@ -4,6 +4,7 @@ import org.betterx.bclib.api.v2.levelgen.biomes.BCLBiome;
 import org.betterx.bclib.api.v2.levelgen.biomes.BCLBiomeRegistry;
 import org.betterx.bclib.api.v2.levelgen.biomes.BiomeAPI;
 import org.betterx.bclib.util.BlocksHelper;
+import org.betterx.bclib.util.MHelper;
 import org.betterx.betterend.interfaces.ISlime;
 import org.betterx.betterend.registry.EndBiomes;
 import org.betterx.betterend.util.GlobalState;
@@ -33,8 +34,12 @@ import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -42,7 +47,7 @@ import net.minecraft.world.level.block.Blocks;
 
 import java.util.EnumSet;
 
-public class EndSlimeEntity extends Slime implements ISlime {
+public class EndSlimeEntity extends Slime {
     private static final EntityDataAccessor<Byte> VARIANT = SynchedEntityData.defineId(
             EndSlimeEntity.class,
             EntityDataSerializers.BYTE
@@ -168,16 +173,6 @@ public class EndSlimeEntity extends Slime implements ISlime {
         }
 
         ((ISlime) this).entityRemove(reason);
-    }
-
-    @Override
-    public void be_setSlimeSize(int size, boolean heal) {
-        this.setSize(size, heal);
-    }
-
-    @Override
-    public void entityRemove(RemovalReason removalReason) {
-        super.remove(removalReason);
     }
 
     @Override

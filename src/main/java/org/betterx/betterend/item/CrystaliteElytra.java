@@ -1,68 +1,86 @@
 package org.betterx.betterend.item;
 
-import org.betterx.bclib.client.render.HumanoidArmorRenderer;
+import org.betterx.betterend.BetterEnd;
 import org.betterx.betterend.interfaces.BetterEndElytra;
 import org.betterx.betterend.interfaces.MultiModelItem;
-import org.betterx.betterend.item.material.EndArmorMaterial;
-import org.betterx.betterend.item.model.CrystaliteArmorRenderer;
 import org.betterx.betterend.registry.EndItems;
 
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
-import java.util.function.Consumer;
+public class CrystaliteElytra extends CrystaliteArmor implements MultiModelItem, BetterEndElytra {
 
-public class CrystaliteElytra extends ArmoredElytra implements MultiModelItem, BetterEndElytra {
-    private boolean clientInitDone;
+    private final ResourceLocation wingTexture;
+    private final double movementFactor;
+    private final int defense;
+    private final float toughness;
 
     public CrystaliteElytra(int durability, double movementFactor) {
-        super(
-                "elytra_crystalite",
-                EndArmorMaterial.CRYSTALITE,
-                EndItems.ENCHANTED_MEMBRANE,
-                durability,
-                movementFactor,
-                1.25D,
-                1.25F,
-                false
+        super(Type.CHESTPLATE, EndItems.makeEndItemSettings().durability(durability).rarity(Rarity.EPIC));
+        this.wingTexture = BetterEnd.makeID("textures/entity/elytra_crystalite.png");
+        this.movementFactor = movementFactor;
+        this.defense = (int) ((double) material.getDefenseForType(Type.CHESTPLATE) / 1.25);
+        this.toughness = material.getToughness() / 1.25F;
+        addAttributeModifier(
+                Attributes.ARMOR,
+                new AttributeModifier(
+                        ARMOR_MODIFIER_UUID_PER_SLOT[2],
+                        "Armor modifier",
+                        defense,
+                        AttributeModifier.Operation.ADDITION
+                )
+        );
+        addAttributeModifier(
+                Attributes.ARMOR_TOUGHNESS,
+                new AttributeModifier(
+                        ARMOR_MODIFIER_UUID_PER_SLOT[2],
+                        "Armor toughness",
+                        toughness,
+                        AttributeModifier.Operation.ADDITION
+                )
         );
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        if (clientInitDone) {
-            return;
-        }
-        clientInitDone = true;
-        consumer.accept(new IClientItemExtensions() {
-            @Override
-            public HumanoidModel<?> getHumanoidArmorModel(
-                    LivingEntity livingEntity,
-                    ItemStack stack,
-                    EquipmentSlot slot,
-                    HumanoidModel<?> original
-            ) {
-                if (slot != EquipmentSlot.CHEST) {
-                    return original;
-                }
-                CrystaliteArmorRenderer renderer = CrystaliteArmorRenderer.getInstance();
-                HumanoidModel<LivingEntity> model = renderer.modelFor(livingEntity, slot);
-                if (model == null) return original;
-                @SuppressWarnings("unchecked")
-                HumanoidModel<LivingEntity> originalTyped = (HumanoidModel<LivingEntity>) original;
-                originalTyped.copyPropertiesTo(model);
-                if (model instanceof HumanoidArmorRenderer.CopyExtraState copy) {
-                    copy.copyPropertiesFrom(originalTyped);
-                }
-                return model;
-            }
-        });
+    public boolean isValidRepairItem(ItemStack itemStack, ItemStack itemStack2) {
+        return super.isValidRepairItem(itemStack, itemStack2) || itemStack2.getItem() == EndItems.ENCHANTED_MEMBRANE;
+    }
+
+    @Override
+    public double getMovementFactor() {
+        return movementFactor;
+    }
+
+    @Override
+    @Environment(EnvType.CLIENT)
+    public ResourceLocation getModelTexture() {
+        return wingTexture;
+    }
+
+    @Override
+    public int getDefense() {
+        return defense;
+    }
+
+    @Override
+    public float getToughness() {
+        return toughness;
+    }
+
+    @Override
+    public void registerModelPredicate() {
+        ItemProperties.register(
+                this,
+                new ResourceLocation("broken"),
+                (itemStack, clientLevel, livingEntity, i) -> ElytraItem.isFlyEnabled(itemStack) ? 0.0F : 1.0F
+        );
     }
 }

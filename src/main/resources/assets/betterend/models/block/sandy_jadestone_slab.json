@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "betterend:block/sandy_jadestone",
-    "side": "betterend:block/sandy_jadestone",
-    "top": "betterend:block/sandy_jadestone"
-  }
-}

@@ -1,7 +1,7 @@
 package org.betterx.betterend.world.features;
 
+import org.betterx.bclib.util.StructureHelper;
 import org.betterx.betterend.util.LootTableUtil;
-import org.betterx.betterend.util.EndStructureHelper;
 import org.betterx.worlds.together.tag.v3.CommonBlockTags;
 
 import com.mojang.serialization.Codec;
@@ -112,7 +112,7 @@ public class BuildingListFeature extends NBTFeature<BuildingListFeatureConfig> {
 
         public StructureTemplate getStructure() {
             if (structure == null) {
-                structure = EndStructureHelper.readStructure(structurePath);
+                structure = StructureHelper.readStructure(structurePath);
             }
             return structure;
         }

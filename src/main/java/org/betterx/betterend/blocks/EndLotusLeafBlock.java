@@ -28,8 +28,8 @@ import net.minecraft.world.level.material.WaterFluid;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 public class EndLotusLeafBlock extends BaseBlockNotFull implements RenderLayerProvider, BehaviourPlant {
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -76,7 +76,7 @@ public class EndLotusLeafBlock extends BaseBlockNotFull implements RenderLayerPr
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public ItemStack getCloneItemStack(BlockGetter world, BlockPos pos, BlockState state) {
         return new ItemStack(EndBlocks.END_LOTUS_SEED);
     }

@@ -2,8 +2,6 @@ package org.betterx.betterend.portal;
 
 import org.betterx.betterend.BetterEnd;
 import org.betterx.betterend.advancements.BECriteria;
-import org.betterx.betterend.mixin.common.portal.EntityAccessor;
-import org.betterx.betterend.mixin.common.portal.ServerPlayerAccessor;
 
 import net.minecraft.BlockUtil;
 import net.minecraft.client.player.LocalPlayer;
@@ -38,7 +36,6 @@ public final class TravelerState {
     private BlockPos portalEntrancePos;
     private boolean isInsidePortal;
     private int portalTime;
-    private int lastPortalTick = Integer.MIN_VALUE;
 
     public TravelerState(Entity entity) {
         this.entity = entity;
@@ -60,7 +57,7 @@ public final class TravelerState {
         }
         if (this.level().isClientSide) {
             if (entity instanceof LocalPlayer) {
-                ((EntityAccessor) entity).be_setInsidePortal(true);
+                entity.isInsidePortal = true;
             }
         }
 
@@ -76,10 +73,6 @@ public final class TravelerState {
         if (!(this.level() instanceof ServerLevel)) {
             return;
         }
-        if (entity.tickCount == lastPortalTick) {
-            return;
-        }
-        lastPortalTick = entity.tickCount;
 
         if (this.isInsidePortal) {
             final int waitTimer = entity.getPortalWaitTime();
@@ -168,7 +161,7 @@ public final class TravelerState {
                 serverLevel.addDuringTeleport(copy);
             }
 
-            ((EntityAccessor) traveler).be_removeAfterChangingDimensions();
+            traveler.removeAfterChangingDimensions();
             sourceDimension.resetEmptyTime();
             serverLevel.resetEmptyTime();
 
@@ -186,7 +179,7 @@ public final class TravelerState {
         final ServerLevel sourceDimension = traveler.serverLevel();
         final PlayerList playerList = traveler.server.getPlayerList();
 
-        ((ServerPlayerAccessor) traveler).be_setChangingDimension(true);
+        traveler.isChangingDimension = true;
         traveler.unRide();
 
         traveler.connection.send(new ClientboundRespawnPacket(
@@ -209,11 +202,11 @@ public final class TravelerState {
         playerList.sendPlayerPermissionLevel(traveler);
 
         sourceDimension.removePlayerImmediately(traveler, Entity.RemovalReason.CHANGED_DIMENSION);
-        ((EntityAccessor) traveler).be_unsetRemoved();
+        traveler.unsetRemoved();
         traveler.setServerLevel(serverLevel);
         traveler.connection.resetPosition();
         serverLevel.addDuringPortalTeleport(traveler);
-        ((ServerPlayerAccessor) traveler).be_triggerDimensionChangeTriggers(sourceDimension);
+        traveler.triggerDimensionChangeTriggers(sourceDimension);
         traveler.connection.teleport(
                 portalInfo.pos.x, portalInfo.pos.y, portalInfo.pos.z,
                 portalInfo.yRot, portalInfo.xRot
@@ -232,9 +225,9 @@ public final class TravelerState {
                 0,
                 false
         ));
-        ((ServerPlayerAccessor) traveler).be_setLastSentExp(-1);
-        ((ServerPlayerAccessor) traveler).be_setLastSentHealth(-1.0F);
-        ((ServerPlayerAccessor) traveler).be_setLastSentFood(-1);
+        traveler.lastSentExp = -1;
+        traveler.lastSentHealth = -1.0F;
+        traveler.lastSentFood = -1;
 
         sourceDimension.resetEmptyTime();
         serverLevel.resetEmptyTime();

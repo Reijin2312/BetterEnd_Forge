@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,8 +25,8 @@ public class EndstoneDustBlock extends FallingBlock implements TagProvider, Beha
     private static final int COLOR = ColorUtil.color(226, 239, 168);
 
     public EndstoneDustBlock() {
-        super(BlockBehaviour.Properties
-                .copy(Blocks.SAND)
+        super(FabricBlockSettings
+                .copyOf(Blocks.SAND)
                 .mapColor(Blocks.END_STONE.defaultMapColor())
         );
     }

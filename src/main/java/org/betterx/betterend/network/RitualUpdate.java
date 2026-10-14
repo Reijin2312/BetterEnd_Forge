@@ -3,7 +3,6 @@ package org.betterx.betterend.network;
 import org.betterx.bclib.api.v2.dataexchange.BaseDataHandler;
 import org.betterx.bclib.api.v2.dataexchange.DataHandler;
 import org.betterx.bclib.api.v2.dataexchange.DataHandlerDescriptor;
-import org.betterx.bclib.api.v2.dataexchange.PacketSender;
 import org.betterx.betterend.BetterEnd;
 import org.betterx.betterend.rituals.EternalRitual;
 
@@ -15,8 +14,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
 
 public class RitualUpdate extends DataHandler.FromServer {
     public static final DataHandlerDescriptor DESCRIPTOR = new DataHandlerDescriptor(
@@ -70,7 +70,7 @@ public class RitualUpdate extends DataHandler.FromServer {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     protected void deserializeIncomingDataOnClient(FriendlyByteBuf buf, PacketSender responseSender) {
         center = buf.readBlockPos();
         axis = Direction.Axis.byName(BaseDataHandler.readString(buf));
@@ -80,7 +80,7 @@ public class RitualUpdate extends DataHandler.FromServer {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     protected void runOnClientGameThread(Minecraft client) {
         EternalRitual.updateActiveStateOnPedestals(
                 center,

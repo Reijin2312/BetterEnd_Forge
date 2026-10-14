@@ -85,9 +85,9 @@ APP_HOME=$( cd "${APP_HOME:-./}" && pwd -P ) || exit
 APP_NAME="Gradle"
 APP_BASE_NAME=${0##*/}
 
-# Reuse the established local cache for this branch unless user explicitly overrides it.
+# Keep Gradle caches local to this branch unless user explicitly overrides it.
 if [ -z "$GRADLE_USER_HOME" ] ; then
-    GRADLE_USER_HOME="$APP_HOME/.gradle-user-home"
+    GRADLE_USER_HOME="$APP_HOME/.gradle-local"
     export GRADLE_USER_HOME
 fi
 

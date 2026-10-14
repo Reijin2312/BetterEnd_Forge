@@ -7,10 +7,10 @@ import org.betterx.ui.ColorUtil;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 public class BulbVineLanternColoredBlock extends BulbVineLanternBlock implements CustomColorProvider {
-    public BulbVineLanternColoredBlock(BlockBehaviour.Properties settings) {
+    public BulbVineLanternColoredBlock(FabricBlockSettings settings) {
         super(settings);
     }
 

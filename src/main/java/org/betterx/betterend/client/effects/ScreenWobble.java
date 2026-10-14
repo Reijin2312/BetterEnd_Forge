@@ -3,12 +3,12 @@ package org.betterx.betterend.client.effects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import org.jetbrains.annotations.Nullable;
 
-@OnlyIn(Dist.CLIENT)
+@Environment(EnvType.CLIENT)
 final class ScreenWobble {
     private static final float DECAY = 14.0F;
     private static final float MAX_ROLL = 4.5F;

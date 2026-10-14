@@ -19,6 +19,7 @@ public class InfusionRecipeScreen extends Screen {
     private static final int PANEL_HEIGHT = 184;
     private static final int SLOT_SIZE = 18;
     private static final int RADIUS = 48;
+
     private final List<InfusionRecipe> recipes = new ArrayList<>();
     private int selected;
     private int left;
@@ -35,12 +36,15 @@ public class InfusionRecipeScreen extends Screen {
             recipes.addAll(InfusionRecipeAccess.all(minecraft.level));
             recipes.sort(Comparator.comparing(recipe -> output(recipe).getHoverName().getString()));
         }
+
         left = (width - PANEL_WIDTH) / 2;
         top = (height - PANEL_HEIGHT) / 2;
         addRenderableWidget(Button.builder(Component.literal("<"), button -> select(-1))
-                                  .bounds(left + 8, top + PANEL_HEIGHT - 28, 32, 20).build());
+                                  .bounds(left + 8, top + PANEL_HEIGHT - 28, 32, 20)
+                                  .build());
         addRenderableWidget(Button.builder(Component.literal(">"), button -> select(1))
-                                  .bounds(left + PANEL_WIDTH - 40, top + PANEL_HEIGHT - 28, 32, 20).build());
+                                  .bounds(left + PANEL_WIDTH - 40, top + PANEL_HEIGHT - 28, 32, 20)
+                                  .build());
     }
 
     private void select(int direction) {
@@ -65,6 +69,7 @@ public class InfusionRecipeScreen extends Screen {
         graphics.fill(left - 3, top - 3, left + PANEL_WIDTH + 3, top + PANEL_HEIGHT + 3, 0xFF5A2A1C);
         graphics.fill(left, top, left + PANEL_WIDTH, top + PANEL_HEIGHT, 0xFFFFF9EC);
         graphics.drawString(font, title, left + 8, top + 8, 0x404040, false);
+
         if (recipes.isEmpty()) {
             graphics.drawString(font, Component.translatable("gui.betterend.infusion.no_recipes"),
                     left + 8, top + 30, 0x8A7A5C, false);
@@ -76,6 +81,7 @@ public class InfusionRecipeScreen extends Screen {
         ItemStack result = output(recipe);
         int centerX = left + 112;
         int centerY = top + 92;
+
         List<Ingredient> ingredients = recipe.getIngredients();
         drawSlot(graphics, centerX, centerY,
                 ingredients.isEmpty() ? ItemStack.EMPTY : ingredientStack(ingredients.get(0)), mouseX, mouseY);
@@ -86,6 +92,7 @@ public class InfusionRecipeScreen extends Screen {
             ItemStack stack = ingredients.size() > i + 1 ? ingredientStack(ingredients.get(i + 1)) : ItemStack.EMPTY;
             drawSlot(graphics, x, y, stack, mouseX, mouseY);
         }
+
         drawSlot(graphics, left + 218, centerY, result, mouseX, mouseY);
         graphics.drawString(font, result.getHoverName(), left + 150, top + 28, 0x404040, false);
         graphics.drawCenteredString(font, Component.literal((selected + 1) + " / " + recipes.size()),

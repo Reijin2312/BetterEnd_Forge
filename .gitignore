@@ -37,5 +37,3 @@ libs/
 /src/main/generated/.cache/
 /CHANGES.md
 /modrinth.json
-.gradle-local/
-.gradle-user-home/

@@ -36,8 +36,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegisterCommandsEvent;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
 import com.google.common.base.Stopwatch;
 import org.joml.Vector3d;
@@ -48,11 +47,7 @@ import java.util.Optional;
 
 public class CommandRegistry {
     public static void register() {
-        MinecraftForge.EVENT_BUS.addListener(CommandRegistry::onRegisterCommands);
-    }
-
-    private static void onRegisterCommands(RegisterCommandsEvent event) {
-        register(event.getDispatcher(), event.getBuildContext(), event.getCommandSelection());
+        CommandRegistrationCallback.EVENT.register(CommandRegistry::register);
     }
 
     private static void register(
@@ -207,3 +202,4 @@ public class CommandRegistry {
         }
     }
 }
+

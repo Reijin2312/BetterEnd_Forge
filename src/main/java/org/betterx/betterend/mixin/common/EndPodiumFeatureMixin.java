@@ -1,7 +1,7 @@
 package org.betterx.betterend.mixin.common;
 
+import org.betterx.bclib.util.StructureHelper;
 import org.betterx.betterend.BetterEnd;
-import org.betterx.betterend.util.EndStructureHelper;
 import org.betterx.betterend.world.generator.GeneratorOptions;
 import org.betterx.worlds.together.world.WorldConfig;
 
@@ -48,7 +48,7 @@ public class EndPodiumFeatureMixin {
             RandomSource random = featurePlaceContext.random();
             WorldGenLevel world = featurePlaceContext.level();
             BlockPos blockPos = be_updatePortalPos(world);
-            StructureTemplate structure = EndStructureHelper.readStructure(BetterEnd.makeID(active
+            StructureTemplate structure = StructureHelper.readStructure(BetterEnd.makeID(active
                     ? "portal/end_portal_active"
                     : "portal/end_portal_inactive"));
             Vec3i size = structure.getSize();
@@ -78,13 +78,13 @@ public class EndPodiumFeatureMixin {
         be_portalPosition = NbtUtils.readBlockPos(compound);
 
         if (be_portalPosition.getY() == 0) {
-            /*if (GeneratorOptions.useNewGenerator()) {
-                int y = TerrainGenerator.getHeight(0, 0, world.getLevel().getChunkSource().getGenerator().getBiomeSource());
-                be_portalPosition = new BlockPos(0, y, 0);
-            }
-            else {
-                be_portalPosition = new BlockPos(0, 65, 0);
-            }*/
+			/*if (GeneratorOptions.useNewGenerator()) {
+				int y = TerrainGenerator.getHeight(0, 0, world.getLevel().getChunkSource().getGenerator().getBiomeSource());
+				be_portalPosition = new BlockPos(0, y, 0);
+			}
+			else {
+				be_portalPosition = new BlockPos(0, 65, 0);
+			}*/
             int y = world.getHeight(Types.WORLD_SURFACE, 0, 0);
             be_portalPosition = new BlockPos(0, y, 0);
             WorldConfig.getRootTag(BetterEnd.MOD_ID).put("portal", NbtUtils.writeBlockPos(be_portalPosition));

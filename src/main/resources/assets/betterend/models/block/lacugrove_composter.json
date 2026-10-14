@@ -1,8 +1,0 @@
-{
-  "parent": "wover:block/composter",
-  "textures": {
-    "bottom": "betterend:block/lacugrove_composter_bottom",
-    "side": "betterend:block/lacugrove_composter_side",
-    "top": "betterend:block/lacugrove_composter_top"
-  }
-}

@@ -20,34 +20,16 @@ public class PedestalVanilla extends PedestalBlock implements BehaviourStone {
     protected Map<String, String> createTexturesMap() {
         ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(parent);
         String name = blockId.getPath().replace("_block", "");
-        String top = "polished_" + name;
-        String base = top;
-        String bottom = top;
-        String pillar = name + "_pillar";
-        if ("minecraft".equals(blockId.getNamespace())) {
-            switch (name) {
-                case "quartz":
-                    top = "quartz_block_top";
-                    base = "quartz_block";
-                    bottom = "quartz_block_top";
-                    pillar = "quartz_pillar";
-                    break;
-                case "purpur":
-                    top = "purpur_block";
-                    base = "purpur_block";
-                    bottom = "purpur_block";
-                    pillar = "purpur_pillar";
-                    break;
-                default:
-                    break;
+        return new HashMap<String, String>() {
+            private static final long serialVersionUID = 1L;
+
+            {
+                put("%mod%", blockId.getNamespace());
+                put("%top%", "polished_" + name);
+                put("%base%", "polished_" + name);
+                put("%pillar%", name + "_pillar");
+                put("%bottom%", "polished_" + name);
             }
-        }
-        Map<String, String> textures = new HashMap<>();
-        textures.put("%mod%", blockId.getNamespace());
-        textures.put("%top%", top);
-        textures.put("%base%", base);
-        textures.put("%pillar%", pillar);
-        textures.put("%bottom%", bottom);
-        return textures;
+        };
     }
 }

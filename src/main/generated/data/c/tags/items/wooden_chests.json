@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:dragon_tree_chest",
     "betterend:end_lotus_chest",

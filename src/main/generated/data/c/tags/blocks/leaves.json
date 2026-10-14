@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:cave_bush",
     "betterend:dragon_tree_leaves",

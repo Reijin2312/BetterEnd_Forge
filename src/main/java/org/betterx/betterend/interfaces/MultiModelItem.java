@@ -2,11 +2,11 @@ package org.betterx.betterend.interfaces;
 
 import org.betterx.betterend.registry.EndItems;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 public interface MultiModelItem {
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     void registerModelPredicate();
 
     static void register() {

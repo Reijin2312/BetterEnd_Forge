@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:dragon_tree_crafting_table",
     "betterend:end_lotus_crafting_table",

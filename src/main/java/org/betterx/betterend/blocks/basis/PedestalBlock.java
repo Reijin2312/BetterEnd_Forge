@@ -45,9 +45,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -75,7 +75,7 @@ public class PedestalBlock extends BaseBlockNotFull implements EntityBlock, TagP
     protected float height = 1.0F;
 
     public PedestalBlock(Block parent) {
-        super(BlockBehaviour.Properties.copy(parent).lightLevel(getLuminance(parent.defaultBlockState())));
+        super(FabricBlockSettings.copyOf(parent).luminance(getLuminance(parent.defaultBlockState())));
         this.registerDefaultState(
                 stateDefinition
                         .any()
@@ -390,13 +390,13 @@ public class PedestalBlock extends BaseBlockNotFull implements EntityBlock, TagP
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public BlockModel getItemModel(ResourceLocation blockId) {
         return getBlockModel(blockId, defaultBlockState());
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public @Nullable BlockModel getBlockModel(ResourceLocation resourceLocation, BlockState blockState) {
         Map<String, String> textures = createTexturesMap();
         PedestalState state = blockState.getValue(STATE);
@@ -424,7 +424,7 @@ public class PedestalBlock extends BaseBlockNotFull implements EntityBlock, TagP
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public UnbakedModel getModelVariant(
             ResourceLocation stateId,
             BlockState blockState,
@@ -474,10 +474,10 @@ public class PedestalBlock extends BaseBlockNotFull implements EntityBlock, TagP
     public void addTags(List<TagKey<Block>> blockTags, List<TagKey<Item>> itemTags) {
         blockTags.add(EndTags.PEDESTALS);
     }
-
-    /*@Override
-    @Nullable
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? PedestalBlockEntity::tick : null;
-    }*/
+	
+	/*@Override
+	@Nullable
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
+		return level.isClientSide() ? PedestalBlockEntity::tick : null;
+	}*/
 }

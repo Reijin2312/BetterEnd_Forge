@@ -1,7 +1,6 @@
 {
+  "replace": false,
   "values": [
-    "betterend:mossy_obsidian",
-    "minecraft:crying_obsidian",
-    "minecraft:obsidian"
+    "betterend:mossy_obsidian"
   ]
 }

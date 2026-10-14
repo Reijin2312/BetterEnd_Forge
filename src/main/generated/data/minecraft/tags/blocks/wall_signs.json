@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:dragon_tree_wall_sign",
     "betterend:end_lotus_wall_sign",

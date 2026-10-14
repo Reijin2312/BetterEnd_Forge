@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "patchouli"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "betterend:crystal_shards"
+    },
+    "D": {
+      "item": "betterend:ender_dust"
+    }
+  },
+  "pattern": [
+    "D",
+    "B",
+    "C"
+  ],
+  "result": {
+    "item": "betterend:guidebook"
+  },
+  "show_notification": true
+}

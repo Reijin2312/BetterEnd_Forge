@@ -5,11 +5,14 @@ import org.betterx.betterend.client.ClientOptions;
 import org.betterx.betterend.registry.EndBlocks;
 import org.betterx.ui.ColorUtil;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.chunk.MissingPaletteEntryException;
+
+import net.fabricmc.loader.api.FabricLoader;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

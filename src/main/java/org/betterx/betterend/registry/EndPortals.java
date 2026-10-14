@@ -10,7 +10,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.fabricmc.loader.api.FabricLoader;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -21,10 +21,10 @@ public class EndPortals {
 
     public final static ResourceLocation OVERWORLD_ID = Level.OVERWORLD.location();
 
-    private static PortalInfo[] portals = new PortalInfo[] { makeDefault() };
+    private static PortalInfo[] portals;
 
     public static void loadPortals() {
-        File file = new File(FMLPaths.CONFIGDIR.get().toFile(), "betterend/portals.json");
+        File file = new File(FabricLoader.getInstance().getConfigDir().toString(), "betterend/portals.json");
         JsonObject json;
         if (!file.exists()) {
             file.getParentFile().mkdirs();
@@ -47,9 +47,6 @@ public class EndPortals {
     }
 
     public static int getCount() {
-        if (portals == null || portals.length == 0) {
-            return 1;
-        }
         return MHelper.max(portals.length - 1, 1);
     }
 

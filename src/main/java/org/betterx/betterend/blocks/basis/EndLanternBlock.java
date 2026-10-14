@@ -24,9 +24,9 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 import java.util.Map;
 
@@ -36,7 +36,7 @@ public class EndLanternBlock extends BaseBlockNotFull.Wood implements SimpleWate
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public EndLanternBlock(Block source) {
-        this(BlockBehaviour.Properties.copy(source).lightLevel((bs) -> 15).noOcclusion());
+        this(FabricBlockSettings.copyOf(source).lightLevel((bs) -> 15).noOcclusion());
     }
 
     public EndLanternBlock(Properties settings) {
@@ -126,7 +126,7 @@ public class EndLanternBlock extends BaseBlockNotFull.Wood implements SimpleWate
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public UnbakedModel getModelVariant(
             ResourceLocation stateId,
             BlockState blockState,

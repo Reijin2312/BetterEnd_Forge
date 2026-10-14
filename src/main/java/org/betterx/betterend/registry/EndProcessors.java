@@ -16,7 +16,7 @@ public class EndProcessors {
 
     public static final ResourceKey<StructureProcessorList> END_STREET =
             ProcessorHelper.createKey(BetterEnd.makeID("end_street"));
-
+    
     public static final ResourceKey<StructureProcessorList> CRYING_10_PERCENT =
             ProcessorHelper.createKey(BetterEnd.makeID("crying_10_percent"));
 }

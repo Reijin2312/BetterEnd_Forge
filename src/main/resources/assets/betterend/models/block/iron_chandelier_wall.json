@@ -1,6 +1,0 @@
-{
-  "parent": "betterend:block/chandelier_wall",
-  "textures": {
-    "wall": "betterend:block/iron_chandelier_wall"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "betterend:block/thallasium_tile",
-    "side": "betterend:block/thallasium_tile",
-    "top": "betterend:block/thallasium_tile"
-  }
-}

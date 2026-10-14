@@ -40,14 +40,7 @@ public class FlamboyantRefabricatedIntegration extends ModIntegration {
         addColor("6e8c9c", "slate_gray", colors, dyes);
         addColor("b02454", "violet", colors, dyes);
 
-        new ColoredMaterial(
-                "hydralux_petal_block",
-                HydraluxPetalColoredBlock::new,
-                EndBlocks.HYDRALUX_PETAL_BLOCK,
-                colors,
-                dyes,
-                true
-        );
+        new ColoredMaterial(HydraluxPetalColoredBlock::new, EndBlocks.HYDRALUX_PETAL_BLOCK, colors, dyes, true);
     }
 
     private void addColor(String hex, String name, Map<Integer, String> colors, Map<Integer, ItemLike> dyes) {

@@ -12,8 +12,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 public class ArmoredElytra extends BaseArmorItem implements MultiModelItem, BetterEndElytra {
     private final ResourceLocation wingTexture;
@@ -30,19 +30,6 @@ public class ArmoredElytra extends BaseArmorItem implements MultiModelItem, Bett
             double movementFactor,
             boolean fireproof
     ) {
-        this(name, material, repairItem, durability, movementFactor, 1.15D, 1.15F, fireproof);
-    }
-
-    public ArmoredElytra(
-            String name,
-            ArmorMaterial material,
-            Item repairItem,
-            int durability,
-            double movementFactor,
-            double defenseDivider,
-            float toughnessDivider,
-            boolean fireproof
-    ) {
         super(
                 material,
                 Type.CHESTPLATE,
@@ -55,8 +42,8 @@ public class ArmoredElytra extends BaseArmorItem implements MultiModelItem, Bett
         this.wingTexture = BetterEnd.makeID("textures/entity/" + name + ".png");
         this.repairItem = repairItem;
         this.movementFactor = movementFactor;
-        this.defense = (int) ((double) material.getDefenseForType(Type.CHESTPLATE) / defenseDivider);
-        this.toughness = material.getToughness() / toughnessDivider;
+        this.defense = (int) ((double) material.getDefenseForType(Type.CHESTPLATE) / 1.15);
+        this.toughness = material.getToughness() / 1.15F;
         addAttributeModifier(
                 Attributes.ARMOR,
                 new AttributeModifier(
@@ -83,7 +70,7 @@ public class ArmoredElytra extends BaseArmorItem implements MultiModelItem, Bett
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public ResourceLocation getModelTexture() {
         return wingTexture;
     }
@@ -104,7 +91,7 @@ public class ArmoredElytra extends BaseArmorItem implements MultiModelItem, Bett
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public void registerModelPredicate() {
         ItemProperties.register(
                 this,

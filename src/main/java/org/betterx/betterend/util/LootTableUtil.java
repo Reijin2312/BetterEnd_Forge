@@ -24,8 +24,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.LootTableLoadEvent;
+import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 
 public class LootTableUtil {
     public static final ResourceLocation VILLAGE_LOOT = BetterEnd.makeID("chests/end_village_loot");
@@ -69,55 +68,50 @@ public class LootTableUtil {
             = LocationCheck.checkLocation(LocationPredicate.Builder.location().setBiome(EndBiomes.UMBRELLA_JUNGLE));
 
     public static void init() {
-        MinecraftForge.EVENT_BUS.addListener(LootTableUtil::onLootTableLoad);
-    }
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, table, setter) -> {
+            if (BuiltInLootTables.END_CITY_TREASURE.equals(id)) {
+                LootPool.Builder builder = LootPool.lootPool();
+                builder.setRolls(ConstantValue.exactly(1));
+                builder.when(LootItemRandomChanceCondition.randomChance(0.2f));
+                builder.add(LootItem.lootTableItem(Items.GHAST_TEAR));
+                table.withPool(builder);
 
-    private static void onLootTableLoad(LootTableLoadEvent event) {
-        final ResourceLocation id = event.getName();
-        final var table = event.getTable();
+                builder = LootPool.lootPool();
+                builder.setRolls(UniformGenerator.between(0, 3));
+                builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_STRANGE_AND_ALIEN));
+                builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_GRASPING_AT_STARS));
+                builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_ENDSEEKER));
+                builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_EO_DRACONA));
+                builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_ENDER_HOLLOW));
+                builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_MOONLIT_UNDERCURRENTS));
+                table.withPool(builder);
 
-        if (BuiltInLootTables.END_CITY_TREASURE.equals(id)) {
-            LootPool.Builder builder = LootPool.lootPool();
-            builder.setRolls(ConstantValue.exactly(1));
-            builder.when(LootItemRandomChanceCondition.randomChance(0.2f));
-            builder.add(LootItem.lootTableItem(Items.GHAST_TEAR));
-            table.addPool(builder.build());
-
-            builder = LootPool.lootPool();
-            builder.setRolls(UniformGenerator.between(0, 3));
-            builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_STRANGE_AND_ALIEN));
-            builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_GRASPING_AT_STARS));
-            builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_ENDSEEKER));
-            builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_EO_DRACONA));
-            builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_ENDER_HOLLOW));
-            builder.add(LootItem.lootTableItem(EndItems.MUSIC_DISC_MOONLIT_UNDERCURRENTS));
-            table.addPool(builder.build());
-
-            table.addPool(LootPool
-                    .lootPool()
-                    .setRolls(UniformGenerator.between(2, 4))
-                    .add(EmptyLootItem.emptyItem().setWeight(12))
-                    .add(LootItem.lootTableItem(EndTemplates.NETHERITE_UPGRADE).setWeight(3))
-                    .add(LootItem.lootTableItem(EndTemplates.HANDLE_ATTACHMENT).setWeight(2))
-                    .add(LootItem.lootTableItem(EndTemplates.LEATHER_HANDLE_ATTACHMENT).setWeight(1))
-                    .add(LootItem.lootTableItem(EndTemplates.TOOL_ASSEMBLY).setWeight(1))
-                    .add(LootItem.lootTableItem(EndTemplates.AETERNIUM_UPGRADE).setWeight(1))
-                    .add(LootItem.lootTableItem(EndTemplates.THALLASIUM_UPGRADE).setWeight(2))
-                    .add(LootItem.lootTableItem(EndTemplates.TERMINITE_UPGRADE).setWeight(2))
-                    .build());
-        } else if (BuiltInLootTables.FISHING.equals(id)) {
-            table.addPool(LootPool.lootPool().when(IN_END).setRolls(ConstantValue.exactly(1.0F))
-                                   .add(LootTableReference.lootTableReference(FISHING_FISH)
-                                                          .setWeight(85)
-                                                          .setQuality(-1))
-                                   .add(LootTableReference.lootTableReference(FISHING_TREASURE)
-                                                          .setWeight(5)
-                                                          .setQuality(2))
-                                   .add(LootTableReference.lootTableReference(FISHING_JUNK)
-                                                          .setWeight(10)
-                                                          .setQuality(-2))
-                                   .build());
-        }
+                table.withPool(LootPool
+                        .lootPool()
+                        .setRolls(UniformGenerator.between(2, 4))
+                        .add(EmptyLootItem.emptyItem().setWeight(12))
+                        .add(LootItem.lootTableItem(EndTemplates.NETHERITE_UPGRADE).setWeight(3))
+                        .add(LootItem.lootTableItem(EndTemplates.HANDLE_ATTACHMENT).setWeight(2))
+                        .add(LootItem.lootTableItem(EndTemplates.LEATHER_HANDLE_ATTACHMENT).setWeight(1))
+                        .add(LootItem.lootTableItem(EndTemplates.TOOL_ASSEMBLY).setWeight(1))
+                        .add(LootItem.lootTableItem(EndTemplates.AETERNIUM_UPGRADE).setWeight(1))
+                        .add(LootItem.lootTableItem(EndTemplates.THALLASIUM_UPGRADE).setWeight(2))
+                        .add(LootItem.lootTableItem(EndTemplates.TERMINITE_UPGRADE).setWeight(2))
+                );
+            } else if (BuiltInLootTables.FISHING.equals(id)) {
+                table.modifyPools((modifier) -> modifier.when(IN_END.invert()));
+                table.withPool(LootPool.lootPool().when(IN_END).setRolls(ConstantValue.exactly(1.0F))
+                                       .add(LootTableReference.lootTableReference(FISHING_FISH)
+                                                              .setWeight(85)
+                                                              .setQuality(-1))
+                                       .add(LootTableReference.lootTableReference(FISHING_TREASURE)
+                                                              .setWeight(5)
+                                                              .setQuality(2))
+                                       .add(LootTableReference.lootTableReference(FISHING_JUNK)
+                                                              .setWeight(10)
+                                                              .setQuality(-2)));
+            }
+        });
     }
 
     public static ResourceLocation getTable(Holder<Biome> biome) {

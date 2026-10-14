@@ -3,7 +3,6 @@
   "minVersion": "0.8",
   "package": "org.betterx.betterend.mixin.client",
   "compatibilityLevel": "JAVA_16",
-  "refmap": "betterend.refmap.json",
   "client": [
     "AbstractSoundInstanceAccessor",
     "ArmorStandRendererMixin",
@@ -11,6 +10,7 @@
     "CapeLayerMixin",
     "GameRendererMixin",
     "HumanoidMobRendererMixin",
+    "ItemStackMixin",
     "MinecraftClientMixin",
     "ModelLoaderMixin",
     "MusicTrackerMixin",

@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:dragon_tree_bookshelf",
     "betterend:end_lotus_bookshelf",
@@ -9,7 +10,6 @@
     "betterend:mossy_glowshroom_bookshelf",
     "betterend:pythadendron_bookshelf",
     "betterend:tenanea_bookshelf",
-    "betterend:umbrella_tree_bookshelf",
-    "minecraft:bookshelf"
+    "betterend:umbrella_tree_bookshelf"
   ]
 }

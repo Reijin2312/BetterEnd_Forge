@@ -34,8 +34,8 @@
   },
   "requirements": [
     [
-      "has_lacugrove_slab",
       "has_lacugrove_planks",
+      "has_lacugrove_slab",
       "has_the_recipe"
     ]
   ],

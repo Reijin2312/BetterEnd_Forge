@@ -11,10 +11,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
-@OnlyIn(Dist.CLIENT)
+@Environment(EnvType.CLIENT)
 public class ParticleTenaneaPetal extends TextureSheetParticle {
     private static BlockColor provider;
 
@@ -100,7 +100,7 @@ public class ParticleTenaneaPetal extends TextureSheetParticle {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public static class FactoryTenaneaPetal implements ParticleProvider<SimpleParticleType> {
 
         private final SpriteSet sprites;

@@ -37,7 +37,7 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-import net.minecraftforge.common.ForgeHooks;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -411,7 +411,7 @@ public class EndStoneSmelterBlockEntity extends BaseContainerBlockEntity impleme
             return 0;
         }
         Item item = fuel.getItem();
-        return AVAILABLE_FUELS.getOrDefault(item, getForgeFuel(fuel));
+        return AVAILABLE_FUELS.getOrDefault(item, getFabricFuel(fuel));
     }
 
     @Override
@@ -454,7 +454,7 @@ public class EndStoneSmelterBlockEntity extends BaseContainerBlockEntity impleme
     }
 
     public static boolean canUseAsFuel(ItemStack stack) {
-        return AVAILABLE_FUELS.containsKey(stack.getItem()) || getForgeFuel(stack) > 2000;
+        return AVAILABLE_FUELS.containsKey(stack.getItem()) || getFabricFuel(stack) > 2000;
     }
 
     public static void registerFuel(ItemLike fuel, int time) {
@@ -465,8 +465,9 @@ public class EndStoneSmelterBlockEntity extends BaseContainerBlockEntity impleme
         return AVAILABLE_FUELS;
     }
 
-    private static int getForgeFuel(ItemStack stack) {
-        return ForgeHooks.getBurnTime(stack, RecipeType.BLASTING);
+    private static int getFabricFuel(ItemStack stack) {
+        Integer ticks = FuelRegistry.INSTANCE.get(stack.getItem());
+        return ticks == null ? 0 : ticks;
     }
 
     static {

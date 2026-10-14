@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:amaranita_cap",
     "betterend:amaranita_hymenophore",
@@ -187,10 +188,6 @@
     "betterend:umbrella_tree_wall_hanging_sign",
     "betterend:umbrella_tree_wall_sign",
     "betterend:violecite_lantern",
-    "betterend:virid_jadestone_lantern",
-    "#c:wooden_barrels",
-    "#c:wooden_chests",
-    "#c:wooden_composter",
-    "#c:workbench"
+    "betterend:virid_jadestone_lantern"
   ]
 }

@@ -34,8 +34,8 @@
   },
   "requirements": [
     [
-      "has_helix_tree_slab",
       "has_helix_tree_planks",
+      "has_helix_tree_slab",
       "has_the_recipe"
     ]
   ],

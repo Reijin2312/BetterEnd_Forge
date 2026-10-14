@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:bulb_vine",
     "betterend:dense_vine",

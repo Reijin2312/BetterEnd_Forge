@@ -3,7 +3,7 @@ package org.betterx.betterend.mixin;
 import java.util.List;
 import java.util.Set;
 
-import net.minecraftforge.fml.loading.FMLLoader;
+import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -12,7 +12,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClass, String mixinClass) {
         return !mixinClass.contains("BlockLionfishWorldGenMixin")
-                || FMLLoader.getLoadingModList().getModFileById("lionfishapi") != null;
+                || FabricLoader.getInstance().isModLoaded("lionfishapi");
     }
 
     @Override

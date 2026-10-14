@@ -27,8 +27,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
@@ -131,21 +129,6 @@ public class InfusionPedestal extends PedestalBlock implements BehaviourStone {
             }
         }
         return super.getShape(state, world, pos, context);
-    }
-
-    @Override
-    protected Map<String, String> createTexturesMap() {
-        return new HashMap<String, String>() {
-            private static final long serialVersionUID = 1L;
-
-            {
-                put("%mod%", "betterend");
-                put("%top%", "infusion_pedestal_top");
-                put("%base%", "infusion_pedestal_base");
-                put("%pillar%", "infusion_pedestal_pillar");
-                put("%bottom%", "infusion_pedestal_base");
-            }
-        };
     }
 
     @Override

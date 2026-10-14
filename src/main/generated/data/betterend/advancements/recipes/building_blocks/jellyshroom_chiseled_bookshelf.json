@@ -34,8 +34,8 @@
   },
   "requirements": [
     [
-      "has_jellyshroom_slab",
       "has_jellyshroom_planks",
+      "has_jellyshroom_slab",
       "has_the_recipe"
     ]
   ],

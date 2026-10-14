@@ -11,8 +11,8 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.Pools;
+import net.minecraft.data.worldgen.ProcessorLists;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
@@ -63,9 +63,7 @@ public class VillagePools {
         final Holder.Reference<StructureProcessorList> cry = processorGetter.getOrThrow(EndProcessors.CRYING_10_PERCENT);
         final Holder.Reference<StructureProcessorList> crackAndWeather = processorGetter.getOrThrow(EndProcessors.CRACK_AND_WEATHER);
         final Holder.Reference<StructureProcessorList> endStreetProcessor = processorGetter.getOrThrow(EndProcessors.END_STREET);
-        final Holder.Reference<StructureProcessorList> emptyProcessor = processorGetter.getOrThrow(
-                ResourceKey.create(Registries.PROCESSOR_LIST, new ResourceLocation("minecraft", "empty"))
-        );
+        final Holder.Reference<StructureProcessorList> emptyProcessor = processorGetter.getOrThrow(ProcessorLists.EMPTY);
 
         final Holder.Reference<PlacedFeature> chorus = featureGetter.getOrThrow(CHORUS_VILLAGE);
         ctx.register(VillagePools.TERMINATORS_KEY, new StructureTemplatePool(

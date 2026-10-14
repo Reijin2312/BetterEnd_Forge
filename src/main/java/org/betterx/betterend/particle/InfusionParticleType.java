@@ -14,8 +14,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.ItemStack;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 public class InfusionParticleType extends ParticleType<InfusionParticleType> implements ParticleOptions {
     public static final Codec<InfusionParticleType> CODEC = ItemStack.CODEC.xmap(itemStack -> new InfusionParticleType(
@@ -60,7 +60,7 @@ public class InfusionParticleType extends ParticleType<InfusionParticleType> imp
         this(EndParticles.INFUSION, stack);
     }
 
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public float[] getPalette() {
         int color = ColorUtil.extractColor(itemStack.getItem());
         return ColorUtil.toFloatArray(color);

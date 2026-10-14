@@ -25,16 +25,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 public class EndPortalBlock extends NetherPortalBlock implements RenderLayerProvider, CustomColorProvider {
     public static final IntegerProperty PORTAL = EndBlockProperties.PORTAL;
 
     public EndPortalBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL)
-                                 .explosionResistance(Blocks.BEDROCK.getExplosionResistance())
+        super(FabricBlockSettings.copyOf(Blocks.NETHER_PORTAL)
+                                 .resistance(Blocks.BEDROCK.getExplosionResistance())
                                  .lightLevel((bs) -> 15));
     }
 
@@ -45,7 +45,7 @@ public class EndPortalBlock extends NetherPortalBlock implements RenderLayerProv
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
         if (random.nextInt(100) == 0) {
             world.playLocalSound(

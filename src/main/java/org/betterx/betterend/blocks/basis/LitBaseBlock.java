@@ -6,8 +6,8 @@ import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -20,7 +20,7 @@ public class LitBaseBlock extends BaseBlock {
 
     @Nullable
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public BlockModel getBlockModel(ResourceLocation resourceLocation, BlockState blockState) {
         return BlockModel.fromString(PATTERN.replace("name", resourceLocation.getPath()));
     }

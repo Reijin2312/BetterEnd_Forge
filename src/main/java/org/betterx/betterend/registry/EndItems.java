@@ -18,6 +18,7 @@ import org.betterx.betterend.item.tool.EndHammerItem;
 import org.betterx.betterend.item.tool.EndPickaxe;
 import org.betterx.betterend.util.DebugHelpers;
 
+import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -70,37 +71,37 @@ public class EndItems {
     public final static Item MUSIC_DISC_STRANGE_AND_ALIEN = registerEndDisc(
             "music_disc_strange_and_alien",
             0,
-            EndSounds.RECORD_STRANGE_AND_ALIEN_EVENT,
+            EndSounds.RECORD_STRANGE_AND_ALIEN,
             (4 * 60) + 26
     );
     public final static Item MUSIC_DISC_GRASPING_AT_STARS = registerEndDisc(
             "music_disc_grasping_at_stars",
             0,
-            EndSounds.RECORD_GRASPING_AT_STARS_EVENT,
+            EndSounds.RECORD_GRASPING_AT_STARS,
             (8 * 60) + 48
     );
     public final static Item MUSIC_DISC_ENDSEEKER = registerEndDisc(
             "music_disc_endseeker",
             0,
-            EndSounds.RECORD_ENDSEEKER_EVENT,
+            EndSounds.RECORD_ENDSEEKER,
             (7 * 60) + 41
     );
     public final static Item MUSIC_DISC_EO_DRACONA = registerEndDisc(
             "music_disc_eo_dracona",
             0,
-            EndSounds.RECORD_EO_DRACONA_EVENT,
+            EndSounds.RECORD_EO_DRACONA,
             (5 * 60) + 53
     );
     public final static Item MUSIC_DISC_ENDER_HOLLOW = registerEndDisc(
             "music_disc_ender_hollow",
             0,
-            EndSounds.RECORD_ENDER_HOLLOW_EVENT,
+            EndSounds.RECORD_ENDER_HOLLOW,
             (3 * 60) + 39
     );
     public final static Item MUSIC_DISC_MOONLIT_UNDERCURRENTS = registerEndDisc(
             "music_disc_moonlit_undercurrents",
             0,
-            EndSounds.RECORD_MOONLIT_UNDERCURRENTS_EVENT,
+            EndSounds.RECORD_MOONLIT_UNDERCURRENTS,
             (3 * 60) + 51
     );
 
@@ -314,8 +315,8 @@ public class EndItems {
         return BaseRegistry.getModItems(BetterEnd.MOD_ID);
     }
 
-    public static Item registerEndDisc(String name, int power, SoundEvent sound, int lengthInSeconds) {
-        return getItemRegistry().registerDisc(BetterEnd.makeID(name), power, sound, lengthInSeconds);
+    public static Item registerEndDisc(String name, int power, Holder<SoundEvent> sound, int lengthInSeconds) {
+        return getItemRegistry().registerDisc(BetterEnd.makeID(name), power, sound.value(), lengthInSeconds);
     }
 
     public static Item registerEndItem(String name) {
@@ -366,11 +367,6 @@ public class EndItems {
         if (BCLib.isDevEnvironment()) {
             DebugHelpers.generateDebugItems();
         }
-    }
-
-    @ApiStatus.Internal
-    public static void ensureStaticallyLoaded() {
-        // triggers class loading of static fields
     }
 
 }

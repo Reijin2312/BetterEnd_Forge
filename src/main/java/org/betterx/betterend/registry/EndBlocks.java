@@ -20,7 +20,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.util.List;
 import org.jetbrains.annotations.ApiStatus;
@@ -588,7 +587,6 @@ public class EndBlocks {
     public static final Block HYDRALUX = registerEndBlockOnly("hydralux", new HydraluxBlock());
     public static final Block HYDRALUX_PETAL_BLOCK = registerBlock("hydralux_petal_block", new HydraluxPetalBlock());
     public static final ColoredMaterial HYDRALUX_PETAL_BLOCK_COLORED = new ColoredMaterial(
-            "hydralux_petal_block",
             HydraluxPetalColoredBlock::new,
             HYDRALUX_PETAL_BLOCK,
             true
@@ -721,7 +719,6 @@ public class EndBlocks {
 
     public static final Block IRON_BULB_LANTERN = registerBlock("iron_bulb_lantern", new BulbVineLanternBlock());
     public static final ColoredMaterial IRON_BULB_LANTERN_COLORED = new ColoredMaterial(
-            "iron_bulb_lantern",
             BulbVineLanternColoredBlock::new,
             IRON_BULB_LANTERN,
             false
@@ -788,37 +785,6 @@ public class EndBlocks {
     @NotNull
     public static BlockRegistry getBlockRegistry() {
         return REGISTRY;
-    }
-
-    public static List<WoodType> getWoodTypes() {
-        return List.of(
-                MOSSY_GLOWSHROOM.woodType.type(),
-                PYTHADENDRON.woodType.type(),
-                END_LOTUS.woodType.type(),
-                LACUGROVE.woodType.type(),
-                DRAGON_TREE.woodType.type(),
-                TENANEA.woodType.type(),
-                HELIX_TREE.woodType.type(),
-                UMBRELLA_TREE.woodType.type(),
-                JELLYSHROOM.woodType.type(),
-                LUCERNIA.woodType.type(),
-                LUCERNIA_JELLY.woodType.type()
-        );
-    }
-
-    public static List<WoodType> getWoodTypesWithStandingSigns() {
-        return List.of(
-                MOSSY_GLOWSHROOM.woodType.type(),
-                PYTHADENDRON.woodType.type(),
-                END_LOTUS.woodType.type(),
-                LACUGROVE.woodType.type(),
-                DRAGON_TREE.woodType.type(),
-                TENANEA.woodType.type(),
-                HELIX_TREE.woodType.type(),
-                UMBRELLA_TREE.woodType.type(),
-                JELLYSHROOM.woodType.type(),
-                LUCERNIA.woodType.type()
-        );
     }
 
     @ApiStatus.Internal

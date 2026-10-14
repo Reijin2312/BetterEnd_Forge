@@ -54,3 +54,4 @@ public class MountainStructure extends FeatureBaseStructure {
         //this.calculateBoundingBox();
     }
 }
+

@@ -11,10 +11,10 @@ import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
-@OnlyIn(Dist.CLIENT)
+@Environment(EnvType.CLIENT)
 public class InfusionMistParticle extends TextureSheetParticle {
     private static final double SINK_SPEED_MIN = 0.022;
     private static final double SINK_SPEED_MAX = 0.048;
@@ -118,7 +118,7 @@ public class InfusionMistParticle extends TextureSheetParticle {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public static class FactoryInfusionMist implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet sprites;
         private final int rgb;

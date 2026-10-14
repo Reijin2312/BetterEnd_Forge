@@ -4,8 +4,8 @@ import org.betterx.bclib.blocks.BaseRotatedPillarBlock;
 
 import net.minecraft.resources.ResourceLocation;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import java.util.Optional;
 
@@ -17,7 +17,7 @@ public class LitPillarBlock extends BaseRotatedPillarBlock {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     protected Optional<String> createBlockPattern(ResourceLocation blockId) {
         String name = blockId.getPath();
         return Optional.of(PATTERN.replace("name", name));

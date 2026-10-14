@@ -28,9 +28,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 import com.google.common.collect.Lists;
 
@@ -46,7 +46,7 @@ public class JellyshroomCapBlock extends SlimeBlock implements RenderLayerProvid
     private final int coloritem;
 
     public JellyshroomCapBlock(int r1, int g1, int b1, int r2, int g2, int b2) {
-        super(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK));
+        super(FabricBlockSettings.copyOf(Blocks.SLIME_BLOCK));
         colorStart = new Vec3i(r1, g1, b1);
         colorEnd = new Vec3i(r2, g2, b2);
         coloritem = ColorUtil.color((r1 + r2) >> 1, (g1 + g2) >> 1, (b1 + b2) >> 1);
@@ -77,13 +77,13 @@ public class JellyshroomCapBlock extends SlimeBlock implements RenderLayerProvid
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public BlockModel getItemModel(ResourceLocation resourceLocation) {
         return getBlockModel(resourceLocation, defaultBlockState());
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public @Nullable BlockModel getBlockModel(ResourceLocation resourceLocation, BlockState blockState) {
         Optional<String> pattern = Patterns.createJson(Patterns.BLOCK_COLORED, "jellyshroom_cap");
         return ModelsHelper.fromPattern(pattern);

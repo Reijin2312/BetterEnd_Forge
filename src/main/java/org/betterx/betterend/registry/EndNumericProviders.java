@@ -10,12 +10,7 @@ import org.betterx.betterend.world.surface.VerticalBandNoiseCondition;
 import net.minecraft.core.Registry;
 
 public class EndNumericProviders {
-    private static boolean registered;
-
     public static void register() {
-        if (registered) {
-            return;
-        }
         Registry.register(
                 NumericProvider.NUMERIC_PROVIDER,
                 BetterEnd.makeID("sulphuric_surf"),
@@ -39,6 +34,5 @@ public class EndNumericProviders {
                 BetterEnd.makeID("umbra_srf"),
                 UmbraSurfaceNoiseCondition.CODEC
         );
-        registered = true;
     }
 }

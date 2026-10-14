@@ -5,8 +5,13 @@ import org.betterx.bclib.items.elytra.BCLElytraUtils;
 
 import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ElytraItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+
+import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
+import net.fabricmc.fabric.api.entity.event.v1.FabricElytraItem;
 
 import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketComponent;
@@ -18,7 +23,7 @@ import java.util.Optional;
 public class Elytra {
     private static boolean isElytra(ItemStack stack) {
         return stack.getItem() instanceof ElytraItem
-                || stack.getItem() instanceof BCLElytraItem;
+                || stack.getItem() instanceof FabricElytraItem;
     }
 
     public static void register() {
@@ -50,5 +55,34 @@ public class Elytra {
                 }
             }
         };
+
+        EntityElytraEvents.CUSTOM.register(Elytra::useElytraTrinket);
+    }
+
+    private static boolean useElytraTrinket(LivingEntity entity, boolean tickElytra) {
+        Optional<TrinketComponent> oTrinketComponent = TrinketsApi.getTrinketComponent(entity);
+        if (oTrinketComponent.isPresent()) {
+            List<Tuple<SlotReference, ItemStack>> equipped =
+                    oTrinketComponent.get().getEquipped(Elytra::isElytra);
+
+            for (Tuple<SlotReference, ItemStack> slot : equipped) {
+                ItemStack stack = slot.getB();
+                Item item = stack.getItem();
+
+                if (item instanceof ElytraItem) {
+                    if (ElytraItem.isFlyEnabled(stack)) {
+                        BCLElytraItem.vanillaElytraTick(entity, stack);
+                        return true;
+                    }
+                } else if (item instanceof FabricElytraItem fabricElytraItem) {
+                    if (fabricElytraItem.useCustomElytra(entity, stack, tickElytra)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
+
+

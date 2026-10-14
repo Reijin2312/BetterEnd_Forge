@@ -1,5 +1,6 @@
 package org.betterx.betterend.entity.model;
 
+import org.betterx.betterend.BetterEnd;
 import org.betterx.betterend.entity.SilkMothEntity;
 
 import com.mojang.blaze3d.vertex.PoseStack;

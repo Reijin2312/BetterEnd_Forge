@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "betterend:block/flavolite",
-    "side": "betterend:block/flavolite",
-    "top": "betterend:block/flavolite"
-  }
-}

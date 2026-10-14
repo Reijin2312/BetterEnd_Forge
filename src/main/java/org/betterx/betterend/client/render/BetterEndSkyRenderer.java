@@ -13,11 +13,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 
+import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
-public class BetterEndSkyRenderer {
+public class BetterEndSkyRenderer implements DimensionRenderingRegistry.SkyRenderer {
     @FunctionalInterface
     interface BufferFunction {
         void make(BufferBuilder bufferBuilder, double minSize, double maxSize, int count, long seed);
@@ -60,13 +63,18 @@ public class BetterEndSkyRenderer {
         }
     }
 
-    public void renderSkyboxWithStars(PoseStack matrices, Matrix4f projectionMatrix, float time) {
-        if (matrices == null) {
+    @Override
+    public void render(WorldRenderContext context) {
+        if (context.world() == null || context.matrixStack() == null) {
             return;
         }
 
         initialise();
 
+        Matrix4f projectionMatrix = context.projectionMatrix();
+        PoseStack matrices = context.matrixStack();
+
+        float time = ((context.world().getDayTime() + context.tickDelta()) % 360000) * 0.000017453292F;
         float time2 = time * 2;
         float time3 = time * 3;
 
@@ -244,6 +252,7 @@ public class BetterEndSkyRenderer {
 
         return buffer;
     }
+
 
     private VertexBuffer buildBufferHorizon(BufferBuilder bufferBuilder, VertexBuffer buffer) {
         return buildBuffer(

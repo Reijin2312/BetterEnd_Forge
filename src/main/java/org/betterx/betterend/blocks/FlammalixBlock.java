@@ -16,8 +16,8 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 public class FlammalixBlock extends EndPlantBlock implements BehaviourPlant, SurvicesOnPallidium {
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 14, 14);
@@ -32,7 +32,7 @@ public class FlammalixBlock extends EndPlantBlock implements BehaviourPlant, Sur
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public BlockModel getItemModel(ResourceLocation resourceLocation) {
         return ModelsHelper.createItemModel(resourceLocation);
     }

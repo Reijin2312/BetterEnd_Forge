@@ -28,8 +28,8 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -140,7 +140,7 @@ public class InfusionRecipe implements Recipe<InfusionRitual>, UnknownReceipBook
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public String getGroup() {
         return this.group;
     }

@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:dragon_tree_composter",
     "betterend:end_lotus_composter",
@@ -9,7 +10,6 @@
     "betterend:mossy_glowshroom_composter",
     "betterend:pythadendron_composter",
     "betterend:tenanea_composter",
-    "betterend:umbrella_tree_composter",
-    "minecraft:composter"
+    "betterend:umbrella_tree_composter"
   ]
 }

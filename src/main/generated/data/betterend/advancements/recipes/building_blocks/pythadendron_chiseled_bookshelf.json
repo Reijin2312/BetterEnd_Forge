@@ -34,8 +34,8 @@
   },
   "requirements": [
     [
-      "has_pythadendron_slab",
       "has_pythadendron_planks",
+      "has_pythadendron_slab",
       "has_the_recipe"
     ]
   ],

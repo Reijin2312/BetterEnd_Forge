@@ -33,12 +33,12 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import org.joml.Vector3f;
 
-@OnlyIn(Dist.CLIENT)
+@Environment(EnvType.CLIENT)
 public class PedestalItemRenderer<T extends PedestalBlockEntity> implements BlockEntityRenderer<T> {
     private static final int SOCKET_MISSING_RGB = 0xFFE9A0;
     private static final int SOCKET_PLACED_RGB = 0xC9A94E;

@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:bubble_coral",
     "betterend:charnia_cyan",
@@ -13,10 +14,6 @@
     "betterend:hydralux",
     "betterend:hydralux_sapling",
     "betterend:pond_anemone",
-    "betterend:tube_worm",
-    "minecraft:kelp",
-    "minecraft:kelp_plant",
-    "minecraft:seagrass",
-    "minecraft:tall_seagrass"
+    "betterend:tube_worm"
   ]
 }

@@ -1,16 +1,15 @@
 package org.betterx.betterend.world.generator;
 
+import org.betterx.bclib.api.v2.generator.BCLibEndBiomeSource;
 import org.betterx.bclib.api.v2.generator.config.BCLEndBiomeSourceConfig;
 import org.betterx.bclib.api.v2.levelgen.biomes.BCLBiome;
 import org.betterx.bclib.api.v2.levelgen.biomes.BiomeAPI;
 import org.betterx.bclib.util.MHelper;
-import org.betterx.betterend.BetterEnd;
 import org.betterx.betterend.interfaces.BETargetChecker;
 import org.betterx.betterend.mixin.common.NoiseBasedChunkGeneratorAccessor;
 import org.betterx.betterend.mixin.common.NoiseChunkAccessor;
 import org.betterx.betterend.mixin.common.NoiseInterpolatorAccessor;
 import org.betterx.betterend.noise.OpenSimplexNoise;
-import org.betterx.worlds.together.biomesource.BiomeSourceWithConfig;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -30,7 +29,6 @@ import com.google.common.collect.Maps;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
@@ -51,15 +49,9 @@ public class TerrainGenerator {
     private static OpenSimplexNoise noise1;
     private static OpenSimplexNoise noise2;
     private static BiomeSource biomeSource;
-    public static BCLEndBiomeSourceConfig config;
     private static Sampler sampler;
 
     public static void initNoise(long seed, BiomeSource biomeSource, Sampler sampler) {
-        TerrainGenerator.config = resolveEndConfig(biomeSource);
-        if (config == null) {
-            BetterEnd.LOGGER.warning("End biome source config is not set, falling back to defaults.");
-            config = BCLEndBiomeSourceConfig.DEFAULT;
-        }
         RandomSource random = new LegacyRandomSource(seed);
         largeIslands = new IslandLayer(random.nextInt(), GeneratorOptions.bigOptions);
         mediumIslands = new IslandLayer(random.nextInt(), GeneratorOptions.mediumOptions);
@@ -69,24 +61,6 @@ public class TerrainGenerator {
         TERRAIN_BOOL_CACHE_MAP.clear();
         TerrainGenerator.biomeSource = biomeSource;
         TerrainGenerator.sampler = sampler;
-    }
-
-    private static @Nullable BCLEndBiomeSourceConfig resolveEndConfig(BiomeSource biomeSource) {
-        BiomeSource source = biomeSource;
-        for (int depth = 0; depth < 8 && source != null; depth++) {
-            if (source instanceof BiomeSourceWithConfig<?, ?> bcl) {
-                if (bcl.getTogetherConfig() instanceof BCLEndBiomeSourceConfig resolved) {
-                    return resolved;
-                }
-            }
-            BiomeSource original = BlueprintCompat.unwrapOriginalSource(source);
-            if (original != null && original != source) {
-                source = original;
-                continue;
-            }
-            break;
-        }
-        return null;
     }
 
     public static void fillTerrainDensity(double[] buffer, int posX, int posZ, int scaleXZ, int scaleY, int maxHeight) {
@@ -248,11 +222,10 @@ public class TerrainGenerator {
             if (chunkGenerator instanceof NoiseBasedChunkGenerator) {
                 Holder<NoiseGeneratorSettings> sHolder = ((NoiseBasedChunkGeneratorAccessor) chunkGenerator)
                         .be_getSettings();
-                BCLEndBiomeSourceConfig endConfig = resolveEndConfig(chunkGenerator.getBiomeSource());
-                if (endConfig != null) {
+                if (chunkGenerator.getBiomeSource() instanceof BCLibEndBiomeSource bcl) {
                     BETargetChecker.class
                             .cast(sHolder.value())
-                            .be_setTarget(endConfig.generatorVersion == BCLEndBiomeSourceConfig.EndBiomeGeneratorType.PAULEVS);
+                            .be_setTarget(bcl.getTogetherConfig().generatorVersion == BCLEndBiomeSourceConfig.EndBiomeGeneratorType.PAULEVS);
                 } else {
                     BETargetChecker.class
                             .cast(sHolder.value())
@@ -308,51 +281,6 @@ public class TerrainGenerator {
                             : interpolator.be_getSlice1())[cellXZ];
                     fillTerrainDensity(ds, x, z, sizeXZ, sizeY, noiseSettings.height());
                 }
-            }
-        }
-    }
-
-    private static final class BlueprintCompat {
-        private static final String CLASS_NAME = "com.teamabnormals.blueprint.common.world.modification.ModdedBiomeSource";
-        private static final String FIELD_NAME = "originalSource";
-        private static volatile boolean initialized;
-        private static volatile Class<?> moddedBiomeSourceClass;
-        private static volatile Field originalSourceField;
-
-        private BlueprintCompat() {
-        }
-
-        @Nullable
-        static BiomeSource unwrapOriginalSource(BiomeSource source) {
-            ensureInitialized();
-            if (moddedBiomeSourceClass == null || originalSourceField == null) {
-                return null;
-            }
-            if (!moddedBiomeSourceClass.isInstance(source)) {
-                return null;
-            }
-            try {
-                Object original = originalSourceField.get(source);
-                return original instanceof BiomeSource biomeSource ? biomeSource : null;
-            } catch (IllegalAccessException ignored) {
-                return null;
-            }
-        }
-
-        private static void ensureInitialized() {
-            if (initialized) {
-                return;
-            }
-            initialized = true;
-            try {
-                Class<?> clazz = Class.forName(CLASS_NAME, false, BlueprintCompat.class.getClassLoader());
-                Field field = clazz.getDeclaredField(FIELD_NAME);
-                field.setAccessible(true);
-                moddedBiomeSourceClass = clazz;
-                originalSourceField = field;
-            } catch (ClassNotFoundException | NoSuchFieldException ignored) {
-                moddedBiomeSourceClass = null;
-                originalSourceField = null;
             }
         }
     }

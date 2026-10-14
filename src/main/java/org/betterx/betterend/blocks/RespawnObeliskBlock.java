@@ -41,7 +41,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 import com.google.common.collect.Lists;
 
@@ -55,7 +55,7 @@ public class RespawnObeliskBlock extends BaseBlock.Stone implements CustomColorP
     public static final EnumProperty<TripleShape> SHAPE = BlockProperties.TRIPLE_SHAPE;
 
     public RespawnObeliskBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.END_STONE).lightLevel((state) -> {
+        super(FabricBlockSettings.copyOf(Blocks.END_STONE).luminance((state) -> {
             return (state.getValue(SHAPE) == TripleShape.BOTTOM) ? 0 : 15;
         }));
     }

@@ -9,10 +9,7 @@
           "condition": "minecraft:entity_properties",
           "entity": "this",
           "predicate": {
-            "type_specific": {
-              "type": "minecraft:slime",
-              "size": 1
-            }
+            "nbt": "{Size:0}"
           }
         }
       ],
@@ -52,10 +49,7 @@
           "condition": "minecraft:entity_properties",
           "entity": "this",
           "predicate": {
-            "type_specific": {
-              "type": "minecraft:slime",
-              "size": 2
-            }
+            "nbt": "{Size:1}"
           }
         }
       ],
@@ -99,10 +93,7 @@
           "condition": "minecraft:entity_properties",
           "entity": "this",
           "predicate": {
-            "type_specific": {
-              "type": "minecraft:slime",
-              "size": 4
-            }
+            "nbt": "{Size:3}"
           }
         }
       ],

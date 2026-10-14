@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:dragon_tree_chest",
     "betterend:end_lotus_chest",
@@ -9,7 +10,6 @@
     "betterend:mossy_glowshroom_chest",
     "betterend:pythadendron_chest",
     "betterend:tenanea_chest",
-    "betterend:umbrella_tree_chest",
-    "minecraft:chest"
+    "betterend:umbrella_tree_chest"
   ]
 }

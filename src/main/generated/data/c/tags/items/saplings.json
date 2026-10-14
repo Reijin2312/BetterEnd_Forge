@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "betterend:dragon_tree_sapling",
     "betterend:helix_tree_sapling",

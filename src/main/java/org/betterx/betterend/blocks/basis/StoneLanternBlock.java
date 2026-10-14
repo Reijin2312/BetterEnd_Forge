@@ -17,9 +17,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 import java.util.Optional;
 import org.jetbrains.annotations.Nullable;
@@ -29,7 +29,7 @@ public class StoneLanternBlock extends EndLanternBlock implements CustomColorPro
     private static final VoxelShape SHAPE_FLOOR = box(3, 0, 3, 13, 15, 13);
 
     public StoneLanternBlock(Block source) {
-        super(BlockBehaviour.Properties.copy(source).lightLevel((bs) -> 15));
+        super(FabricBlockSettings.copyOf(source).lightLevel((bs) -> 15));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class StoneLanternBlock extends EndLanternBlock implements CustomColorPro
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public @Nullable BlockModel getBlockModel(ResourceLocation resourceLocation, BlockState blockState) {
         String blockName = resourceLocation.getPath();
         Optional<String> pattern = blockState.getValue(IS_FLOOR)

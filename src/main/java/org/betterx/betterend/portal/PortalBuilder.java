@@ -168,19 +168,17 @@ public class PortalBuilder {
     }
 
     public Optional<BlockUtil.FoundRectangle> findPortalAround(BlockPos blockPos, WorldBorder worldBorder) {
-        Optional<BlockPos> oPos = Optional.empty();
-        if (EndPoiTypes.ETERNAL_PORTAL != null) {
-            PoiManager poiManager = this.targetLevel.getPoiManager();
-            poiManager.ensureLoadedAndValid(this.targetLevel, blockPos, SPIRAL_SEARCH_RADIUS);
-            oPos = EndPoiTypes.ETERNAL_PORTAL.findPoiAround(
-                    this.targetLevel,
-                    blockPos,
-                    SPIRAL_SEARCH_RADIUS,
-                    worldBorder
-            );
-        }
+        PoiManager poiManager = this.targetLevel.getPoiManager();
+        poiManager.ensureLoadedAndValid(this.targetLevel, blockPos, SPIRAL_SEARCH_RADIUS);
 
-        Optional<BlockUtil.FoundRectangle> found = oPos.map(poiPos -> {
+        Optional<BlockPos> oPos = EndPoiTypes.ETERNAL_PORTAL.findPoiAround(
+                this.targetLevel,
+                blockPos,
+                SPIRAL_SEARCH_RADIUS,
+                worldBorder
+        );
+
+        return oPos.map(poiPos -> {
             this.targetLevel.getChunkSource().addRegionTicket(TicketType.PORTAL, new ChunkPos(poiPos), 3, poiPos);
             BlockState blockState = this.targetLevel.getBlockState(poiPos);
             return BlockUtil.getLargestRectangleAround(
@@ -192,59 +190,6 @@ public class PortalBuilder {
                     bp -> this.targetLevel.getBlockState(bp) == blockState
             );
         });
-
-        if (found.isPresent()) {
-            return found;
-        }
-        return findPortalAroundByBlock(blockPos, worldBorder);
-    }
-
-    private Optional<BlockUtil.FoundRectangle> findPortalAroundByBlock(BlockPos blockPos, WorldBorder worldBorder) {
-        final int minY = this.targetLevel.getMinBuildHeight();
-        final int maxY = Math.min(
-                this.targetLevel.getMaxBuildHeight(),
-                this.targetLevel.getMinBuildHeight() + this.targetLevel.getLogicalHeight()
-        ) - 1;
-
-        BlockPos bestPos = null;
-        double bestDist = Double.MAX_VALUE;
-        BlockPos.MutableBlockPos scanPos = new BlockPos.MutableBlockPos();
-
-        for (BlockPos.MutableBlockPos xzPos : BlockPos.spiralAround(
-                blockPos, SPIRAL_SEARCH_RADIUS, Direction.EAST, Direction.SOUTH
-        )) {
-            if (!worldBorder.isWithinBounds(xzPos)) {
-                continue;
-            }
-            final int x = xzPos.getX();
-            final int z = xzPos.getZ();
-            for (int y = maxY; y >= minY; --y) {
-                scanPos.set(x, y, z);
-                BlockState state = this.targetLevel.getBlockState(scanPos);
-                if (!state.is(PORTAL) || !state.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
-                    continue;
-                }
-                double dist = blockPos.distSqr(scanPos);
-                if (dist < bestDist) {
-                    bestDist = dist;
-                    bestPos = scanPos.immutable();
-                }
-            }
-        }
-
-        if (bestPos == null) {
-            return Optional.empty();
-        }
-
-        BlockState blockState = this.targetLevel.getBlockState(bestPos);
-        return Optional.of(BlockUtil.getLargestRectangleAround(
-                bestPos,
-                blockState.getValue(BlockStateProperties.HORIZONTAL_AXIS),
-                21,
-                Direction.Axis.Y,
-                21,
-                bp -> this.targetLevel.getBlockState(bp) == blockState
-        ));
     }
 
     public static BlockPos getStartingPos(

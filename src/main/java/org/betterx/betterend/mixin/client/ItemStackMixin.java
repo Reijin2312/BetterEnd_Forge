@@ -22,6 +22,7 @@ public class ItemStackMixin {
             TooltipFlag tooltipContext,
             CallbackInfoReturnable<List<Component>> info
     ) {
-        ItemTooltipCallback.fire(entity, ItemStack.class.cast(this), tooltipContext, info.getReturnValue());
+        ItemTooltipCallback.EVENT.invoker()
+                                 .getTooltip(entity, ItemStack.class.cast(this), tooltipContext, info.getReturnValue());
     }
 }

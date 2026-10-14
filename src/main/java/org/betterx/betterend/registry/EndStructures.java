@@ -10,7 +10,8 @@ import org.betterx.betterend.world.structures.village.VillagePools;
 import org.betterx.worlds.together.tag.v3.TagManager;
 
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
@@ -21,14 +22,7 @@ import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 
-import net.minecraftforge.registries.RegisterEvent;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 public class EndStructures {
-    private static final Map<ResourceLocation, StructurePieceType> PIECE_TYPES = new LinkedHashMap<>();
-
     public static final StructurePieceType VOXEL_PIECE = register("voxel", VoxelPiece::new);
     public static final StructurePieceType MOUNTAIN_PIECE = register("mountain_piece", CrystalMountainPiece::new);
     public static final StructurePieceType CAVE_PIECE = register("cave_piece", CavePiece::new);
@@ -116,13 +110,7 @@ public class EndStructures {
     }
 
     private static StructurePieceType register(String id, StructurePieceType pieceType) {
-        ResourceLocation key = BetterEnd.makeID(id);
-        StructurePieceType existing = PIECE_TYPES.get(key);
-        if (existing != null) {
-            return existing;
-        }
-        PIECE_TYPES.put(key, pieceType);
-        return pieceType;
+        return Registry.register(BuiltInRegistries.STRUCTURE_PIECE, BetterEnd.makeID(id), pieceType);
     }
 
     public static void addBiomeStructures(ResourceLocation biomeID, Holder<Biome> biome) {
@@ -134,15 +122,5 @@ public class EndStructures {
         ) {
             TagManager.BIOMES.add(ETERNAL_PORTAL.biomeTag, biome.value());
         }
-    }
-
-    public static void onRegister(RegisterEvent event) {
-        if (!event.getRegistryKey().equals(Registries.STRUCTURE_PIECE)) {
-            return;
-        }
-        event.register(Registries.STRUCTURE_PIECE, helper -> {
-            PIECE_TYPES.forEach(helper::register);
-            PIECE_TYPES.clear();
-        });
     }
 }

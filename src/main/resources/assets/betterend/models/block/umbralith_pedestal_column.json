@@ -1,8 +1,0 @@
-{
-  "parent": "betterend:block/pedestal_column",
-  "textures": {
-    "base": "betterend:block/umbralith_polished",
-    "bottom": "betterend:block/umbralith_polished",
-    "pillar": "betterend:block/umbralith_pillar_side"
-  }
-}

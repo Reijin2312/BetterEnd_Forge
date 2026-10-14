@@ -2,7 +2,7 @@
 
 # Better End
 
-Unnoficial port of Better End Mod for Forge, MC 1.20.1
+Better End Mod for Fabric, MC 1.19
 
 Importing:
 

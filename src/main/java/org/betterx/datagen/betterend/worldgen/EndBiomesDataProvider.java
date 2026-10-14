@@ -7,7 +7,6 @@ import org.betterx.bclib.api.v2.levelgen.biomes.BiomeAPI;
 import org.betterx.bclib.api.v2.levelgen.biomes.BiomeAPI.BiomeType;
 import org.betterx.bclib.api.v3.datagen.TagDataProvider;
 import org.betterx.betterend.BetterEnd;
-import org.betterx.betterend.registry.EndBiomes;
 import org.betterx.betterend.registry.EndStructures;
 import org.betterx.betterend.world.biome.EndBiome;
 import org.betterx.betterend.world.biome.air.BiomeIceStarfield;
@@ -19,11 +18,11 @@ import org.betterx.datagen.betterend.EndRegistrySupplier;
 import org.betterx.worlds.together.tag.v3.TagManager;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.world.level.biome.Biome;
 
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 
 import java.util.HashSet;
 import java.util.List;
@@ -64,19 +63,18 @@ public class EndBiomesDataProvider extends TagDataProvider<Biome> {
     private static final EndCaveBiome JADE_CAVE = registerCaveBiome(new JadeCaveBiome());
 
     /**
-     * Constructs a new {@link TagDataProvider} with the default computed path.
+     * Constructs a new {@link FabricTagProvider} with the default computed path.
      *
      * <p>Common implementations of this class are provided.
      *
-     * @param output           the {@link PackOutput} instance
+     * @param output           the {@link FabricDataOutput} instance
      * @param registriesFuture the backing registry for the tag type
      */
     public EndBiomesDataProvider(
-            PackOutput output,
-            CompletableFuture<HolderLookup.Provider> registriesFuture,
-            ExistingFileHelper existingFileHelper
+            FabricDataOutput output,
+            CompletableFuture<HolderLookup.Provider> registriesFuture
     ) {
-        super(TagManager.BIOMES, List.of(BetterEnd.MOD_ID), output, registriesFuture, existingFileHelper);
+        super(TagManager.BIOMES, List.of(BetterEnd.MOD_ID), output, registriesFuture);
     }
 
 
@@ -95,8 +93,6 @@ public class EndBiomesDataProvider extends TagDataProvider<Biome> {
     }
 
     public static void ensureStaticallyLoaded() {
-        EndBiomes.register();
-        BCLBiomeRegistry.register();
         TagManager.BIOMES.add(
                 EndStructures.ETERNAL_PORTAL.biomeTag,
                 BiomeAPI.END_BARRENS.getBiomeKey(),

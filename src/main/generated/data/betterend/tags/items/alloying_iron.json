@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:deepslate_iron_ore",
+    "minecraft:iron_ore",
+    "minecraft:raw_iron"
+  ]
+}
