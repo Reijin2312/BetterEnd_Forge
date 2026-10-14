@@ -38,17 +38,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.border.WorldBorder;
 
-import com.google.common.collect.Sets;
-
 import java.awt.*;
+import java.util.List;
 import java.util.Objects;
-import java.util.Collections;
 import java.util.Optional;
-import java.util.Set;
 import org.jetbrains.annotations.Nullable;
 
 public class EternalRitual {
-    private final static Set<Point> PEDESTAL_POSITIONS = Sets.newHashSet(
+    public static final int ACTIVATION_CHARGE_TICKS = 60;
+    private final static List<Point> PEDESTAL_POSITIONS = List.of(
             new Point(-4, -5),
             new Point(-4, 5),
             new Point(-6, 0),
@@ -57,8 +55,8 @@ public class EternalRitual {
             new Point(6, 0)
     );
 
-    public static Set<Point> pedestalOffsets() {
-        return Collections.unmodifiableSet(PEDESTAL_POSITIONS);
+    public static List<Point> pedestalOffsets() {
+        return PEDESTAL_POSITIONS;
     }
 
     private final static Block PEDESTAL = EndBlocks.ETERNAL_PEDESTAL;
@@ -71,6 +69,8 @@ public class EternalRitual {
     private BlockPos exit;
     private boolean active = false;
     private boolean willActivate = false;
+    private ResourceLocation pendingKeyItemId;
+    private BlockPos pendingStartPosition;
 
     public EternalRitual(Level world) {
         this.world = world;
@@ -95,6 +95,21 @@ public class EternalRitual {
 
     public Level getWorld() {
         return world;
+    }
+
+    public int getPedestalItemMask() {
+        if (world == null || center == null || axis == null) return 0;
+        Direction moveX = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
+        Direction moveY = axis == Direction.Axis.X ? Direction.NORTH : Direction.EAST;
+        int mask = 0;
+        for (int i = 0; i < PEDESTAL_POSITIONS.size(); i++) {
+            Point offset = PEDESTAL_POSITIONS.get(i);
+            BlockPos pedestalPos = center.relative(moveX, offset.x).relative(moveY, offset.y);
+            if (world.getBlockEntity(pedestalPos) instanceof EternalPedestalEntity pedestal && !pedestal.isEmpty()) {
+                mask |= 1 << i;
+            }
+        }
+        return mask;
     }
 
     @Nullable
@@ -156,7 +171,7 @@ public class EternalRitual {
             Level world,
             EternalRitual fallback
     ) {
-        updateActiveStateOnPedestals(center, axis, active, willActivate, world, fallback, null);
+        updateActiveStateOnPedestals(center, axis, active, willActivate, world, fallback, null, -1);
     }
 
     public static void updateActiveStateOnPedestals(
@@ -166,7 +181,8 @@ public class EternalRitual {
             boolean willActivate,
             Level world,
             EternalRitual fallback,
-            Item clientKeyItem
+            Item clientKeyItem,
+            int pedestalItemMask
     ) {
         Direction moveX, moveY;
         if (Direction.Axis.X == axis) {
@@ -178,20 +194,25 @@ public class EternalRitual {
         }
 
 
-        for (Point pos : PEDESTAL_POSITIONS) {
+        for (int pedestalIndex = 0; pedestalIndex < PEDESTAL_POSITIONS.size(); pedestalIndex++) {
+            Point pos = PEDESTAL_POSITIONS.get(pedestalIndex);
             BlockPos.MutableBlockPos checkPos = center.mutable();
             checkPos.move(moveX, pos.x).move(moveY, pos.y);
             if (world.getBlockEntity(checkPos) instanceof EternalPedestalEntity pedestal) {
-                if (world.isClientSide() && (active || willActivate) && clientKeyItem != null) {
-                    pedestal.setClientItem(new ItemStack(clientKeyItem));
+                if (world.isClientSide() && pedestalItemMask >= 0) {
+                    boolean hasItem = (pedestalItemMask & (1 << pedestalIndex)) != 0;
+                    pedestal.setClientItem(hasItem && clientKeyItem != null ? new ItemStack(clientKeyItem) : ItemStack.EMPTY);
                     BlockState state = world.getBlockState(checkPos);
                     if (state.is(PEDESTAL)) {
-                        world.setBlockAndUpdate(
-                                checkPos,
-                                state.setValue(PedestalBlock.HAS_ITEM, true)
-                                     .setValue(PedestalBlock.HAS_LIGHT, true)
-                                     .setValue(EternalPedestal.ACTIVATED, true)
-                        );
+                        state = state.setValue(PedestalBlock.HAS_ITEM, hasItem);
+                        if (!hasItem) {
+                            state = state.setValue(PedestalBlock.HAS_LIGHT, false)
+                                         .setValue(EternalPedestal.ACTIVATED, false);
+                        } else if (active || willActivate) {
+                            state = state.setValue(PedestalBlock.HAS_LIGHT, true)
+                                         .setValue(EternalPedestal.ACTIVATED, true);
+                        }
+                        world.setBlockAndUpdate(checkPos, state);
                     }
                 }
                 if (pedestal.hasRitual()) {
@@ -250,20 +271,33 @@ public class EternalRitual {
     }
 
     private void activatePortal(Player player, Item keyItem) {
-        if (active) return;
-        willActivate = true;
-        updateActiveStateOnPedestals();
-
+        if (active || willActivate) return;
         ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(keyItem);
         int portalId = EndPortals.getPortalIdByItem(itemId);
+        Level targetWorld = getTargetWorld(portalId);
+        pendingKeyItemId = itemId;
+        pendingStartPosition = PortalBuilder.getStartingPos(world, targetWorld, player, targetWorld.getWorldBorder());
+        willActivate = true;
+        updateActiveStateOnPedestals();
+        world.scheduleTick(getActivationPedestalPos(), PEDESTAL, ACTIVATION_CHARGE_TICKS);
+    }
+
+    public void finishActivation() {
+        if (!willActivate || active || isInvalid() || pendingKeyItemId == null || pendingStartPosition == null) return;
+        Item keyItem = getKeyItem();
+        if (keyItem == null || !pendingKeyItemId.equals(BuiltInRegistries.ITEM.getKey(keyItem)) || !hasValidStructureFor(keyItem)) {
+            cancelActivation();
+            return;
+        }
+        int portalId = EndPortals.getPortalIdByItem(pendingKeyItemId);
         Level targetWorld = getTargetWorld(portalId);
         ResourceLocation worldId = targetWorld.dimension().location();
         try {
             if (exit == null) {
-                initPortal(player, worldId, portalId);
+                initPortal(pendingStartPosition, worldId, portalId);
             } else {
                 if (!worldId.equals(targetWorldId)) {
-                    initPortal(player, worldId, portalId);
+                    initPortal(pendingStartPosition, worldId, portalId);
                 } else if (!checkFrame(targetWorld, exit.below())) {
                     Direction.Axis portalAxis = (Direction.Axis.X == axis) ? Direction.Axis.Z : Direction.Axis.X;
                     PortalBuilder.generatePortal(targetWorld, exit, portalAxis, portalId);
@@ -276,6 +310,7 @@ public class EternalRitual {
             }
             willActivate = false;
             active = true;
+            clearPendingActivation();
             updateActiveStateOnPedestals();
         } catch (Exception ex) {
             BetterEnd.LOGGER.error("Create End portals error.", ex);
@@ -283,11 +318,39 @@ public class EternalRitual {
             removePortal(world, center);
             willActivate = false;
             active = false;
+            clearPendingActivation();
             updateActiveStateOnPedestals();
         }
     }
 
-    private void initPortal(Player player, ResourceLocation worldId, int portalId) {
+    public void cancelActivation() {
+        if (!willActivate) return;
+        willActivate = false;
+        clearPendingActivation();
+        updateActiveStateOnPedestals();
+    }
+
+    private void clearPendingActivation() { pendingKeyItemId = null; pendingStartPosition = null; }
+
+    private BlockPos getActivationPedestalPos() {
+        Direction moveX = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
+        Direction moveY = axis == Direction.Axis.X ? Direction.NORTH : Direction.EAST;
+        Point offset = PEDESTAL_POSITIONS.get(0);
+        return center.relative(moveX, offset.x).relative(moveY, offset.y);
+    }
+
+    private boolean hasValidStructureFor(Item keyItem) {
+        if (!checkFrame(world, center.below())) return false;
+        Direction moveX = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
+        Direction moveY = axis == Direction.Axis.X ? Direction.NORTH : Direction.EAST;
+        for (Point offset : PEDESTAL_POSITIONS) {
+            BlockPos pedestalPos = center.relative(moveX, offset.x).relative(moveY, offset.y);
+            if (!isActive(pedestalPos) || !(world.getBlockEntity(pedestalPos) instanceof EternalPedestalEntity pedestal) || pedestal.isEmpty() || pedestal.getItem(0).getItem() != keyItem) return false;
+        }
+        return true;
+    }
+
+    private void initPortal(BlockPos startPosition, ResourceLocation worldId, int portalId) {
         targetWorldId = worldId;
         if (world instanceof ServerLevel sourceWorld) {
             ServerLevel targetLevel = (ServerLevel) getTargetWorld(portalId);
@@ -301,7 +364,7 @@ public class EternalRitual {
             if (!foundRectangle.isPresent()) {
                 Optional<BlockPos> centerPos;
                 centerPos = builder.createPortal(
-                        PortalBuilder.getStartingPos(sourceWorld, targetLevel, player, worldBorder),
+                        startPosition,
                         axis,
                         portalId
                 );
@@ -535,10 +598,13 @@ public class EternalRitual {
     }
 
     public CompoundTag toTag(CompoundTag tag) {
-        if (this.center == null || this.axis == null || this.exit == null) return null;
+        if (this.center == null || this.axis == null) return null;
         tag.put("center", NbtUtils.writeBlockPos(center));
         tag.putString("axis", axis.getName());
         tag.putBoolean("active", active);
+        tag.putBoolean("will_activate", willActivate);
+        if (pendingKeyItemId != null) tag.putString("pending_key_item", pendingKeyItemId.toString());
+        if (pendingStartPosition != null) tag.put("pending_start", NbtUtils.writeBlockPos(pendingStartPosition));
         if (targetWorldId != null) {
             tag.putString("key_item", targetWorldId.toString());
         }
@@ -552,6 +618,9 @@ public class EternalRitual {
         axis = Direction.Axis.byName(tag.getString("axis"));
         center = NbtUtils.readBlockPos(tag.getCompound("center"));
         active = tag.getBoolean("active");
+        willActivate = tag.getBoolean("will_activate");
+        if (tag.contains("pending_key_item")) pendingKeyItemId = new ResourceLocation(tag.getString("pending_key_item"));
+        if (tag.contains("pending_start")) pendingStartPosition = NbtUtils.readBlockPos(tag.getCompound("pending_start"));
         if (tag.contains("exit")) {
             exit = NbtUtils.readBlockPos(tag.getCompound("exit"));
         }

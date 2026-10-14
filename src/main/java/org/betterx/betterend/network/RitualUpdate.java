@@ -48,12 +48,14 @@ public class RitualUpdate extends DataHandler.FromServer {
         if (keyItem != null) {
             this.keyItemId = BuiltInRegistries.ITEM.getKey(keyItem);
         }
+        this.pedestalItemMask = ritual.getPedestalItemMask();
     }
 
     byte flags;
     BlockPos center;
     Direction.Axis axis;
     ResourceLocation keyItemId;
+    int pedestalItemMask;
 
     @Override
     protected void serializeDataOnServer(FriendlyByteBuf buf) {
@@ -64,6 +66,7 @@ public class RitualUpdate extends DataHandler.FromServer {
         if (keyItemId != null) {
             buf.writeResourceLocation(keyItemId);
         }
+        buf.writeByte(pedestalItemMask);
     }
 
     @Override
@@ -73,6 +76,7 @@ public class RitualUpdate extends DataHandler.FromServer {
         axis = Direction.Axis.byName(BaseDataHandler.readString(buf));
         flags = buf.readByte();
         keyItemId = buf.readBoolean() ? buf.readResourceLocation() : null;
+        pedestalItemMask = buf.readUnsignedByte();
     }
 
     @Override
@@ -85,7 +89,8 @@ public class RitualUpdate extends DataHandler.FromServer {
                 (flags & WILL_ACTIVATE_FLAG) != 0,
                 client.level,
                 null,
-                keyItemId == null ? null : BuiltInRegistries.ITEM.get(keyItemId)
+                keyItemId == null ? null : BuiltInRegistries.ITEM.get(keyItemId),
+                pedestalItemMask
         );
     }
 }

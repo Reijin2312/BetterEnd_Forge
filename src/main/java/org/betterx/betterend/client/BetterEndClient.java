@@ -1,6 +1,7 @@
 package org.betterx.betterend.client;
 
 import org.betterx.betterend.BetterEnd;
+import org.betterx.betterend.client.particle.EndParticleFactories;
 import org.betterx.betterend.client.render.BetterEndSkyEffect;
 import org.betterx.betterend.events.ItemTooltipCallback;
 import org.betterx.betterend.interfaces.MultiModelItem;
@@ -67,7 +68,7 @@ public class BetterEndClient {
 
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
-        EndParticles.registerProviders(event);
+        EndParticleFactories.register(event);
     }
 
     @SubscribeEvent

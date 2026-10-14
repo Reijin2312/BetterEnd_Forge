@@ -69,7 +69,7 @@ public class PedestalItemRenderer<T extends PedestalBlockEntity> implements Bloc
         BlockState state = world.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof PedestalBlock pedestal)) return;
 
-        if (blockEntity.isEmpty()) {
+        if (!state.getValue(PedestalBlock.HAS_ITEM) || blockEntity.isEmpty()) {
             if (hasEternalBeam(state)) {
                 matrices.pushPose();
                 matrices.translate(0.5D, pedestal.getHeight(state), 0.5D);

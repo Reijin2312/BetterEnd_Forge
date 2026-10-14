@@ -55,6 +55,7 @@ def local_bclib = findProject(':BCLib') != null
 def local_wunderlib = findProject(':WunderLib') != null
 
 repositories {
+    maven { url "https://libraries.minecraft.net" }
     maven { url "https://maven.minecraftforge.net" }
     maven { url "https://maven.dblsaiko.net/" }
     maven { url "https://maven.shedaniel.me/" }
@@ -63,7 +64,6 @@ repositories {
     maven { url "https://maven.bai.lol" }
     maven { url 'https://maven.terraformersmc.com/releases' }
     maven { url 'https://maven.terraformersmc.com' }
-    maven { url 'https://maven.ambertation.de/releases' }
     maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
     maven { url "https://api.modrinth.com/maven" }
     flatDir { dirs 'libs' }
@@ -177,21 +177,8 @@ dependencies {
     runtimeOnly fg.deobf("maven.modrinth:caelus:3.2.0+1.20.1")
     runtimeOnly fg.deobf("maven.modrinth:elytra-slot:k6lA080t")
 
-    println "Using local BCLib: ${local_bclib}"
-    if (local_bclib) {
-        implementation project(path: ":BCLib", configuration: 'dev')
-    } else {
-        implementation fg.deobf("org.betterx:bclib:${project.bclib_version}")
-        distLibs "org.betterx:bclib:${project.bclib_version}"
-    }
-
-    println "Using local WunderLib: ${local_wunderlib}"
-    if (local_wunderlib) {
-        implementation project(path: ":WunderLib", configuration: 'dev')
-    } else {
-        implementation fg.deobf("de.ambertation:wunderlib:${project.wunderlib_version}")
-        distLibs "de.ambertation:wunderlib:${project.wunderlib_version}"
-    }
+    implementation project(path: ":BCLib", configuration: 'dev')
+    implementation project(path: ":WunderLib", configuration: 'dev')
 }
 
 processResources {
@@ -366,7 +353,7 @@ if (enablePublishing) {
         loaders = ["forge"]
         changelog = changes
         dependencies {
-            required.project "bclib"
+            required.project "bclib-forge"
             optional.project "emi"
             optional.project "patchouli"
         }
@@ -390,7 +377,7 @@ if (enablePublishing) {
         }
 
         project {
-            id = '413596'
+            id = project.curseforge_project_id
             changelogType = 'markdown'
             changelog = changes
             releaseType = project.release_channel
@@ -403,7 +390,7 @@ if (enablePublishing) {
             addGameVersion 'Forge'
             addGameVersion 'Java 17'
             relations {
-                requiredDependency 'bclib'
+                requiredDependency 'bclib-forge'
                 optionalDependency 'emi'
                 optionalDependency 'patchouli'
             }
@@ -456,7 +443,7 @@ task nextVersion() {
 }
 
 def distDir = new File(rootProject.projectDir.parentFile, "betterx-dist 1.20.1")
-def modrinthModsDir = new File("C:/Users/Redmi/AppData/Roaming/ModrinthApp/profiles/1.20.1 (1)/mods")
+def modrinthModsDir = new File("C:/Users/Redmi/AppData/Roaming/ModrinthApp/profiles/Forge 1.20.1 (1)/mods")
 def betterEndReobfJar = layout.buildDirectory.file("reobfJar/output.jar")
 def bclibReobfJar = local_bclib ? project(":BCLib").layout.buildDirectory.file("reobfJar/output.jar") : null
 def wunderlibReobfJar = local_wunderlib ? project(":WunderLib").layout.buildDirectory.file("reobfJar/output.jar") : null

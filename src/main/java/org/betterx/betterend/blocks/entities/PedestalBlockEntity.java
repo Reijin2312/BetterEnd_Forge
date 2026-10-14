@@ -10,6 +10,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -84,13 +85,18 @@ public class PedestalBlockEntity extends BlockEntity implements Container {
     @Override
     public void setChanged() {
         if (level != null && !level.isClientSide()) {
-            BlockState state = level.getBlockState(worldPosition);
-            if (state.getBlock() instanceof PedestalBlock) {
-                state = state.setValue(PedestalBlock.HAS_ITEM, !isEmpty());
-                state = state.setValue(PedestalBlock.HAS_LIGHT, activeItem.getItem() == EndItems.ETERNAL_CRYSTAL);
+            BlockState oldState = level.getBlockState(worldPosition);
+            BlockState newState = oldState;
+            if (newState.getBlock() instanceof PedestalBlock) {
+                newState = newState.setValue(PedestalBlock.HAS_ITEM, !isEmpty());
+                newState = newState.setValue(PedestalBlock.HAS_LIGHT, activeItem.getItem() == EndItems.ETERNAL_CRYSTAL);
             }
-            level.setBlockAndUpdate(worldPosition, state);
+            level.setBlockAndUpdate(worldPosition, newState);
             level.blockEntityChanged(worldPosition);
+            // A block-state update alone is not guaranteed to carry the block entity tag
+            // when another update changes the pedestal in the same tick. Explicitly queue
+            // the block entity update so clients also receive an empty inventory.
+            level.sendBlockUpdated(worldPosition, oldState, newState, Block.UPDATE_CLIENTS);
         }
         super.setChanged();
     }
