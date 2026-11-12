@@ -71,7 +71,8 @@ public class BetterEnd {
     }
 
     private void onCommonSetup(final FMLCommonSetupEvent event) {
-        onInitialize();
+        // common setup runs on parallel workers; BCLib, BetterNether and BetterEnd write the same registries here
+        event.enqueueWork(this::onInitialize);
     }
 
     public void onInitialize() {
