@@ -10,7 +10,7 @@
           "entity": "this",
           "predicate": {
             "type_specific": {
-              "type": "minecraft:slime",
+              "type": "slime",
               "size": 1
             }
           }
@@ -53,7 +53,7 @@
           "entity": "this",
           "predicate": {
             "type_specific": {
-              "type": "minecraft:slime",
+              "type": "slime",
               "size": 2
             }
           }
@@ -100,7 +100,7 @@
           "entity": "this",
           "predicate": {
             "type_specific": {
-              "type": "minecraft:slime",
+              "type": "slime",
               "size": 4
             }
           }
